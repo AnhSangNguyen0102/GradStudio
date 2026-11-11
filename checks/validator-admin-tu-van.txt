@@ -1,0 +1,5 @@
+W3C Nu Html Checker (https://validator.w3.org/nu/), file: admin-tu-van.html
+Run: 2026-11-11 16:37 +0700, HTML file sent as the request body (same as File upload), output format: text
+Git branch: fix/pa2-final-pass
+
+The document validates according to the specified schema(s).
