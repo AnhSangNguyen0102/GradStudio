@@ -362,3 +362,11 @@ Kept: scores 19 / 25 / 20 / 8 / 8 / 9 / 4 = 93 (criterion 2 and 3 have no open f
 Changed: none.
 Rejected: none.
 By hand: none.
+
+## 2026-11-11 — Last Accessibility screenshots and Screen 3 title squeeze at 1024–1190 px
+Tool: Claude Code, Claude Opus 5.5
+Asked for: a step-by-step guide to take the three missing Accessibility pane screenshots, then check them; after the 1040 px screenshot showed the Screen 3 booking title broken into one letter per line, fix that.
+Kept: three screenshots saved as `checks/a11y-index-2.png`, `checks/a11y-lich-chup-cua-toi-1.png`, `checks/a11y-lich-chup-cua-toi-2.png` and listed in criterion 3 of `SELF_ASSESSMENT_REPORT.md`; `flex-wrap: wrap` (with a comment) on `.booking-card__hero` in `assets/css/screen3.css`, so the 220 px photo cluster moves below the title when the card column is narrow. Measured: title 24 px wide (16 lines) at 1024 px before, 141 px (4 lines, whole words) after; full-page renders at 360, 768 and 1280 px identical before and after, so the DevTools screenshots and W3C results stay valid; width sweep 320–2000 px (step 8) shows no squeezed title and no sideways scroll; `run_checks.py` 66 PASS / 0 FAIL.
+Changed: none.
+Rejected: the first Screen 3 h1 screenshot, taken at 1040 px where it showed the squeezed title; re-taken at 1280 px after the fix.
+By hand: took the three DevTools screenshots with JavaScript off; agreed to the Screen 3 CSS change (Screen 3 is Huy's page).
