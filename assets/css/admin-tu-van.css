@@ -32,7 +32,6 @@
   color: var(--ink);
   font-size: 1rem;
   line-height: 1.6;
-  overflow-x: clip;
 }
 
 .page-admin h1,
@@ -52,6 +51,9 @@
   color: var(--brand);
   text-underline-offset: 3px;
 }
+
+/* Notes sit on kraft, where --brand is only 4.5:1; links there use --ink */
+.page-admin .note a { color: var(--ink); }
 
 .page-admin hr {
   border: 0;
@@ -80,7 +82,7 @@
   color: var(--ink);
 }
 
-/* 2. Header: sticky site-header shared with style.css */
+/* 2. Header: site-header shared with style.css (scrolls with the page) */
 .studio-header .header-container {
   max-width: 90rem;
   padding-left: var(--sp-16);
@@ -315,7 +317,7 @@
 .person--large h3 { font-family: var(--font-heading); font-size: 1.5rem; }
 
 .person__topic {
-  font-size: 0.875rem;
+  font-size: 1rem;
   color: var(--muted);
 }
 
@@ -386,6 +388,7 @@
      to 395 px at 360 px. width: 100% + min-width: 0 lets it shrink to fit. */
   width: 100%;
   min-width: 0;
+  min-height: var(--tap);
   padding: var(--sp-8);
   background: transparent;
   border: 0;
@@ -453,7 +456,7 @@
 }
 
 .field__hint {
-  font-size: 0.875rem;
+  font-size: 1rem;
   color: var(--muted);
   margin-top: calc(var(--sp-8) * -1);   /* pulls the hint up under its field */
 }
@@ -517,7 +520,7 @@
   padding: var(--sp-12) var(--sp-16);
   background-color: var(--paper);
   border-radius: 8px;
-  font-size: 0.875rem;
+  font-size: 1rem;
   font-weight: 600;
 }
 
@@ -525,7 +528,7 @@
 .calendar { gap: var(--sp-24); }
 
 .calendar__caption {
-  font-size: 0.875rem;
+  font-size: 1rem;
   color: var(--muted);
 }
 
@@ -569,7 +572,7 @@
 
 .slot__sub,
 .res__free {
-  font-size: 0.875rem;
+  font-size: 1rem;
   color: var(--muted);
 }
 
@@ -608,11 +611,11 @@
   display: flex;
   align-items: center;
   gap: var(--sp-8);
-  font-size: 0.875rem;
+  font-size: 1rem;
   font-weight: 600;
 }
 
-.suggestion__sub { font-size: 0.875rem; }
+.suggestion__sub { font-size: 1rem; }
 
 /* 8. Footer */
 .studio-footer {
@@ -740,5 +743,13 @@
   .convo-list {
     display: flex;
     flex-direction: column;
+  }
+}
+
+/* Below 360px the header (logo + "Studio" tag + avatar + Menu) is 9px too wide;
+   the tag is the least needed part, so it goes first. */
+@media (max-width: 359px) {
+  .studio-brand__tag {
+    display: none;
   }
 }

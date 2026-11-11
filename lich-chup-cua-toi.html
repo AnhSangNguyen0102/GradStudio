@@ -55,11 +55,12 @@
     <!-- Status filter buttons -->
     <section aria-label="Bộ lọc trạng thái">
       <div class="filter-grid">
-        <button type="button" class="filter-btn">Tất cả 1</button>
-        <button type="button" class="filter-btn active" aria-pressed="true">Chờ cọc 30% 1</button>
-        <button type="button" class="filter-btn">Đã đặt lịch 0</button>
-        <button type="button" class="filter-btn">Hoàn thành 0</button>
+        <button type="button" class="filter-btn" aria-pressed="false" disabled aria-describedby="filter-note">Tất cả 1</button>
+        <button type="button" class="filter-btn active" aria-pressed="true" disabled aria-describedby="filter-note">Chờ cọc 30% 1</button>
+        <button type="button" class="filter-btn" aria-pressed="false" disabled aria-describedby="filter-note">Đã đặt lịch 0</button>
+        <button type="button" class="filter-btn" aria-pressed="false" disabled aria-describedby="filter-note">Hoàn thành 0</button>
       </div>
+      <p class="filter-note" id="filter-note">Bộ lọc chưa có ở bản PA#2, trang đang hiện booking Chờ cọc 30%.</p>
     </section>
 
     <!-- Timeline card -->

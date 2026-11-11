@@ -917,6 +917,7 @@
 
           <!-- Ô nhập tin nhắn (ở bản PA#2 ở trạng thái vô hiệu hoá) -->
           <div class="chat-input-box">
+            <label for="chat-text-input" class="chat-input-label">Tin nhắn cho studio</label>
             <div class="chat-input-row">
               <button type="button" class="chat-btn-action" disabled aria-label="Đính kèm tệp">
                 <svg class="hero-feature-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -924,7 +925,6 @@
                 </svg>
               </button>
 
-              <label for="chat-text-input" class="visually-hidden" style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0;">Nhập tin nhắn</label>
               <input type="text" id="chat-text-input" class="chat-input-field" placeholder="Nhập tin nhắn..." disabled aria-describedby="chat-disabled-note">
 
               <button type="button" class="chat-btn-send" disabled aria-label="Gửi tin nhắn" aria-describedby="chat-disabled-note">
@@ -942,6 +942,11 @@
           </div>
 
         </div>
+
+        <!-- Main flow: studio staff continue this conversation on Screen 2 -->
+        <p class="chat-handoff">
+          <a href="admin-tu-van.html" class="btn btn-primary btn-wrap">Nhân viên studio: mở cuộc trò chuyện này</a>
+        </p>
 
       </div>
     </section>
