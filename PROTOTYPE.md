@@ -12,14 +12,28 @@ Mở `index.html` (trang đầu). Các trang: (điền tên file khi làm xong)
 
 ## Nguồn hình ảnh
 
-Không dùng ảnh người thật. Toàn bộ hình ảnh là minh họa vector inline SVG và CSS polaroid/film-strip tự dựng, avatar dùng chữ cái đầu tên:
+> Avatar dùng chữ cái đầu. Ảnh chọn không thấy rõ mặt người.
 
-| Ảnh | Nguồn (URL) | Giấy phép |
-|---|---|---|
-| Minh họa mũ tốt nghiệp, máy ảnh, icon dịch vụ | Tự thiết kế vector inline SVG | Tự làm |
-| Cụm polaroid & dải film analog | Tự tạo bằng CSS thuần (scrapbook style) | Tự làm |
-| Nền giấy vintage mép xé (assets/img/paper-bg.webp) | Người dùng cung cấp (texture giấy mộc, không có người) | Tự do sử dụng đồ án |
-| Icon màn 2 (assets/icons/*.svg: lịch, đồng hồ, cảnh báo, dấu kiểm, kẹp giấy, mũi tên…) | Bộ icon Lucide (https://lucide.dev), xuất từ file Figma của nhóm (trang "admin-tu-van"); tên và nét vẽ trùng bản gốc, ví dụ `clock-3`, `arrow-up-right` | ISC (https://github.com/lucide-icons/lucide/blob/main/LICENSE) |
+| File | Trang / vị trí | Tác giả | URL nguồn | Giấy phép |
+|---|---|---|---|---|
+| `assets/img/hero/polaroid-camera.webp` | Hero (polaroid trên cùng bên trái – 4:3) | | | Tự do sử dụng đồ án |
+| `assets/img/hero/card-phong-b.webp` | Hero (thẻ "Phòng B" góc trên phải – 4:3) | | | Tự do sử dụng đồ án |
+| `assets/img/hero/polaroid-small.webp` | Hero (polaroid nhỏ phía sau film strip trái – 1:1) | | | Tự do sử dụng đồ án |
+| `assets/img/hero/strip-left-1.webp` | Hero (film strip trái – ô 1, 1:1) | | | Tự do sử dụng đồ án |
+| `assets/img/hero/strip-left-2.webp` | Hero (film strip trái – ô 2, 1:1) | | | Tự do sử dụng đồ án |
+| `assets/img/hero/strip-left-3.webp` | Hero (film strip trái – ô 3, 1:1) | | | Tự do sử dụng đồ án |
+| `assets/img/hero/strip-right-1.webp` | Hero (film strip phải – ô 1, 1:1) | | | Tự do sử dụng đồ án |
+| `assets/img/hero/strip-right-2.webp` | Hero (film strip phải – ô 2, 1:1) | | | Tự do sử dụng đồ án |
+| `assets/img/hero/strip-right-3.webp` | Hero (film strip phải – ô 3, 1:1) | | | Tự do sử dụng đồ án |
+| `assets/img/services/ky-yeu-1.webp` | Thẻ Kỷ yếu lớp (polaroid lớn bên trái – 4:5) | | | Tự do sử dụng đồ án |
+| `assets/img/services/ky-yeu-2.webp` | Thẻ Kỷ yếu lớp (polaroid nhỏ bên phải – 4:5) | | | Tự do sử dụng đồ án |
+| `assets/img/services/tot-nghiep.webp` | Thẻ Tốt nghiệp (polaroid trung tâm – 4:5) | | | Tự do sử dụng đồ án |
+| `assets/img/services/chan-dung.webp` | Thẻ Chân dung/CV (polaroid lớn – 4:5) | | | Tự do sử dụng đồ án |
+| `assets/img/services/cv-strip-1.webp` | Thẻ Chân dung/CV (film strip dọc – ô 1, 1:1) | | | Tự do sử dụng đồ án |
+| `assets/img/services/cv-strip-2.webp` | Thẻ Chân dung/CV (film strip dọc – ô 2, 1:1) | | | Tự do sử dụng đồ án |
+| `assets/img/services/cv-strip-3.webp` | Thẻ Chân dung/CV (film strip dọc – ô 3, 1:1) | | | Tự do sử dụng đồ án |
+| `assets/img/booking/premium-1.webp` | Màn 3 Lịch chụp của tôi: Khối booking GS-1024 (polaroid trước – 4:5) | | | Tự do sử dụng đồ án |
+| `assets/img/booking/premium-2.webp` | Màn 3 Lịch chụp của tôi: Khối booking GS-1024 (polaroid sau – 4:3) | | | Tự do sử dụng đồ án |
 
 ## Nút bị vô hiệu hoá (chưa có trang ở PA#2)
 

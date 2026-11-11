@@ -56,7 +56,7 @@
     <section aria-label="Bộ lọc trạng thái">
       <div class="filter-grid">
         <button type="button" class="filter-btn">Tất cả 1</button>
-        <button type="button" class="filter-btn active" aria-pressed="true">Chờ cọc 1</button>
+        <button type="button" class="filter-btn active" aria-pressed="true">Chờ cọc 30% 1</button>
         <button type="button" class="filter-btn">Đã đặt lịch 0</button>
         <button type="button" class="filter-btn">Hoàn thành 0</button>
       </div>
@@ -224,13 +224,13 @@
             </div>
           </div>
 
-          <!-- Overlapping polaroids cluster -->
+          <!-- Overlapping polaroids cluster: booking/premium-2.webp (4:3) & premium-1.webp (4:5) -->
           <div class="booking-card__photos" aria-hidden="true">
-            <!-- Back polaroid: slightly rotated right (+4deg) -->
+            <!-- Back polaroid: slightly rotated right (+4deg): booking/premium-2.webp (4:3) -->
             <figure class="polaroid polaroid-back">
-              <!-- Tỉ lệ 4:3 (ngang) - Gợi ý tên file: polaroid-graduation-group.webp -->
               <div class="photo-slot photo-slot-wide">
-                <svg class="photo-svg" viewBox="0 0 160 120" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+                <img src="assets/img/booking/premium-2.webp" alt="" width="320" height="240" loading="lazy" class="polaroid-img">
+                <svg class="photo-svg fallback-art" viewBox="0 0 160 120" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
                   <rect width="160" height="120" fill="#EAE2D5"/>
                   <circle cx="80" cy="30" r="28" fill="#F4EDE2"/>
                   <path d="M0 90C40 82 80 96 120 86C140 81 155 85 160 83V120H0V90Z" fill="#D5C5B0"/>
@@ -247,11 +247,11 @@
               </div>
             </figure>
 
-            <!-- Front polaroid: slightly rotated left (-5deg) -->
+            <!-- Front polaroid: slightly rotated left (-5deg): booking/premium-1.webp (4:5) -->
             <figure class="polaroid polaroid-front">
-              <!-- Tỉ lệ 1:1 (vuông) - Gợi ý tên file: polaroid-graduation-solo.webp -->
               <div class="photo-slot photo-slot-square">
-                <svg class="photo-svg" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+                <img src="assets/img/booking/premium-1.webp" alt="" width="320" height="400" loading="lazy" class="polaroid-img">
+                <svg class="photo-svg fallback-art" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
                   <rect width="120" height="120" fill="#E2EADE"/>
                   <path d="M22 120V84L60 70L98 84V120H22Z" fill="#5F7182"/>
                   <circle cx="60" cy="54" r="14" fill="#E5D7C7"/>

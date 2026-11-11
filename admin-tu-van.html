@@ -10,20 +10,43 @@
 <body class="page-admin">
 
   <!-- Studio header: this page is the studio manager's view (Admin Thảo), not the customer's -->
-  <header class="studio-header">
-    <a class="studio-brand" href="index.html">
-      <span class="studio-brand__logo">GradStudio</span>
-      <span class="studio-brand__tag">Studio</span>
-    </a>
-    <nav class="studio-nav" aria-label="Điều hướng studio">
-      <ul>
-        <li><a href="admin-tu-van.html" aria-current="page">Hội thoại</a></li>
-      </ul>
-    </nav>
-    <p class="studio-account">
-      <span class="avatar avatar--washi" aria-hidden="true">T</span>
-      Thảo · Quản lý studio
-    </p>
+  <header class="site-header studio-header">
+    <div class="container header-container">
+      <a class="studio-brand logo" href="index.html" aria-label="Trang chủ GradStudio">
+        <span class="studio-brand__logo">GradStudio</span>
+        <span class="studio-brand__tag">Studio</span>
+      </a>
+
+      <!-- Navigation ngang trên Desktop (≥768px) -->
+      <nav class="studio-nav nav-desktop" aria-label="Điều hướng studio">
+        <ul>
+          <li><a href="admin-tu-van.html" aria-current="page" class="nav-link active">Hội thoại</a></li>
+        </ul>
+      </nav>
+
+      <!-- Cụm bên phải: Profile nhân viên + Menu Dropdown Mobile (<768px) -->
+      <div class="header-right">
+        <p class="studio-account user-profile" aria-label="Tài khoản nhân viên">
+          <span class="avatar avatar--washi avatar-circle" aria-hidden="true">T</span>
+          <span class="user-name">Thảo · Quản lý studio</span>
+        </p>
+
+        <!-- Menu Dropdown bằng HTML thuần <details> cho Mobile (<768px, không dùng JS) -->
+        <details class="mobile-menu-details">
+          <summary class="mobile-menu-summary" aria-label="Mở menu điều hướng">
+            <span class="menu-icon" aria-hidden="true">
+              <span></span>
+              <span></span>
+              <span></span>
+            </span>
+            <span class="menu-text">Menu</span>
+          </summary>
+          <nav class="mobile-dropdown-nav" aria-label="Menu di động">
+            <a href="admin-tu-van.html" class="mobile-nav-link active" aria-current="page">Hội thoại</a>
+          </nav>
+        </details>
+      </div>
+    </div>
   </header>
 
   <main class="workspace">

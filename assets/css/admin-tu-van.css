@@ -26,22 +26,19 @@
   --sp-32: 2rem;
   --sp-48: 3rem;
 
-  --serif: "Playfair Display", Georgia, "Times New Roman", serif;
-  --sans: "Be Vietnam Pro", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
   --tap: 2.75rem;       /* 44 px minimum height for buttons and links */
 
   background-color: var(--paper);
   color: var(--ink);
-  font-family: var(--sans);
   font-size: 1rem;
   line-height: 1.6;
+  overflow-x: clip;
 }
 
 .page-admin h1,
-.page-admin h2,
-.page-admin h3 {
-  font-family: var(--serif);
-  font-weight: 600;
+.page-admin h2 {
+  font-family: var(--font-heading);
+  font-weight: 700;
   line-height: 1.25;
   color: var(--ink);
   letter-spacing: 0;
@@ -49,7 +46,7 @@
 
 .page-admin h1 { font-size: 2rem; }
 .page-admin h2 { font-size: 1.5rem; }
-.page-admin h3 { font-size: 1rem; font-family: var(--sans); }
+.page-admin h3 { font-size: 1rem; font-family: inherit; }
 
 .page-admin a {
   color: var(--brand);
@@ -83,14 +80,11 @@
   color: var(--ink);
 }
 
-/* 2. Header (not sticky: the brief forbids fixed/sticky elements) */
-.studio-header {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: var(--sp-16);
-  padding: var(--sp-16);
-  border-bottom: 1px solid var(--line);
+/* 2. Header: sticky site-header shared with style.css */
+.studio-header .header-container {
+  max-width: 90rem;
+  padding-left: var(--sp-16);
+  padding-right: var(--sp-16);
 }
 
 .studio-brand {
@@ -102,10 +96,16 @@
 }
 
 .studio-brand__logo {
-  font-family: var(--serif);
+  font-family: var(--font-heading);
   font-size: 1.75rem;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--ink);
+}
+
+@media (max-width: 767px) {
+  .studio-brand__logo {
+    font-size: 1.35rem;
+  }
 }
 
 .studio-brand__tag {
@@ -122,6 +122,8 @@
   list-style: none;
   display: flex;
   gap: var(--sp-24);
+  margin: 0;
+  padding: 0;
 }
 
 .studio-nav a {
@@ -143,6 +145,7 @@
   align-items: center;
   gap: var(--sp-8);
   font-size: 0.875rem;
+  margin: 0;
 }
 
 /* Initials instead of photos (no real people on the pages) */
@@ -309,7 +312,7 @@
 }
 
 .person--large { gap: var(--sp-16); }
-.person--large h3 { font-family: var(--serif); font-size: 1.5rem; }
+.person--large h3 { font-family: var(--font-heading); font-size: 1.5rem; }
 
 .person__topic {
   font-size: 0.875rem;
@@ -528,7 +531,7 @@
 
 /* .page-admin prefix needed: ".page-admin h3" above is more specific than a single class */
 .page-admin .calendar__subtitle {
-  font-family: var(--serif);
+  font-family: var(--font-heading);
   font-size: 1.5rem;
 }
 
@@ -624,7 +627,7 @@
 }
 
 .studio-footer__brand {
-  font-family: var(--serif);
+  font-family: var(--font-heading);
   font-size: 1.25rem;
   color: var(--ink);
 }
@@ -634,11 +637,9 @@
    conversation cards in two columns, resource bars visible.
    ========================================================================== */
 @media (min-width: 768px) {
-  .studio-header {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    padding: var(--sp-16) var(--sp-32);
+  .studio-header .header-container {
+    padding-left: var(--sp-32);
+    padding-right: var(--sp-32);
   }
 
   .workspace,
