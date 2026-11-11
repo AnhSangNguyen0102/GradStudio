@@ -1,6 +1,6 @@
 # checks/results.md
 
-Generated 2026-11-11 17:51 by `python3 checks/run_checks.py` (Playwright + Chromium, pages served from localhost).
+Generated 2026-11-11 18:18 by `python3 checks/run_checks.py` (Playwright + Chromium, pages served from localhost).
 
 Screenshots not taken by this run: `screenshots/` holds the team's DevTools captures.
 

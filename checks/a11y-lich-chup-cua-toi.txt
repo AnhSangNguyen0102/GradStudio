@@ -1,0 +1,92 @@
+Accessibility tree of lich-chup-cua-toi.html (Chromium, JavaScript off, 1280 px), 2026-11-11 18:09.
+Made with Playwright's aria_snapshot(): the same roles and names as
+DevTools > Elements > Accessibility. Not a DevTools screenshot.
+
+- banner:
+  - link "Trang chủ GradStudio":
+    - /url: index.html
+    - text: GradStudio
+  - navigation "Điều hướng chính":
+    - link "Dịch vụ":
+      - /url: index.html#dich-vu
+    - link "Quy trình":
+      - /url: index.html#quy-trinh
+    - link "Lịch chụp của tôi":
+      - /url: lich-chup-cua-toi.html
+  - group "Tài khoản khách hàng": Linh
+- main:
+  - region "Lịch chụp của tôi":
+    - heading "Lịch chụp của tôi" [level=1]
+    - paragraph: Xem lịch đã thống nhất với studio và thanh toán cọc để giữ lịch.
+  - region "Bộ lọc trạng thái":
+    - button "Tất cả 1" [disabled]
+    - button "Chờ cọc 30% 1" [disabled] [pressed]
+    - button "Đã đặt lịch 0" [disabled]
+    - button "Hoàn thành 0" [disabled]
+    - paragraph: Bộ lọc chưa có ở bản PA#2, trang đang hiện booking Chờ cọc 30%.
+  - region "Lịch trình tuần":
+    - heading "Tháng 10, 2026" [level=2]
+    - list "Các ngày trong tuần":
+      - listitem: T2 19
+      - listitem: T3 20
+      - listitem: T4 21
+      - listitem: T5 22
+      - listitem: T6 23
+      - listitem:
+        - text: T7
+        - time: "24"
+      - listitem: CN 25
+    - separator
+    - paragraph:
+      - time: Thứ Bảy, 24/10
+      - text: · Ngày của Linh
+    - list "Các mốc thời gian trong ngày":
+      - listitem:
+        - time: 09:00
+        - paragraph: Giờ bạn yêu cầu ban đầu – Thợ makeup đã bận khung giờ này. Đã đổi lịch.
+      - listitem:
+        - time: 13:00
+        - text: –
+        - time: 14:00
+        - paragraph: Makeup với Mai
+        - paragraph: Có mặt sớm 10 phút để chuẩn bị.
+      - listitem:
+        - time: 14:00
+        - text: –
+        - time: 16:00
+        - paragraph: Chụp ảnh với Tuấn
+        - paragraph: Phòng B
+  - article "Chụp ảnh tốt nghiệp":
+    - text: GS-1024
+    - img "Đã lưu"
+    - status: Chờ cọc 30%
+    - heading "Chụp ảnh tốt nghiệp" [level=2]
+    - term: "Gói:"
+    - definition: Gói Tốt nghiệp Premium (2 giờ, 30 ảnh chỉnh)
+    - term: "Loại:"
+    - definition: Tốt nghiệp cá nhân
+    - term: "Bao gồm:"
+    - definition: Makeup · 2 giờ chụp
+    - term: "Ngày:"
+    - definition:
+      - time: Thứ Bảy, 24/10/2026
+    - term: "Bắt đầu:"
+    - definition:
+      - time: 13:00
+      - text: (makeup)
+    - term: Giá gói
+    - definition: 1.800.000đ
+    - term: Cọc 30%
+    - definition: 540.000đ
+    - term: Còn lại 70%
+    - definition: 1.260.000đ
+    - paragraph: (thanh toán sau buổi chụp và sau khi chọn ảnh)
+    - paragraph: Lịch đã thống nhất với studio. Bạn không cần xác nhận lại giờ. Studio chỉ giữ lịch sau khi cọc thành công.
+    - button "Thanh toán cọc 30%" [disabled]
+    - text: Cổng thanh toán chưa khả dụng ở bản PA#2.
+  - region "Địa chỉ studio":
+    - paragraph: GradStudio · TP. Hồ Chí Minh · Địa chỉ sẽ gửi khi đã cọc
+  - 'link "Quản lý studio: xem lại cuộc trò chuyện"':
+    - /url: admin-tu-van.html
+- contentinfo:
+  - paragraph: © 2026 GradStudio. Tất cả quyền được bảo lưu.

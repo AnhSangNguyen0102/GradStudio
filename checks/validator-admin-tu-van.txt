@@ -3,3 +3,5 @@ Run: 2026-11-11 16:37 +0700, HTML file sent as the request body (same as File up
 Git branch: fix/pa2-final-pass
 
 The document validates according to the specified schema(s).
+
+Superseded: admin-tu-van.html changed at 17:37 (long sample name, 44 px checkboxes). The team re-ran the checker by file upload after that change (outline and image report on): no errors or warnings, see validator-admin-tu-van.png.
