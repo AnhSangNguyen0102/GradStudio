@@ -4,13 +4,40 @@
    Pure CSS & Inline SVG – No frameworks, no external dependencies
    ========================================================================== */
 
-/* Typography & Font Faces (Unicode-range Vietnamese) */
+/* Typography & Font Faces – Self-hosted Playfair Display (Subset Latin + Vietnamese) */
+@font-face {
+  font-family: "Playfair Display";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/PlayfairDisplay-Regular.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+02C6, U+0300-0301, U+0303, U+0309, U+0323;
+}
+
+@font-face {
+  font-family: "Playfair Display";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/PlayfairDisplay-Italic.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+02C6, U+0300-0301, U+0303, U+0309, U+0323;
+}
+
 @font-face {
   font-family: "Playfair Display";
   font-style: normal;
   font-weight: 700;
   font-display: swap;
   src: url("../fonts/PlayfairDisplay-Bold.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+02C6, U+0300-0301, U+0303, U+0309, U+0323;
+}
+
+@font-face {
+  font-family: "Playfair Display";
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../fonts/PlayfairDisplay-BoldItalic.woff2") format("woff2");
   unicode-range: U+0000-00FF, U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+02C6, U+0300-0301, U+0303, U+0309, U+0323;
 }
 
@@ -61,9 +88,11 @@
   --color-disabled-border: #D4C9BC;
 
   /* Typography */
-  --font-serif: "Playfair Display", "Times New Roman", Times, Georgia, serif;
+  --font-heading: "Playfair Display", "Times New Roman", Times, Georgia, serif;
+  --font-hand: "Caveat", cursive;
   --font-sans: "Be Vietnam Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  --font-handwriting: "Caveat", "Dancing Script", "Segoe Script", "Comic Sans MS", cursive;
+  --font-serif: var(--font-heading);
+  --font-handwriting: var(--font-hand);
 
   /* Spacing Scale */
   --space-2xs: 0.25rem;  /* 4px */
@@ -424,8 +453,13 @@ body {
    Typography
    ========================================================================== */
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-serif);
+main h1, main h2, main h3, main h4, main h5, main h6,
+h1, h2, h3, h4, h5, h6,
+.section-title,
+.hero-title,
+.step-title,
+.card-title {
+  font-family: var(--font-heading);
   color: var(--color-text);
   line-height: 1.25;
   font-weight: 700;
@@ -550,7 +584,7 @@ a:hover {
 }
 
 .logo {
-  font-family: var(--font-serif);
+  font-family: var(--font-heading);
   font-size: 1.75rem;
   font-weight: 700;
   color: var(--color-text);
@@ -802,7 +836,7 @@ a:hover {
 .hero-title em {
   font-style: italic;
   color: var(--color-primary);
-  font-family: var(--font-serif);
+  font-family: var(--font-heading);
   position: relative;
   display: inline-block;
 }
@@ -1739,7 +1773,8 @@ a:hover {
 }
 
 .card-price {
-  font-family: var(--font-serif);
+  font-family: var(--font-heading);
+  font-variant-numeric: lining-nums;
   margin-bottom: var(--space-md);
   display: flex;
   align-items: baseline;
@@ -1748,14 +1783,15 @@ a:hover {
 
 .price-prefix {
   font-size: 0.95rem;
-  font-family: var(--font-serif);
+  font-family: var(--font-heading);
   color: #8C7C70;
   font-weight: 500;
 }
 
 .price-amount {
   font-size: 1.55rem;
-  font-family: var(--font-serif);
+  font-family: var(--font-heading);
+  font-variant-numeric: lining-nums;
   font-weight: 700;
   color: #B5643C; /* Màu gạch cua */
   letter-spacing: -0.01em;
@@ -1962,7 +1998,7 @@ a:hover {
 }
 
 .curved-title-text {
-  font-family: var(--font-serif);
+  font-family: var(--font-heading) !important;
   font-weight: 700;
   font-size: 42px;
   fill: var(--color-text);
@@ -2290,7 +2326,8 @@ a:hover {
 /* 5. Typography */
 .step-num {
   display: block;
-  font-family: var(--font-serif);
+  font-family: var(--font-heading) !important;
+  font-variant-numeric: lining-nums;
   font-size: clamp(2.4rem, 3.6vw, 3.2rem);
   font-weight: 700;
   color: #3D2616;
@@ -2300,7 +2337,7 @@ a:hover {
 }
 
 .step-title {
-  font-family: var(--font-serif);
+  font-family: var(--font-heading);
   font-size: 1.25rem;
   font-weight: 700;
   color: #24140A;
@@ -2898,4 +2935,42 @@ a:hover {
 /* Bớt khoảng trống phía trên khi bấm link "Dịch vụ" */
 #dich-vu {
   scroll-margin-top: -80px;
+}
+/* ==========================================================================
+   Typography Rules: Lining Nums & Decorative Handwriting
+   ========================================================================== */
+
+/* Font-variant-numeric: lining-nums cho giá tiền, số bước, ngày giờ */
+time,
+.week-day__date,
+.timeline-item__time,
+.day-label,
+.timeline-month,
+.collage-tape-date {
+  font-variant-numeric: lining-nums;
+}
+
+/* Phần trang trí giữ font viết tay: [aria-hidden="true"], [aria-hidden="true"] * */
+[aria-hidden="true"],
+[aria-hidden="true"] * {
+  font-family: var(--font-hand);
+}
+
+/* Ngoại lệ: chữ trong SVG tiêu đề cong dùng var(--font-heading) */
+.curved-title svg text,
+.process-curved-svg text,
+.curved-title-text,
+.curved-title-text textPath {
+  font-family: var(--font-heading) !important;
+}
+
+/* Ngoại lệ: số bước quy trình là nội dung đánh số dùng var(--font-heading) */
+.step-num {
+  font-family: var(--font-heading) !important;
+  font-variant-numeric: lining-nums;
+}
+
+/* Ngoại lệ: ký tự avatar tài khoản giữ sans rõ ràng */
+.avatar-circle {
+  font-family: var(--font-sans) !important;
 }

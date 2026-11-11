@@ -63,12 +63,10 @@
     </section>
 
     <!-- Timeline card -->
-    <section class="timeline-card" aria-label="Lịch trình tuần">
+    <section class="timeline-card paper" aria-label="Lịch trình tuần">
 
-      <!-- Washi tape decoration (120x28, -4deg from Figma) -->
-      <div class="washi-tape" aria-hidden="true">
-        <svg width="122" height="37" viewBox="0 0 122 37" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect y="8.37079" width="120" height="28" transform="rotate(-4 0 8.37079)" fill="#D9C7A3"/></svg>
-      </div>
+      <!-- Washi tape decoration at top edge -->
+      <div class="timeline-washi-tape" aria-hidden="true"></div>
 
       <h2 class="timeline-month">Tháng 10, 2026</h2>
 
@@ -156,66 +154,186 @@
     </section>
 
     <!-- Booking card -->
-    <article class="booking-card" aria-labelledby="booking-title">
+    <article class="booking-card" id="booking-details-card" aria-labelledby="booking-title">
 
-      <!-- Card header: booking code + bookmark -->
-      <div class="booking-card__header">
-        <span class="booking-card__code">GS-1024</span>
-        <svg width="18" height="20" viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Đã lưu"><path d="M16 19L9 14L2 19V3C2 2.46957 2.21071 1.96086 2.58579 1.58579C2.96086 1.21071 3.46957 1 4 1H14C14.5304 1 15.0391 1.21071 15.4142 1.58579C15.7893 1.96086 16 2.46957 16 3V19Z" stroke="#8A5A2B" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </div>
+      <!-- Paper backing layers (aria-hidden) -->
+      <div class="card-backing-kraft" aria-hidden="true"></div>
+      <div class="card-backing-lined" aria-hidden="true"></div>
 
-      <!-- Status badge (full-width rounded rectangle with clock icon) -->
-      <div class="status-badge" role="status">
-        <svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="10" cy="10" r="7.5" stroke="#8A5A2B" stroke-width="1.6"/><path d="M10 5.5V10H13.5" stroke="#8A5A2B" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <span>Chờ cọc 30%</span>
-      </div>
+      <!-- Main card paper sheet -->
+      <div class="booking-card__sheet">
 
-      <h2 id="booking-title" class="booking-card__title">Chụp ảnh tốt nghiệp</h2>
-
-      <!-- Booking details -->
-      <dl class="booking-details">
-        <dt>Gói</dt>
-        <dd>Gói Tốt nghiệp Premium (2 giờ, 30 ảnh chỉnh)</dd>
-
-        <dt>Loại</dt>
-        <dd>Tốt nghiệp cá nhân</dd>
-
-        <dt>Bao gồm</dt>
-        <dd>Makeup · 2 giờ chụp</dd>
-
-        <dt>Ngày</dt>
-        <dd><time datetime="2026-10-24">Thứ Bảy, 24/10/2026</time></dd>
-
-        <dt>Bắt đầu</dt>
-        <dd><time datetime="2026-10-24T13:00">13:00</time> (makeup)</dd>
-      </dl>
-
-      <!-- Pricing box (enclosed frame) -->
-      <div class="pricing-box">
-        <dl class="pricing-list">
-          <div class="pricing-row pricing-row--package">
-            <dt>Giá gói</dt>
-            <dd>1.800.000đ</dd>
+        <!-- Postage stamp with radial-gradient perforated edges (aria-hidden) -->
+        <div class="postage-stamp" aria-hidden="true">
+          <div class="postage-stamp__inner">
+            <svg class="postage-stamp__icon" width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 3L20 8L12 13L4 8L12 3Z" stroke="#7A5229" stroke-width="1.8" stroke-linejoin="round"/>
+              <path d="M7 11V16C7 18.5 12 20.5 12 20.5C12 20.5 17 18.5 17 16V11" stroke="#7A5229" stroke-width="1.8"/>
+            </svg>
+            <span class="postage-stamp__label">GRAD 2026</span>
           </div>
-          <div class="pricing-row pricing-row--highlight">
-            <dt>Cọc 30%</dt>
-            <dd>540.000đ</dd>
-          </div>
-          <div class="pricing-row">
-            <dt>Còn lại 70%</dt>
-            <dd>1.260.000đ</dd>
-          </div>
-        </dl>
-        <p class="pricing-note">(thanh toán sau buổi chụp và sau khi chọn ảnh)</p>
-      </div>
+        </div>
 
-      <!-- Hold note -->
-      <p class="hold-note">Lịch đã thống nhất với studio. Bạn không cần xác nhận lại giờ. Studio chỉ giữ lịch sau khi cọc thành công.</p>
+        <!-- Metallic paperclip SVG at top right (aria-hidden) -->
+        <div class="paperclip-wrap" aria-hidden="true">
+          <svg class="paperclip-svg" viewBox="0 0 24 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7 16V42C7 46.4183 10.5817 50 15 50C19.4183 50 23 46.4183 23 42V10C23 5.58172 19.4183 2 15 2C10.5817 2 7 5.58172 7 10V38C7 40.2091 8.79086 42 11 42C13.2091 42 15 40.2091 15 38V14" stroke="#7A756D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
 
-      <!-- CTA action group -->
-      <div class="cta-group">
-        <button type="button" class="btn-cta" disabled aria-describedby="cta-note">Thanh toán cọc 30%</button>
-        <small class="btn-cta-note" id="cta-note">Cổng thanh toán chưa khả dụng ở bản PA#2.</small>
+        <!-- Hand-drawn curved dashed arrow on left margin (aria-hidden) -->
+        <div class="doodle-arrow-left" aria-hidden="true">
+          <svg width="44" height="60" viewBox="0 0 44 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 56C4 36 12 18 38 12M38 12L28 8M38 12L34 22" stroke="#8A5A2B" stroke-width="2" stroke-dasharray="4 3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+
+        <!-- Card header: booking code + bookmark -->
+        <div class="booking-card__header">
+          <span class="booking-card__code">GS-1024</span>
+          <svg width="18" height="20" viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Đã lưu">
+            <path d="M16 19L9 14L2 19V3C2 2.46957 2.21071 1.96086 2.58579 1.58579C2.96086 1.21071 3.46957 1 4 1H14C14.5304 1 15.0391 1.21071 15.4142 1.58579C15.7893 1.96086 16 2.46957 16 3V19Z" stroke="#8A5A2B" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+
+        <!-- Status tape: semi-transparent beige washi tape rotated -2deg with clock icon -->
+        <div class="status-tape" role="status">
+          <svg width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="10" cy="10" r="7.5" stroke="#7A5229" stroke-width="1.8"/>
+            <path d="M10 5.5V10H13.5" stroke="#7A5229" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>Chờ cọc 30%</span>
+        </div>
+
+        <!-- Title and photo cluster row -->
+        <div class="booking-card__hero">
+          <div class="booking-card__title-area">
+            <h2 id="booking-title" class="booking-card__title">Chụp ảnh<br>tốt nghiệp</h2>
+            <div class="booking-card__stickers" aria-hidden="true">
+              <svg class="sticker-grad-sketch" width="56" height="42" viewBox="0 0 56 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M28 6L50 15L28 24L6 15L28 6Z" fill="#D9C7A3" stroke="#4A3728" stroke-width="2" stroke-linejoin="round"/>
+                <path d="M14 20.5V28C14 32 20 35 28 35C36 35 42 32 42 28V20.5" fill="#CBB790" stroke="#4A3728" stroke-width="2"/>
+                <path d="M44 17.5V31C44 31 46 33 46 36C46 39 42 39 42 36C42 33 44 31 44 31" stroke="#B3402F" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+              <svg class="doodle-star star-1" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z" stroke="#8A5A2B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <svg class="doodle-star star-2" width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z" stroke="#8A5A2B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Overlapping polaroids cluster -->
+          <div class="booking-card__photos" aria-hidden="true">
+            <!-- Back polaroid: slightly rotated right (+4deg) -->
+            <figure class="polaroid polaroid-back">
+              <!-- Tỉ lệ 4:3 (ngang) - Gợi ý tên file: polaroid-graduation-group.webp -->
+              <div class="photo-slot photo-slot-wide">
+                <svg class="photo-svg" viewBox="0 0 160 120" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+                  <rect width="160" height="120" fill="#EAE2D5"/>
+                  <circle cx="80" cy="30" r="28" fill="#F4EDE2"/>
+                  <path d="M0 90C40 82 80 96 120 86C140 81 155 85 160 83V120H0V90Z" fill="#D5C5B0"/>
+                  <path d="M36 120V80L48 68L60 80V120H36Z" fill="#788896"/>
+                  <circle cx="48" cy="56" r="8" fill="#DFCDBB"/>
+                  <polygon points="48,46 36,52 48,58 60,52" fill="#3D4A56"/>
+                  <path d="M72 120V74L86 62L100 74V120H72Z" fill="#627382"/>
+                  <circle cx="86" cy="50" r="8" fill="#DFCDBB"/>
+                  <polygon points="86,40 74,46 86,52 98,46" fill="#3D4A56"/>
+                  <path d="M110 120V80L122 68L134 80V120H110Z" fill="#788896"/>
+                  <circle cx="122" cy="56" r="8" fill="#DFCDBB"/>
+                  <polygon points="122,46 110,52 122,58 134,52" fill="#3D4A56"/>
+                </svg>
+              </div>
+            </figure>
+
+            <!-- Front polaroid: slightly rotated left (-5deg) -->
+            <figure class="polaroid polaroid-front">
+              <!-- Tỉ lệ 1:1 (vuông) - Gợi ý tên file: polaroid-graduation-solo.webp -->
+              <div class="photo-slot photo-slot-square">
+                <svg class="photo-svg" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+                  <rect width="120" height="120" fill="#E2EADE"/>
+                  <path d="M22 120V84L60 70L98 84V120H22Z" fill="#5F7182"/>
+                  <circle cx="60" cy="54" r="14" fill="#E5D7C7"/>
+                  <polygon points="60,35 38,44 60,53 82,44" fill="#2E3944"/>
+                  <path d="M78 46V58" stroke="#C9A24A" stroke-width="2.2" stroke-linecap="round"/>
+                  <rect x="52" y="88" width="16" height="6" rx="2" fill="#FAF6EE"/>
+                  <rect x="58" y="86" width="4" height="10" fill="#B3402F"/>
+                </svg>
+              </div>
+            </figure>
+
+            <!-- Vintage camera sticker in bottom right corner -->
+            <div class="sticker-camera-vintage">
+              <svg class="camera-svg" width="68" height="50" viewBox="0 0 68 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="2" y="12" width="64" height="36" rx="4" fill="#E8DEC9" stroke="#3D3025" stroke-width="2"/>
+                <rect x="2" y="20" width="64" height="20" fill="#4B3C30"/>
+                <rect x="14" y="6" width="20" height="7" rx="1.5" fill="#D0C4AF" stroke="#3D3025" stroke-width="1.8"/>
+                <circle cx="52" cy="9" r="3.5" fill="#D0C4AF" stroke="#3D3025" stroke-width="1.8"/>
+                <circle cx="34" cy="30" r="14" fill="#EFE8DC" stroke="#3D3025" stroke-width="2"/>
+                <circle cx="34" cy="30" r="10" fill="#2B231C"/>
+                <circle cx="34" cy="30" r="6" fill="#4F6474"/>
+                <circle cx="31" cy="27" r="2" fill="#FAF6EE"/>
+                <rect x="8" y="15" width="8" height="6" rx="1" fill="#FFFDE9" stroke="#3D3025" stroke-width="1.5"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Kraft paper info note scrap with torn top and bottom edges -->
+        <div class="booking-card__info-scrap">
+          <dl class="booking-details">
+            <div class="booking-detail-row">
+              <dt>Gói:</dt>
+              <dd>Gói Tốt nghiệp Premium (2 giờ, 30 ảnh chỉnh)</dd>
+            </div>
+            <div class="booking-detail-row">
+              <dt>Loại:</dt>
+              <dd>Tốt nghiệp cá nhân</dd>
+            </div>
+            <div class="booking-detail-row">
+              <dt>Bao gồm:</dt>
+              <dd>Makeup · 2 giờ chụp</dd>
+            </div>
+            <div class="booking-detail-row">
+              <dt>Ngày:</dt>
+              <dd><time datetime="2026-10-24">Thứ Bảy, 24/10/2026</time></dd>
+            </div>
+            <div class="booking-detail-row">
+              <dt>Bắt đầu:</dt>
+              <dd><time datetime="2026-10-24T13:00">13:00</time> (makeup)</dd>
+            </div>
+          </dl>
+        </div>
+
+        <!-- Pricing box (enclosed frame) -->
+        <div class="pricing-box">
+          <dl class="pricing-list">
+            <div class="pricing-row pricing-row--package">
+              <dt>Giá gói</dt>
+              <dd>1.800.000đ</dd>
+            </div>
+            <div class="pricing-row pricing-row--highlight">
+              <dt>Cọc 30%</dt>
+              <dd>540.000đ</dd>
+            </div>
+            <div class="pricing-row">
+              <dt>Còn lại 70%</dt>
+              <dd>1.260.000đ</dd>
+            </div>
+          </dl>
+          <p class="pricing-note">(thanh toán sau buổi chụp và sau khi chọn ảnh)</p>
+        </div>
+
+        <!-- Hold note -->
+        <p class="hold-note">Lịch đã thống nhất với studio. Bạn không cần xác nhận lại giờ. Studio chỉ giữ lịch sau khi cọc thành công.</p>
+
+        <!-- CTA action group -->
+        <div class="cta-group">
+          <button type="button" class="btn-cta" disabled aria-describedby="cta-note">Thanh toán cọc 30%</button>
+          <small class="btn-cta-note" id="cta-note">Cổng thanh toán chưa khả dụng ở bản PA#2.</small>
+        </div>
+
       </div>
 
     </article>
@@ -240,6 +358,5 @@
 
 </div>
 
->>>>>>> feat/screen3
 </body>
 </html>
