@@ -1,7 +1,6 @@
 # BRIEF – GradStudio (PA#2)
 
 Course CSC13008 · CQ2024/31 · HK1 2026–27. GradStudio is the class final project; PA#2–PA#6 are checked against the lecturer's brief. Where the authors' Vietnamese original or prototype differs from the brief, the brief wins.
-> The brief and the PA#2 rubric have been updated. Paste the new versions into the "Rubric" section at the end and re-check this file against them.
 
 ## 1. The problem
 
@@ -70,9 +69,27 @@ GS-1024 waiting for the deposit: week view marking 24/10; timeline striking out 
 
 Nguyễn Nhật Vy, Trần Kim Yến and Nguyễn Thị Trúc Hằng decide how GradStudio behaves and what is in scope where the brief is silent. Ask under the post "GradStudio — questions for the product owners" in the course Facebook group, starting with `#WAD2431`; no private messages. Answers come within two working days and apply to every team; cite them in `docs/DECISIONS.md` when relied on. They do not decide marks, deadlines, rubrics or what PA#2 requires.
 
-## Rubric (paste the updated version here)
+## 6b. Constraints for the assistant (every PA#2 task)
 
-(not yet added)
+Added on 2026-11-11 for the final responsive pass; the same rules are in `CLAUDE.md`, which the assistant reads in every session.
+
+- **Stack:** static HTML + plain CSS. No CSS framework, no JavaScript, no JavaScript framework, no build step, no npm, no new dependency. No CDN or external URL for CSS, fonts, images or icons; fonts are system fonts or WOFF2 in `assets/fonts/`.
+- **Spacing scale:** 4 / 8 / 12 / 16 / 24 / 32 / 48 px (64 and 80 between sections) through custom properties (`--space-*` in `style.css`, `--sp-*` in the screen files). Every `padding`, `margin` and `gap` uses the scale; no `!important`.
+- **Mobile first, breakpoints 768 px and 1024 px** (Screen 2 adds 1200 px for three columns). Must work at 360, 768 and 1280 px.
+- **No fixed widths** on layout boxes: use `max-width`, `minmax(0, …)`, `fr`, `%`. Images `max-width: 100%`. Long Vietnamese names and labels wrap; never truncate with `…` or `text-overflow: ellipsis`.
+- **No hidden overflow:** never `overflow-x: hidden/clip` on `html`, `body` or a wrapper to hide something that sticks out — fix the element.
+- **Tap targets:** buttons and links that stand on their own are at least 44 px tall at 360 px. Body text at least 16 px; text and buttons at least 4.5:1 contrast.
+- **No `position: fixed/sticky`** and no column with its own scrollbar: the whole page scrolls as one.
+- **Semantic HTML:** `header`, `nav`, `main`, `footer`; exactly one `<h1>` and no skipped heading level; going to another page is an `<a href>` or a form's submit button with `action`, an action is a `<button>`; every input has a visible `<label for>`; every image has `alt` (`alt=""` if decorative).
+- **Links:** relative links to files (`admin-tu-van.html`), never `/page.html`, a folder, `#` or an empty `href`. Actions with no page yet are `<button disabled>` with a visible note linked by `aria-describedby`.
+
+## 6c. How "done" is checked
+
+1. `python3 checks/run_checks.py`: 0 FAIL. It opens every page with JavaScript off at 360, 768 and 1280 px, checks links, sideways scroll, fixed/sticky/ellipsis, headings, labels, alt and external requests, and writes `checks/results.md` and the nine `screenshots/`.
+2. At each width in DevTools: `document.documentElement.scrollWidth > document.documentElement.clientWidth` prints `false`, and `[...document.querySelectorAll('body *')].filter(e => e.getBoundingClientRect().right > document.documentElement.clientWidth)` prints `[]`.
+3. W3C Nu checker (https://validator.w3.org/nu/) on every page by file upload: 0 errors, result saved as `checks/validator-<page>`.
+4. DevTools → Elements → Accessibility pane: landmarks, heading outline, label names and button names read correctly; the colour picker shows at least 4.5:1 for body text and buttons.
+5. A person reads each page with JavaScript off at the three widths and checks every item of the "Fix these" list.
 
 ## Deadline and submission
 

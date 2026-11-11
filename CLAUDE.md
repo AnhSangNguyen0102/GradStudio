@@ -59,6 +59,10 @@ Read `brief.md` first. These rules are mandatory. If a request conflicts with a 
 - Style: warm scrapbook / film-journal (cream paper, polaroid frames, washi tape, handwritten notes) in CSS and SVG only. Handwriting style is decorative only, never for labels, buttons or important facts.
 - Text contrast at least 4.5:1. Visible focus state. Keyboard works.
 - Works at 360, 768 and 1280 px with no sideways scroll. On small screens the resource calendar is a vertical list by time.
+- Mobile first; breakpoints 768 px and 1024 px (Screen 2 adds 1200 px). No fixed widths on layout boxes (`max-width`, `minmax(0, …)`, `fr`).
+- Spacing only from the scale 4/8/12/16/24/32/48 (+64/80) via `--space-*` / `--sp-*`. Never `!important`.
+- Never hide overflow with `overflow-x: hidden/clip` on `html`, `body` or a wrapper: fix the element that sticks out.
+- Standalone buttons and links at least 44 px tall at 360 px; body text at least 16 px.
 - Each page: `<!doctype html>`, `<html lang="vi">`, `<meta charset>`, viewport meta, its own `<title>`, exactly one `<h1>`, headings that do not skip levels.
 - Semantic elements: `header`, `nav`, `main`, `section`, `article`, `aside`, `form`, `fieldset`/`legend`, `label for`, `ul`/`ol`, `table` or `dl` for tabular data, `time` for times. No `div`/`span` where a meaningful element exists. Images have `alt` (`alt=""` if decorative); decorative inline SVG has `aria-hidden="true"`.
 
