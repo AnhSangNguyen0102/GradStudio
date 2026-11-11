@@ -482,9 +482,12 @@
   min-height: var(--tap);
 }
 
+/* The checkbox itself is 44 x 44 px, so it is a full tap target on its own
+   (the rubric measures inputs at 360 px, not just the label row). */
 .choice input {
-  width: 1.5rem;
-  height: 1.5rem;
+  width: var(--tap);
+  height: var(--tap);
+  margin: 0;
   flex-shrink: 0;
   accent-color: var(--brand);
 }
