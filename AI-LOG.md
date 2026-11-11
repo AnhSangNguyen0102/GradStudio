@@ -70,3 +70,11 @@ Kept: full design tokens, layout rules, and media queries.
 Changed: linked screen3.css directly in lich-chup-cua-toi.html and lich-chup.html; created screen3.css at the root level (and kept backups in assets/css/).
 Rejected: keeping style.css as the only stylesheet name.
 By hand: verified stylesheet link resolution and stylesheet loading across all viewports.
+
+## 2026-11-11 — Responsive tablet 768px layout refinement (screen3.css)
+Tool: Antigravity, Gemini 3.8 Flash
+Asked for: write a media query @media (min-width: 768px) for tablet layout optimizing container width, 4-column filter buttons, week calendar spacing, 2-column booking details grid, and pricing box padding according to PA#2 rubric and Figma design.
+Kept: base 360px mobile styling, HTML structure, semantic tags, and design tokens.
+Changed: added @media (min-width: 768px) block overriding .page-wrapper (max-width: 720px), .filter-grid (repeat(4, 1fr)), .week-bar gap, .booking-details (2-column grid 120px 1fr), and .pricing-box (padding: 24px).
+Rejected: writing duplicate styles already inherited from mobile, using !important or overflow-x: hidden.
+By hand: visual alignment verification against 768px Figma reference image and running checks for zero horizontal scroll.
