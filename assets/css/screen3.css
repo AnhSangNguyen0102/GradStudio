@@ -651,16 +651,50 @@ hr {
 }
 
 /* ----------------------------------------------------------
-   12. RESPONSIVE – 768 px +
+   12. RESPONSIVE – 768 px + (Tablet)
    ---------------------------------------------------------- */
 @media (min-width: 768px) {
+  /* 1. Container mở rộng, căn giữa, tăng padding */
   .page-wrapper {
     max-width: 720px;
+    margin: 0 auto;
     padding: var(--sp-48) var(--sp-32) var(--sp-48);
   }
 
+  /* 2. Bộ lọc trạng thái: 1 hàng ngang 4 nút đều nhau */
   .filter-grid {
     grid-template-columns: repeat(4, 1fr);
+    gap: var(--sp-12);
+  }
+
+  /* 3. Lịch tuần: tăng khoảng cách dãn đều giữa các ngày */
+  .week-bar {
+    gap: var(--sp-8);
+  }
+
+  .week-day {
+    padding: var(--sp-8) var(--sp-8);
+  }
+
+  .week-day--selected {
+    padding: var(--sp-8) var(--sp-12);
+  }
+
+  /* 4. Thẻ đơn GS-1024: thông tin chi tiết chuyển sang bố cục 2 cột */
+  .booking-details {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: var(--sp-12) var(--sp-24);
+    align-items: baseline;
+  }
+
+  .booking-details dd {
+    margin-top: 0;
+  }
+
+  /* 5. Bảng giá & cọc: padding thoáng hơn */
+  .pricing-box {
+    padding: var(--sp-24);
   }
 }
 
