@@ -116,7 +116,6 @@ hr {
   display: flex;
   flex-direction: column;
   gap: var(--sp-32);
-  overflow-x: clip;
 }
 
 /* ----------------------------------------------------------
@@ -180,7 +179,7 @@ hr {
   align-items: center;
   min-height: 44px;
   padding-bottom: var(--sp-8);
-  font-size: 0.875rem;
+  font-size: 1rem;
   color: var(--color-muted);
   text-decoration: none;
   border-bottom: 2px solid transparent;
@@ -231,14 +230,22 @@ hr {
   border-radius: var(--radius-sm);
   background-color: var(--color-surface);
   color: var(--color-ink);
-  font-size: 0.9375rem;
+  font-size: 1rem;
   font-weight: 500;
   text-align: center;
   transition: background-color 0.15s, color 0.15s;
 }
 
-.filter-btn:hover {
-  background-color: var(--color-kraft);
+/* The filters have no behaviour in PA#2 (static page), so they are disabled
+   buttons with a visible note; the active one keeps its brown fill. */
+.filter-btn:disabled {
+  cursor: not-allowed;
+}
+
+.filter-note {
+  margin-top: var(--sp-8);
+  font-size: 1rem;
+  color: var(--color-muted);
 }
 
 .filter-btn.active {
@@ -310,7 +317,7 @@ hr {
   gap: var(--sp-4);
   flex: 1;
   min-width: 0;
-  padding: 8px 2px;
+  padding: var(--sp-8) var(--sp-4);
   border-radius: var(--radius-sm);
 }
 
@@ -332,7 +339,7 @@ hr {
 .week-day--selected {
   background-color: var(--color-brand);
   border-radius: 8px;
-  padding: 8px 4px;
+  padding: var(--sp-8) var(--sp-4);
 }
 
 .week-day--selected .week-day__label,
@@ -403,7 +410,7 @@ hr {
 }
 
 .timeline-item__desc {
-  font-size: 0.875rem;
+  font-size: 1rem;
   color: var(--color-muted);
   line-height: 1.5;
 }
@@ -487,7 +494,7 @@ hr {
   width: 74px;
   height: 60px;
   background-color: #D8C3A7;
-  padding: 5px;
+  padding: var(--sp-4);
   transform: rotate(3deg);
   filter: drop-shadow(0 2px 6px rgba(45, 33, 24, 0.22));
   z-index: 7;
@@ -511,7 +518,7 @@ hr {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 2px;
+  gap: var(--sp-4);
   outline: 1px dashed rgba(138, 90, 43, 0.4);
   outline-offset: -3px;
 }
@@ -573,12 +580,12 @@ hr {
 .status-tape {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: var(--sp-8);
   background-color: rgba(225, 205, 168, 0.9);
-  color: #7A5229;
+  color: #6A3F14; /* 5.8:1 on the kraft tape (was #7A5229, 4.4:1) */
   font-size: 0.875rem;
   font-weight: 600;
-  padding: 6px 18px;
+  padding: var(--sp-8) var(--sp-16);
   transform: rotate(-2deg);
   box-shadow: 0 1px 3px rgba(45, 33, 24, 0.1);
   clip-path: polygon(
@@ -587,7 +594,7 @@ hr {
     0% 0%
   );
   width: fit-content;
-  margin-top: 2px;
+  margin-top: var(--sp-4);
   pointer-events: none;
 }
 
@@ -596,8 +603,12 @@ hr {
 }
 
 /* Hero row: Title + Photo cluster */
+/* wrap: between 1024 and ~1190 px the card column is too narrow for the title
+   and the 220 px photo cluster side by side; the photos move below the title
+   instead of squeezing it to one letter per line. */
 .booking-card__hero {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: flex-start;
   position: relative;
@@ -622,10 +633,10 @@ hr {
 
 .booking-card__stickers {
   position: relative;
-  margin-top: 10px;
+  margin-top: var(--sp-12);
   display: inline-flex;
   align-items: center;
-  gap: 12px;
+  gap: var(--sp-12);
 }
 
 .sticker-grad-sketch {
@@ -667,7 +678,7 @@ hr {
   top: 0;
   right: 0;
   width: 145px;
-  padding: 8px 8px 24px 8px;
+  padding: var(--sp-8) var(--sp-8) var(--sp-24) var(--sp-8);
   transform: rotate(4deg);
   z-index: 2;
 }
@@ -688,7 +699,7 @@ hr {
   top: 32px;
   left: 0;
   width: 120px;
-  padding: 8px 8px 24px 8px;
+  padding: var(--sp-8) var(--sp-8) var(--sp-24) var(--sp-8);
   transform: rotate(-5deg);
   z-index: 3;
 }
@@ -762,7 +773,7 @@ hr {
     linear-gradient(180deg, #E5D6C0 0%, #D8C4A7 100%),
     url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='k'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.18 0 0 0 0 0.14 0 0 0 0 0.1 0 0 0 0.04 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23k)'/%3E%3C/svg%3E");
   background-blend-mode: multiply;
-  padding: 16px 20px;
+  padding: var(--sp-16) var(--sp-24);
   clip-path: polygon(
     0% 4px, 6% 1px, 12% 4px, 19% 1px, 26% 5px, 34% 1px, 42% 4px, 50% 1px, 58% 5px, 66% 1px, 74% 4px, 82% 1px, 90% 5px, 96% 1px, 100% 4px,
     100% calc(100% - 4px), 94% calc(100% - 1px), 88% calc(100% - 5px), 80% calc(100% - 1px), 72% calc(100% - 4px), 64% calc(100% - 1px), 56% calc(100% - 5px), 48% calc(100% - 1px), 40% calc(100% - 4px), 32% calc(100% - 1px), 24% calc(100% - 5px), 16% calc(100% - 1px), 8% calc(100% - 4px), 0% calc(100% - 2px)
@@ -779,7 +790,7 @@ hr {
 .booking-detail-row {
   display: flex;
   align-items: baseline;
-  padding: 8px 0;
+  padding: var(--sp-8) 0;
   border-bottom: 1px solid rgba(115, 94, 75, 0.18);
 }
 
@@ -790,14 +801,14 @@ hr {
 .booking-detail-row dt {
   width: 90px;
   flex-shrink: 0;
-  font-size: 0.9375rem;
-  color: #735E4B;
+  font-size: 1rem;
+  color: #5A4636; /* 5.9:1 on the card (was #735E4B, 4.1:1) */
   font-weight: 500;
 }
 
 .booking-detail-row dd {
   flex: 1;
-  font-size: 0.9375rem;
+  font-size: 1rem;
   color: #2D2118;
   font-weight: 600;
   margin: 0;
@@ -824,7 +835,7 @@ hr {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  font-size: 0.9375rem;
+  font-size: 1rem;
 }
 
 .pricing-row dt {
@@ -853,7 +864,7 @@ hr {
 }
 
 .pricing-note {
-  font-size: 0.8125rem;
+  font-size: 1rem;
   color: var(--color-muted);
   line-height: 1.4;
   margin: 0;
@@ -861,7 +872,7 @@ hr {
 
 /* Hold-note */
 .hold-note {
-  font-size: 0.875rem;
+  font-size: 1rem;
   color: var(--color-ink);
   line-height: 1.5;
 }
@@ -897,7 +908,7 @@ hr {
 
 .btn-cta-note {
   display: block;
-  font-size: 0.8125rem;
+  font-size: 1rem;
   color: var(--color-muted);
   text-align: center;
   font-style: italic;
@@ -918,7 +929,7 @@ hr {
   border: 1px solid var(--color-border);
   border-radius: 2px;
   padding: var(--sp-24);
-  font-size: 0.9375rem;
+  font-size: 1rem;
   color: var(--color-ink);
   line-height: 1.5;
   text-align: left;
@@ -944,13 +955,13 @@ hr {
   text-underline-offset: 3px;
   border: none;
   background: none;
-  font-size: 0.9375rem;
+  font-size: 1rem;
   line-height: 1.5;
 }
 
 .chat-link svg {
   flex-shrink: 0;
-  margin-top: 2px;
+  margin-top: var(--sp-4);
 }
 
 .chat-link:hover {
@@ -962,7 +973,7 @@ hr {
    ---------------------------------------------------------- */
 .site-footer {
   text-align: center;
-  font-size: 0.8125rem;
+  font-size: 1rem;
   color: var(--color-muted);
   padding: var(--sp-32) var(--sp-16) var(--sp-16);
 }
@@ -978,6 +989,19 @@ hr {
 
   .booking-card .paperclip-wrap {
     right: 14px;
+  }
+
+  /* The card is tall on a phone, so even a 2deg tilt pushes its corners ~15px
+     sideways, past the right edge. Keep the backing sheets inside the card's
+     right edge and tilt them only slightly. */
+  .card-backing-kraft {
+    inset: -8px 0 -12px -8px;
+    transform: rotate(-0.5deg);
+  }
+
+  .card-backing-lined {
+    inset: -6px 0 -10px -4px;
+    transform: rotate(0.5deg);
   }
 
   .booking-card__hero {
@@ -1063,7 +1087,8 @@ hr {
 
   .page-wrapper > main {
     display: grid;
-    grid-template-columns: 576px 1fr;
+    /* Left column up to 36rem (576px), never a fixed width: it may shrink */
+    grid-template-columns: minmax(0, 36rem) minmax(0, 1fr);
     grid-template-rows: auto auto max-content max-content auto auto;
     row-gap: var(--sp-24);
     column-gap: var(--sp-32);
@@ -1093,7 +1118,7 @@ hr {
     width: auto;
     min-height: 44px;
     padding: var(--sp-8) var(--sp-16);
-    font-size: 0.875rem;
+    font-size: 1rem;
   }
 
   /* Cột trái (576px): Thẻ lịch trình tuần (row 3), liên kết chat (row 4) */
@@ -1182,7 +1207,7 @@ hr {
 
 @media (min-width: 1440px) {
   .page-wrapper > main {
-    grid-template-columns: 576px 736px;
+    grid-template-columns: minmax(0, 36rem) minmax(0, 46rem);
   }
 
   .booking-card,
@@ -1212,5 +1237,13 @@ time,
 
 /* Ký tự avatar tài khoản giữ sans rõ ràng */
 .avatar-circle {
-  font-family: var(--font-sans) !important;
+  font-family: var(--font-sans);
+}
+
+/* Below 1024px the deposit note sat flush against the price box above and the
+   pay button below; give it the same breathing room it has on desktop. */
+@media (max-width: 1023px) {
+  .hold-note {
+    margin-block: var(--sp-16);
+  }
 }

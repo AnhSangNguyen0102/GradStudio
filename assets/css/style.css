@@ -4,41 +4,62 @@
    Pure CSS & Inline SVG – No frameworks, no external dependencies
    ========================================================================== */
 
-/* Typography & Font Faces – Self-hosted Playfair Display (Subset Latin + Vietnamese) */
-@font-face {
-  font-family: "Playfair Display";
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("../fonts/PlayfairDisplay-Regular.woff2") format("woff2");
-  unicode-range: U+0000-00FF, U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+02C6, U+0300-0301, U+0303, U+0309, U+0323;
-}
+/* Typography & Font Faces – self-hosted Playfair Display (variable 400–900, SIL OFL 1.1,
+   files from Fontsource in assets/fonts/). One file per subset; unicode-range lets the
+   browser download only the subsets a page uses (latin + vietnamese for our text). */
 
 @font-face {
   font-family: "Playfair Display";
-  font-style: italic;
-  font-weight: 400;
+  font-style: normal;
+  font-weight: 400 900;
   font-display: swap;
-  src: url("../fonts/PlayfairDisplay-Italic.woff2") format("woff2");
-  unicode-range: U+0000-00FF, U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+02C6, U+0300-0301, U+0303, U+0309, U+0323;
+  src: url("../fonts/playfair-display-vietnamese-wght-normal.woff2") format("woff2");
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
 }
 
 @font-face {
   font-family: "Playfair Display";
   font-style: normal;
-  font-weight: 700;
+  font-weight: 400 900;
   font-display: swap;
-  src: url("../fonts/PlayfairDisplay-Bold.woff2") format("woff2");
-  unicode-range: U+0000-00FF, U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+02C6, U+0300-0301, U+0303, U+0309, U+0323;
+  src: url("../fonts/playfair-display-latin-ext-wght-normal.woff2") format("woff2");
+  unicode-range: U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: "Playfair Display";
+  font-style: normal;
+  font-weight: 400 900;
+  font-display: swap;
+  src: url("../fonts/playfair-display-latin-wght-normal.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
 @font-face {
   font-family: "Playfair Display";
   font-style: italic;
-  font-weight: 700;
+  font-weight: 400 900;
   font-display: swap;
-  src: url("../fonts/PlayfairDisplay-BoldItalic.woff2") format("woff2");
-  unicode-range: U+0000-00FF, U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+02C6, U+0300-0301, U+0303, U+0309, U+0323;
+  src: url("../fonts/playfair-display-vietnamese-wght-italic.woff2") format("woff2");
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+
+@font-face {
+  font-family: "Playfair Display";
+  font-style: italic;
+  font-weight: 400 900;
+  font-display: swap;
+  src: url("../fonts/playfair-display-latin-ext-wght-italic.woff2") format("woff2");
+  unicode-range: U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: "Playfair Display";
+  font-style: italic;
+  font-weight: 400 900;
+  font-display: swap;
+  src: url("../fonts/playfair-display-latin-wght-italic.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
 :root {
@@ -53,7 +74,7 @@
   /* Text Colors – Tương phản cao đạt chuẩn WCAG AAA/AA */
   --color-text: #2D2118;          /* Nâu espresso đậm (> 7:1 trên nền kem) */
   --color-text-muted: #655243;    /* Nâu xám trung tính cho mô tả/phụ đề */
-  --color-text-light: #8A7769;    /* Nâu nhạt cho meta, timestamp */
+  --color-text-light: #6B5848;    /* Meta, timestamps: darkened from #8A7769 (3.4:1) to pass 4.5:1 on the beige sections */
 
   /* Accent Colors */
   --color-primary: #8B5A2B;       /* Nâu caramel chủ đạo */
@@ -84,7 +105,7 @@
 
   /* Disabled State */
   --color-disabled-bg: #E7DFD4;
-  --color-disabled-text: #8C7C70;
+  --color-disabled-text: #655243;  /* 5.6:1 on --color-disabled-bg; the old #8C7C70 was 3.0:1 */
   --color-disabled-border: #D4C9BC;
 
   /* Typography */
@@ -135,11 +156,16 @@
   padding: 0;
 }
 
+/* Images never grow wider than their container (no sideways scroll at 360px) */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
 html {
   font-size: 16px;
   line-height: 1.6;
   scroll-behavior: smooth;
-  scroll-padding-top: var(--header-height, 68px);
   background-color: var(--color-bg);
   color: var(--color-text);
   font-family: var(--font-sans);
@@ -152,7 +178,6 @@ body {
   background-color: var(--color-bg);
   color: var(--color-text);
   font-family: var(--font-sans);
-  overflow-x: clip; /* clip thay thế hidden để position: sticky hoạt động ổn định */
   position: relative;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paperNoise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.16 0 0 0 0 0.12 0 0 0 0 0.08 0 0 0 0.035 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paperNoise)'/%3E%3C/svg%3E");
   background-repeat: repeat;
@@ -278,7 +303,7 @@ body {
 /* 5. .polaroid – Viền ngà, đáy dày, đổ bóng mềm 2 lớp, xoay góc (-4° đến 4°) */
 .polaroid {
   background-color: var(--color-bg-ivory);
-  padding: 12px 12px 34px 12px; /* Đáy dày đặc trưng polaroid */
+  padding: var(--space-sm) var(--space-sm) var(--space-xl) var(--space-sm); /* Đáy dày đặc trưng polaroid */
   border: 1px solid rgba(45, 33, 24, 0.1);
   box-shadow: var(--shadow-polaroid);
   border-radius: var(--radius-xs);
@@ -289,9 +314,9 @@ body {
 }
 
 .polaroid:hover {
-  transform: scale(1.03) rotate(0deg) !important;
+  transform: scale(1.03) rotate(0deg);
   box-shadow: var(--shadow-polaroid-hover);
-  z-index: 12 !important;
+  z-index: 12;
 }
 
 .polaroid-rot-neg4 { transform: rotate(-3.8deg); }
@@ -330,7 +355,7 @@ body {
   font-family: var(--font-handwriting);
   font-size: 1.15rem;
   color: var(--color-text);
-  margin-top: 8px;
+  margin-top: var(--space-xs);
   display: block;
   text-align: center;
   line-height: 1.2;
@@ -345,7 +370,7 @@ body {
   border: 1px solid var(--color-border);
   box-shadow: 0 2px 8px rgba(45, 33, 24, 0.08), 0 1px 3px rgba(45, 33, 24, 0.05);
   border-radius: var(--radius-xs);
-  padding: 14px 14px 14px 34px;
+  padding: var(--space-md) var(--space-md) var(--space-md) var(--space-xl);
   font-family: var(--font-handwriting);
   color: var(--color-text);
   line-height: 24px;
@@ -357,7 +382,7 @@ body {
 .film-strip {
   background-color: var(--color-film);
   border-radius: var(--radius-sm);
-  padding: 8px 12px;
+  padding: var(--space-xs) var(--space-sm);
   box-shadow: 0 4px 18px rgba(28, 24, 21, 0.3);
   border: 1px solid #100D0B;
   position: relative;
@@ -381,7 +406,7 @@ body {
 .film-frames {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
+  gap: var(--space-xs);
 }
 
 .film-frame {
@@ -431,7 +456,7 @@ body {
   position: absolute;
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: var(--space-xs);
   font-family: var(--font-handwriting);
   color: var(--color-primary);
   font-size: 1.25rem;
@@ -558,15 +583,13 @@ a:hover {
    Header & Navigation
    ========================================================================== */
 
-/* 1. Header cố định: sticky, top 0, z-index 100, nền rgba + blur */
+/* 1. Header scrolls with the page (no fixed/sticky: the whole page scrolls as one).
+   position: relative + z-index keep the mobile <details> menu above the content below. */
 .site-header {
-  position: sticky;
-  top: 0;
+  position: relative;
   z-index: 100;
   height: var(--header-height, 68px);
-  background-color: rgba(246, 238, 222, 0.88);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  background-color: rgb(246, 238, 222);
   border-bottom: 1px solid rgba(60, 42, 22, 0.1);
   box-shadow: 0 1px 6px rgba(60, 42, 22, 0.05);
   display: flex;
@@ -690,10 +713,10 @@ a:hover {
   list-style: none;
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 6px 12px;
+  gap: var(--space-xs);
+  padding: var(--space-xs) var(--space-sm);
   font-family: var(--font-sans);
-  font-size: 0.875rem;
+  font-size: 1rem;
   font-weight: 600;
   color: #3D2616;
   background-color: #EFE3C8;
@@ -751,7 +774,7 @@ a:hover {
   border: 1px solid rgba(60, 42, 22, 0.18);
   border-radius: var(--radius-sm, 6px);
   box-shadow: 0 8px 24px rgba(60, 42, 22, 0.16), 0 2px 6px rgba(60, 42, 22, 0.08);
-  padding: 6px 0;
+  padding: var(--space-xs) 0;
   display: flex;
   flex-direction: column;
   z-index: 120;
@@ -759,8 +782,8 @@ a:hover {
 
 .mobile-nav-link {
   display: block;
-  padding: 10px 16px;
-  font-size: 0.95rem;
+  padding: var(--space-sm) var(--space-md);
+  font-size: 1rem;
   font-weight: 600;
   color: #3D2616;
   text-decoration: none;
@@ -882,7 +905,7 @@ a:hover {
   display: flex;
   align-items: center;
   gap: var(--space-sm);
-  font-size: 0.95rem;
+  font-size: 1rem;
   color: var(--color-text);
   font-weight: 500;
 }
@@ -902,11 +925,11 @@ a:hover {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px; /* Khoảng cách chuẩn 8px giữa icon và chữ */
+  gap: var(--space-xs); /* Khoảng cách chuẩn 8px giữa icon và chữ */
   font-family: var(--font-sans);
-  font-size: 0.95rem;
+  font-size: 1rem;
   font-weight: 600;
-  padding: 0.75rem 1.5rem;
+  padding: var(--space-sm) var(--space-lg);
   border-radius: var(--radius-md);
   cursor: pointer;
   border: 1px solid transparent;
@@ -963,8 +986,8 @@ a:hover {
 .btn-card {
   width: 100%;
   margin-top: auto;
-  padding: 0.7rem 1rem;
-  font-size: 0.9rem;
+  padding: var(--space-sm) var(--space-md);
+  font-size: 1rem;
 }
 
 .btn:disabled,
@@ -974,7 +997,14 @@ a:hover {
   border-color: var(--color-disabled-border);
   cursor: not-allowed;
   box-shadow: none;
-  transform: none !important;
+  transform: none;
+}
+
+/* A disabled button must not lift on hover; :hover is listed so this beats
+   the .btn-primary:hover / .btn-stamp:hover lift (higher specificity, no override flag). */
+.btn:disabled:hover,
+.btn[aria-disabled="true"]:hover {
+  transform: none;
 }
 
 /* ==========================================================================
@@ -1335,7 +1365,6 @@ a:hover {
    ========================================================================== */
 
 #dich-vu {
-  overflow-x: clip;
   position: relative;
 }
 
@@ -1383,7 +1412,7 @@ a:hover {
   gap: var(--space-xl);
   align-items: stretch;
   position: relative;
-  padding: 15px 0;
+  padding: var(--space-md) 0;
 }
 
 /* Thẻ giấy kraft */
@@ -1621,7 +1650,7 @@ a:hover {
 /* Khung ảnh Polaroid ruột pastel */
 .polaroid {
   background-color: #FBF8F2;
-  padding: 6px 6px 18px 6px;
+  padding: var(--space-xs) var(--space-xs) var(--space-md) var(--space-xs);
   box-shadow: 0 3px 8px rgba(45, 33, 24, 0.18), 0 1px 3px rgba(45, 33, 24, 0.1);
   border-radius: 2px;
   position: absolute;
@@ -1662,7 +1691,7 @@ a:hover {
 
 /* Dải film dọc 3 ô ở thẻ 3 */
 .card-kraft-3 .card-features {
-  padding-right: 48px; /* Tránh bị dải film strip che chữ */
+  padding-right: var(--space-2xl); /* Tránh bị dải film strip che chữ */
 }
 
 /* Dải film dọc 3 ô ở thẻ 3 */
@@ -1672,14 +1701,14 @@ a:hover {
   right: -48px;
   width: 70px;
   background-color: #1A1817;
-  padding: 8px 6px;
+  padding: var(--space-xs) var(--space-xs);
   border-radius: 2px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
   transform: rotate(-3deg);
   z-index: 3;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: var(--space-xs);
   pointer-events: none;
 }
 
@@ -1710,9 +1739,9 @@ a:hover {
 }
 
 .film-frame-slot {
-  margin: 0 4px;
+  margin: 0 var(--space-2xs);
   background: #000;
-  padding: 2px;
+  padding: var(--space-2xs);
 }
 
 .film-frame-slot .photo-slot {
@@ -1789,7 +1818,7 @@ a:hover {
 .price-prefix {
   font-size: 0.95rem;
   font-family: var(--font-heading);
-  color: #8C7C70;
+  color: var(--color-text-light);
   font-weight: 500;
 }
 
@@ -1805,7 +1834,7 @@ a:hover {
 .price-unit {
   font-size: 0.95rem;
   font-family: var(--font-sans);
-  color: #8C7C70;
+  color: var(--color-text-light);
   font-weight: normal;
 }
 
@@ -1822,7 +1851,7 @@ a:hover {
   display: flex;
   align-items: flex-start;
   gap: var(--space-xs);
-  font-size: 0.925rem;
+  font-size: 1rem;
   color: var(--color-text-muted);
   line-height: 1.5;
 }
@@ -1832,7 +1861,7 @@ a:hover {
   height: 16px;
   color: var(--color-primary);
   flex-shrink: 0;
-  margin-top: 3px;
+  margin-top: var(--space-2xs);
 }
 
 /* Nút Xem chi tiết kiểu tem thư */
@@ -1845,9 +1874,9 @@ a:hover {
   outline-offset: -5px;
   border-radius: var(--radius-sm);
   font-family: var(--font-sans);
-  font-size: 0.95rem;
+  font-size: 1rem;
   font-weight: 700;
-  padding: 0.75rem 1.25rem;
+  padding: var(--space-sm) var(--space-lg);
   box-shadow: 0 2px 4px rgba(60, 40, 20, 0.1);
   cursor: not-allowed;
   transition: transform 0.2s ease;
@@ -1859,7 +1888,7 @@ a:hover {
 }
 
 .card-disabled-note {
-  font-size: 0.8rem;
+  font-size: 1rem;
   color: var(--color-text-light);
   text-align: center;
   margin-top: var(--space-xs);
@@ -1897,7 +1926,7 @@ a:hover {
 .doodle-arrow-curved {
   display: block;
   margin-left: auto;
-  margin-top: 2px;
+  margin-top: var(--space-2xs);
 }
 
 .doodle-arrow-card1 {
@@ -1928,7 +1957,6 @@ a:hover {
    ========================================================================== */
 
 #quy-trinh {
-  overflow-x: clip;
   position: relative;
 }
 
@@ -1963,7 +1991,7 @@ a:hover {
 .tag-double-underline-svg {
   width: 116px;
   height: 14px;
-  margin-top: 2px;
+  margin-top: var(--space-2xs);
   pointer-events: none;
 }
 
@@ -1972,7 +2000,7 @@ a:hover {
   grid-area: desc;
   margin: 0;
   max-width: 460px;
-  font-size: 0.95rem;
+  font-size: 1rem;
   line-height: 1.6;
   color: var(--color-text-muted);
   text-align: left;
@@ -2003,7 +2031,7 @@ a:hover {
 }
 
 .curved-title-text {
-  font-family: var(--font-heading) !important;
+  font-family: var(--font-heading);
   font-weight: 700;
   font-size: 42px;
   fill: var(--color-text);
@@ -2024,7 +2052,7 @@ a:hover {
 .steps-wrapper {
   position: relative;
   width: 100%;
-  padding: 30px 0 50px;
+  padding: var(--space-xl) 0 var(--space-2xl);
 }
 
 /* 1. Cấu trúc danh sách các bước */
@@ -2057,7 +2085,7 @@ a:hover {
   --step-rot: 1.5deg;
   transform: rotate(var(--step-rot));
   margin-top: 6%;
-  margin-left: -8px; /* Giảm độ chồng mép để không che chữ bước 01 */
+  margin-left: calc(var(--space-xs) * -1); /* Giảm độ chồng mép để không che chữ bước 01 */
   z-index: 2;
 }
 
@@ -2065,7 +2093,7 @@ a:hover {
   --step-rot: -1deg;
   transform: rotate(var(--step-rot));
   margin-top: 12%;
-  margin-left: -8px; /* Giảm độ chồng mép để không che chữ bước 02 */
+  margin-left: calc(var(--space-xs) * -1); /* Giảm độ chồng mép để không che chữ bước 02 */
   z-index: 3;
 }
 
@@ -2073,7 +2101,7 @@ a:hover {
   --step-rot: 2deg;
   transform: rotate(var(--step-rot));
   margin-top: 18%;
-  margin-left: -8px;
+  margin-left: calc(var(--space-xs) * -1);
   z-index: 4;
 }
 
@@ -2190,18 +2218,18 @@ a:hover {
 .step-card {
   position: relative;
   z-index: 2;
-  padding: 34px 22px 28px 20px;
+  padding: var(--space-xl) var(--space-lg) var(--space-xl) var(--space-lg);
   border-radius: 2px;
   filter: drop-shadow(0 4px 10px rgba(60, 42, 22, 0.12)) drop-shadow(0 12px 22px rgba(60, 42, 22, 0.08));
 }
 
 /* Tăng padding-right cho bước 01 và 02 để chữ mô tả không bị mép thẻ kế tiếp che */
 .step-01 .step-card {
-  padding-right: 32px;
+  padding-right: var(--space-xl);
 }
 
 .step-02 .step-card {
-  padding-right: 30px;
+  padding-right: var(--space-xl);
 }
 
 /* Bước 01: Giấy kraft nâu nhạt mép xé */
@@ -2331,13 +2359,13 @@ a:hover {
 /* 5. Typography */
 .step-num {
   display: block;
-  font-family: var(--font-heading) !important;
+  font-family: var(--font-heading);
   font-variant-numeric: lining-nums;
   font-size: clamp(2.4rem, 3.6vw, 3.2rem);
   font-weight: 700;
   color: #3D2616;
   line-height: 1;
-  margin-bottom: 8px;
+  margin-bottom: var(--space-xs);
   letter-spacing: -0.02em;
 }
 
@@ -2347,12 +2375,12 @@ a:hover {
   font-weight: 700;
   color: #24140A;
   line-height: 1.25;
-  margin-bottom: 8px;
+  margin-bottom: var(--space-xs);
 }
 
 .step-desc {
   font-family: var(--font-sans);
-  font-size: 0.875rem;
+  font-size: 1rem;
   color: #584537;
   line-height: 1.55;
   margin: 0;
@@ -2452,6 +2480,16 @@ a:hover {
     margin-left: 0;
   }
 
+  /* The tilted cards in the right column reach past the container edge at 768px;
+     inline padding gives the tilt room, and the doodle sits inside the card. */
+  .steps {
+    padding-inline: var(--space-md);
+  }
+
+  .step-doodle-bottom-04 {
+    right: 0;
+  }
+
   .step-arrow {
     display: none;
   }
@@ -2508,6 +2546,8 @@ a:hover {
     max-width: 380px;
     margin: 0 auto;
     gap: 0;
+    /* Room for the tilted cards: without it they poke 1px past a 360px screen */
+    padding-inline: var(--space-xs);
   }
 
   .step-01, .step-02, .step-03, .step-04 {
@@ -2517,7 +2557,7 @@ a:hover {
 
   .step-01 .step-card,
   .step-02 .step-card {
-    padding-right: 22px;
+    padding-right: var(--space-lg);
   }
 
   .step-tape-02-bottom {
@@ -2532,7 +2572,7 @@ a:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 14px auto;
+    margin: var(--space-md) auto;
     width: 28px;
     height: 36px;
     pointer-events: none;
@@ -2641,9 +2681,9 @@ a:hover {
 }
 
 .message-bubble {
-  padding: 0.85rem 1.15rem;
+  padding: var(--space-sm) var(--space-md);
   border-radius: var(--radius-lg);
-  font-size: 0.95rem;
+  font-size: 1rem;
   line-height: 1.55;
   box-shadow: var(--shadow-paper);
 }
@@ -2665,7 +2705,7 @@ a:hover {
 .message-meta {
   font-size: 0.775rem;
   color: var(--color-text-light);
-  margin-top: 4px;
+  margin-top: var(--space-2xs);
 }
 
 .chat-input-box {
@@ -2698,6 +2738,10 @@ a:hover {
 
 .chat-input-field {
   flex-grow: 1;
+  /* An <input> keeps a default width of ~20 characters; min-width: 0 lets it
+     shrink inside the flex row so the send button stays on screen at 360px. */
+  min-width: 0;
+  width: 100%;
   height: 44px;
   padding: 0 var(--space-md);
   border-radius: var(--radius-md);
@@ -2705,7 +2749,7 @@ a:hover {
   background-color: var(--color-bg-card);
   color: var(--color-disabled-text);
   font-family: var(--font-sans);
-  font-size: 0.95rem;
+  font-size: 1rem;
   cursor: not-allowed;
 }
 
@@ -2730,7 +2774,7 @@ a:hover {
 }
 
 .chat-note {
-  font-size: 0.8rem;
+  font-size: 1rem;
   color: var(--color-text-light);
   text-align: center;
   font-style: italic;
@@ -2758,12 +2802,12 @@ a:hover {
 }
 
 .footer-copy {
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: var(--color-text-muted);
 }
 
 .footer-admin {
-  font-size: 0.85rem;
+  font-size: 1rem;
 }
 
 .footer-admin-link {
@@ -2818,10 +2862,6 @@ a:hover {
 
   :root {
     --header-height: 56px;
-  }
-
-  html {
-    scroll-padding-top: 56px;
   }
 
   /* 3. Dưới 768px: header cao 56px */
@@ -2881,7 +2921,7 @@ a:hover {
   .doodle-note-edge,
   .doodle-note-tape,
   .doodle-star-wrap {
-    display: none !important;
+    display: none;
   }
 
   /* Giữ thẻ thẳng trên mobile để không tràn khung hay lệch lề */
@@ -2963,18 +3003,18 @@ time,
 .process-curved-svg text,
 .curved-title-text,
 .curved-title-text textPath {
-  font-family: var(--font-heading) !important;
+  font-family: var(--font-heading);
 }
 
 /* Ngoại lệ: số bước quy trình là nội dung đánh số dùng var(--font-heading) */
 .step-num {
-  font-family: var(--font-heading) !important;
+  font-family: var(--font-heading);
   font-variant-numeric: lining-nums;
 }
 
 /* Ngoại lệ: ký tự avatar tài khoản giữ sans rõ ràng */
 .avatar-circle {
-  font-family: var(--font-sans) !important;
+  font-family: var(--font-sans);
 }
 
 
@@ -3026,4 +3066,122 @@ time,
 .polaroid:hover .polaroid-img {
   transform: scale(1.03);
   filter: sepia(0.08) saturate(0.96) contrast(0.98);
+}
+
+/* ==========================================================================
+   Small screens: keep decorations inside the viewport
+   ========================================================================== */
+
+/* The stickers hang 12–15px past their card's right edge; on a phone the card
+   already touches the page padding, so they stuck out past the screen. */
+@media (max-width: 767px) {
+  .sticker-grad-cap,
+  .sticker-diploma,
+  .sticker-camera {
+    right: var(--space-xs);
+  }
+
+  /* Same for the tape on the third card's bottom-left corner (1px past the left edge) */
+  .card-tape-bl {
+    left: calc(var(--space-sm) * -1);
+  }
+}
+
+/* ==========================================================================
+   Tap targets: every button, link and menu toggle that stands on its own is
+   at least 44px tall (2.75rem), measured at 360px. Links inside a sentence
+   are exempt.
+   ========================================================================== */
+.btn,
+.logo,
+.nav-link,
+.mobile-menu-summary,
+.mobile-nav-link,
+.footer-admin-link {
+  min-height: 2.75rem;
+}
+
+.nav-link,
+.footer-admin-link {
+  display: inline-flex;
+  align-items: center;
+}
+
+/* A button-style link whose label is a full sentence: let it wrap on a phone
+   instead of pushing the page wider (.btn sets white-space: nowrap). */
+.btn-wrap {
+  white-space: normal;
+  text-align: center;
+}
+
+/* Hand-off from the customer chat to Screen 2, right under the chat. */
+.chat-handoff {
+  margin-top: var(--space-lg);
+  text-align: center;
+}
+
+/* Visible label above the (disabled) chat input: clicking it focuses the box */
+.chat-input-label {
+  display: block;
+  margin-bottom: var(--space-xs);
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+/* Tablet (600–768px): the service cards sit two per row instead of one narrow
+   440px column in the middle of the screen. Decorations stay hidden as on phones. */
+@media (min-width: 600px) and (max-width: 768px) {
+  .cards-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: none;
+    gap: var(--space-2xl) var(--space-lg);
+  }
+}
+
+/* Narrow laptops (769–1279px): the page has no side margin left, so the
+   polaroid and film strip that hang 42–48px off the third service card
+   stuck out past the screen. Pull the polaroid inside the 24px page padding
+   and hide the film strip (decoration only), as on phones. */
+@media (min-width: 769px) and (max-width: 1279px) {
+  .polaroid-card3 {
+    right: calc(var(--space-sm) * -1);
+  }
+
+  /* The two polaroids on the first card hang 38–48px off its left edge and
+     were cut off by the left side of the screen. */
+  .polaroid-card1-top,
+  .polaroid-card1-bottom {
+    left: calc(var(--space-sm) * -1);
+  }
+
+  .film-strip-card3 {
+    display: none;
+  }
+
+  /* Same fix as 768–1023px: the tilted step 04 card and its doodle reach past
+     the container edge until the page gets side margins at 1280px. */
+  .steps {
+    padding-inline: var(--space-md);
+  }
+
+  .step-doodle-bottom-04 {
+    right: 0;
+  }
+}
+
+/* The star doodle sits 76px left of the "01 Dịch vụ" heading; below 1440px
+   there is not enough page margin and it was cut off by the left edge of the
+   screen, so it is hidden (decoration only), as on phones. */
+@media (max-width: 1439px) {
+  .doodle-star-wrap {
+    display: none;
+  }
+}
+
+/* The film strip on the third service card is hidden below 1280px, so its
+   text no longer needs the 48px it kept free for the strip. */
+@media (max-width: 1279px) {
+  .card-kraft-3 .card-features {
+    padding-right: 0;
+  }
 }

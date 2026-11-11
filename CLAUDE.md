@@ -8,7 +8,7 @@ Read `brief.md` first. These rules are mandatory. If a request conflicts with a 
 - Styles: `assets/css/style.css`. A CSS framework is optional; if used, download it into `assets/css/` and load it with `<link>`. No CDN and no external URLs for fonts, images or icons.
 - Fonts: system font stack, or self-hosted WOFF2 in `assets/fonts/`. Images and icons: our own SVG or files in `assets/`.
 - View: `python3 -m http.server 8000`, then open http://localhost:8000
-- Check: `python3 checks/run_checks.py` (writes `checks/results.md` and `screenshots/`). The W3C validator is run by hand, on every page, 0 errors.
+- Check: `python3 checks/run_checks.py` (writes `checks/results.md`; it re-takes `screenshots/` only with `--screenshots`, because the submitted screenshots are DevTools captures). The W3C validator is run by hand, on every page, 0 errors.
 - ALWAYS run the check before committing. NEVER say a check passed unless it was actually run; say which checks were not run.
 - Do not add a file, dependency or feature the pages do not need.
 
@@ -45,6 +45,7 @@ Read `brief.md` first. These rules are mandatory. If a request conflicts with a 
 - The pages share no code, so copy facts exactly from the example story in `brief.md`. Fixed story: Saturday 24/10/2026; customer Linh (Nguyễn Thùy Linh); Admin Thảo; make-up 13:00–14:00 with Mai; shoot 14:00–16:00 with Tuấn in Phòng B; Gói Tốt nghiệp Premium (2 giờ, 30 ảnh chỉnh); 1.800.000đ, deposit 540.000đ, remaining 1.260.000đ; booking GS-1024.
 - Status names, exactly. Conversations: Chưa trả lời / Đang tư vấn / Đã chốt lịch / Hoàn thành. Bookings: Chờ cọc 30% (Screen 3 may show "Đã thống nhất lịch · Chờ cọc 30%") / Đã đặt lịch / Hoàn thành. Never "Đã xác nhận" for a conversation.
 - Only say the studio holds the slot after the deposit succeeds.
+- Keep at least one long item so the layout is tested (rubric): the Screen 2 conversation "Tôn Nữ Hoàng Bảo Ngọc · Đại diện lớp 12A3 (kỷ yếu cả lớp)" (sample name). Do not shorten it; it must wrap at every width.
 - Do not build anything from the brief's "Not building" list.
 
 ## Forbidden (the "Fix these" list)
@@ -59,6 +60,10 @@ Read `brief.md` first. These rules are mandatory. If a request conflicts with a 
 - Style: warm scrapbook / film-journal (cream paper, polaroid frames, washi tape, handwritten notes) in CSS and SVG only. Handwriting style is decorative only, never for labels, buttons or important facts.
 - Text contrast at least 4.5:1. Visible focus state. Keyboard works.
 - Works at 360, 768 and 1280 px with no sideways scroll. On small screens the resource calendar is a vertical list by time.
+- Mobile first; breakpoints 768 px and 1024 px (Screen 2 adds 1200 px). No fixed widths on layout boxes (`max-width`, `minmax(0, …)`, `fr`).
+- Spacing only from the scale 4/8/12/16/24/32/48 (+64/80) via `--space-*` / `--sp-*`. Never `!important`.
+- Never hide overflow with `overflow-x: hidden/clip` on `html`, `body` or a wrapper: fix the element that sticks out.
+- Standalone buttons and links at least 44 px tall at 360 px; body text at least 16 px.
 - Each page: `<!doctype html>`, `<html lang="vi">`, `<meta charset>`, viewport meta, its own `<title>`, exactly one `<h1>`, headings that do not skip levels.
 - Semantic elements: `header`, `nav`, `main`, `section`, `article`, `aside`, `form`, `fieldset`/`legend`, `label for`, `ul`/`ol`, `table` or `dl` for tabular data, `time` for times. No `div`/`span` where a meaningful element exists. Images have `alt` (`alt=""` if decorative); decorative inline SVG has `aria-hidden="true"`.
 

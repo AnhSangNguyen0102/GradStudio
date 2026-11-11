@@ -1,0 +1,110 @@
+Accessibility tree of index.html (Chromium, JavaScript off, 1280 px), 2026-11-11 18:09.
+Made with Playwright's aria_snapshot(): the same roles and names as
+DevTools > Elements > Accessibility. Not a DevTools screenshot.
+
+- banner:
+  - link "Trang chủ GradStudio":
+    - /url: index.html
+    - text: GradStudio
+  - navigation "Điều hướng chính":
+    - link "Dịch vụ":
+      - /url: index.html#dich-vu
+    - link "Quy trình":
+      - /url: index.html#quy-trinh
+    - link "Lịch chụp của tôi":
+      - /url: lich-chup-cua-toi.html
+  - group "Tài khoản khách hàng": Linh
+- main:
+  - region "Lưu lại ngày ra trường theo cách của bạn":
+    - paragraph
+    - heading "Lưu lại ngày ra trường theo cách của bạn" [level=1]:
+      - text: Lưu lại ngày
+      - emphasis: ra trường
+      - text: theo cách của bạn
+    - paragraph: Đặt lịch chụp tốt nghiệp cá nhân, kỷ yếu lớp và chân dung studio nhanh chóng. Kiểm tra lịch trực tiếp, thống nhất khung giờ và nhận ảnh trọn vẹn trong một trải nghiệm ấm áp.
+    - link "Xem gói chụp":
+      - /url: "#dich-vu"
+    - link "Chat với studio":
+      - /url: "#chat"
+    - list:
+      - listitem: Tư vấn trực tiếp trên web
+      - listitem: Không lo trùng lịch
+      - listitem: Chọn ảnh ngay trong tài khoản
+  - region "Các gói chụp tại GradStudio":
+    - text: 01 Dịch vụ
+    - heading "Các gói chụp tại GradStudio" [level=2]
+    - paragraph: Bảng giá minh bạch, hỗ trợ trang phục cử nhân và trang điểm chuyên nghiệp. Mọi gói chụp đều bao gồm dịch vụ kiểm tra khung giờ trống và chọn ảnh trong tài khoản .
+    - article "Kỷ yếu lớp":
+      - heading "Kỷ yếu lớp" [level=3]
+      - paragraph:
+        - text: từ
+        - strong: 350.000đ
+        - text: /người
+      - list:
+        - listitem: Chụp tập thể lớp và nhóm nhỏ tại trường hoặc studio
+        - listitem: Đầy đủ áo cử nhân, bằng tốt nghiệp & bóng bay trang trí
+        - listitem: Giao toàn bộ file gốc đã xử lý sáng và ảnh tập thể in ấn
+      - button "Xem chi tiết" [disabled]
+      - paragraph: Chưa có ở bản này
+    - article "Tốt nghiệp":
+      - heading "Tốt nghiệp" [level=3]
+      - paragraph:
+        - text: từ
+        - strong: 1.800.000đ
+      - list:
+        - listitem: 2 giờ chụp studio cá nhân hoặc chụp cùng người thân
+        - listitem: Tùy chọn chuyên viên makeup & làm tóc trước buổi chụp
+        - listitem: 30 ảnh chỉnh sửa tỉ mỉ cao cấp và nhận toàn bộ ảnh gốc
+      - button "Xem chi tiết" [disabled]
+      - paragraph: Chưa có ở bản này
+    - article "Chân dung / CV":
+      - heading "Chân dung / CV" [level=3]
+      - paragraph:
+        - text: từ
+        - strong: 690.000đ
+      - list:
+        - listitem: Chụp ảnh profile doanh nghiệp, CV xin việc & ảnh thẻ chuẩn
+        - listitem: 1 concept phông nền màu studio và hướng dẫn tạo dáng
+        - listitem: 5 ảnh hoàn thiện kỹ thuật số chất lượng cao lấy nhanh trong ngày
+      - button "Xem chi tiết" [disabled]
+      - paragraph: Chưa có ở bản này
+  - region "Các bước đặt lịch chụp":
+    - text: 02 Quy trình
+    - heading "Các bước đặt lịch chụp" [level=2]
+    - paragraph: Quy trình 4 bước tinh gọn giúp bạn nắm rõ lịch chụp, tránh trùng lịch tài nguyên và nhận ảnh hoàn thiện thuận tiện.
+    - list:
+      - listitem:
+        - heading "Hỏi" [level=3]
+        - paragraph: Chia sẻ gói chụp và ngày giờ bạn mong muốn.
+      - listitem:
+        - heading "Chốt lịch trong chat" [level=3]
+        - paragraph: Thống nhất chi tiết và chọn khung giờ phù hợp; lịch chỉ được giữ sau khi đặt cọc.
+      - listitem:
+        - heading "Đặt cọc 30% để giữ lịch" [level=3]
+        - paragraph: Studio chỉ giữ khung giờ sau khi bạn đặt cọc 30% thành công.
+      - listitem:
+        - heading "Chụp & nhận ảnh" [level=3]
+        - paragraph: Đến buổi chụp và chọn ảnh ngay trong tài khoản.
+  - region "Tư vấn lịch chụp trực tiếp":
+    - text: 03 Chat với studio
+    - heading "Tư vấn lịch chụp trực tiếp" [level=2]
+    - paragraph: Trò chuyện với studio để kiểm tra phòng chụp và lịch làm việc của nhân sự trước khi chốt lịch.
+    - region "Cửa sổ hội thoại với studio":
+      - text: GradStudio · Đang hoạt động Thường phản hồi trong vài phút Linh Gói tốt nghiệp có makeup còn lịch 24/10 lúc 09:00 không?
+      - time: 09:41
+      - text: · Đã xem GradStudio Để mình kiểm tra lịch cho bạn nhé
+      - time: 10:20
+      - text: Tin nhắn cho studio
+      - button "Đính kèm tệp" [disabled]
+      - textbox "Tin nhắn cho studio" [disabled]:
+        - /placeholder: Nhập tin nhắn...
+      - button "Gửi tin nhắn" [disabled]
+      - paragraph: Gửi tin nhắn chưa khả dụng ở bản PA#2
+    - paragraph:
+      - 'link "Nhân viên studio: mở cuộc trò chuyện này"':
+        - /url: admin-tu-van.html
+- contentinfo:
+  - paragraph: © GradStudio · TP. Hồ Chí Minh · Địa chỉ chỉ gửi khi đã cọc
+  - paragraph:
+    - 'link "Nhân viên studio: mở cuộc trò chuyện này"':
+      - /url: admin-tu-van.html

@@ -1,0 +1,230 @@
+Accessibility tree of admin-tu-van.html (Chromium, JavaScript off, 1280 px), 2026-11-11 18:09.
+Made with Playwright's aria_snapshot(): the same roles and names as
+DevTools > Elements > Accessibility. Not a DevTools screenshot.
+
+- banner:
+  - link "Trang chủ GradStudio":
+    - /url: index.html
+    - text: GradStudio Studio
+  - navigation "Điều hướng studio":
+    - list:
+      - listitem:
+        - link "Hội thoại":
+          - /url: admin-tu-van.html
+  - group "Tài khoản nhân viên": Thảo · Quản lý studio
+- main:
+  - paragraph: Studio / Hội thoại
+  - heading "Từ lời hẹn đến buổi chụp." [level=1]
+  - paragraph: Linh đã đồng ý lịch đề xuất. Hoàn tất thông tin để tạo booking chờ cọc.
+  - region "Khách đang chờ":
+    - heading "Khách đang chờ" [level=2]
+    - paragraph: 5 hội thoại
+    - group "Lọc hội thoại":
+      - button "Tất cả" [disabled] [pressed]
+      - button "Chưa trả lời" [disabled]
+      - button "Đang tư vấn" [disabled]
+    - paragraph: Bộ lọc chưa có ở bản PA#2, danh sách đang hiện tất cả.
+    - list:
+      - listitem:
+        - article "Nguyễn Thùy Linh":
+          - heading "Nguyễn Thùy Linh" [level=3]
+          - paragraph: Gói tốt nghiệp có makeup còn lịch 24/10 lúc 09:00 không?
+          - paragraph: Đã chốt lịch
+      - listitem:
+        - article "Trần Minh Khoa":
+          - heading "Trần Minh Khoa" [level=3]
+          - paragraph: Chụp chân dung CV mất bao lâu ạ?
+          - paragraph: Chưa trả lời
+      - listitem:
+        - article "Tôn Nữ Hoàng Bảo Ngọc · Đại diện lớp 12A3 (kỷ yếu cả lớp)":
+          - heading "Tôn Nữ Hoàng Bảo Ngọc · Đại diện lớp 12A3 (kỷ yếu cả lớp)" [level=3]
+          - paragraph: Lớp mình chốt 24/10 nhé
+          - paragraph: Đang tư vấn
+      - listitem:
+        - article "Lê Ngọc Hân":
+          - heading "Lê Ngọc Hân" [level=3]
+          - paragraph: Gói gia đình 4 người giá sao ạ?
+          - paragraph: Chưa trả lời
+      - listitem:
+        - article "Phạm Hoàng Anh":
+          - heading "Phạm Hoàng Anh" [level=3]
+          - paragraph: Cảm ơn studio, ảnh đẹp lắm!
+          - paragraph: Hoàn thành
+  - region "Hội thoại":
+    - heading "Hội thoại" [level=2]
+    - heading "Nguyễn Thùy Linh" [level=3]
+    - paragraph: Tư vấn chụp ảnh tốt nghiệp
+    - paragraph: Đã chốt lịch
+    - separator
+    - list "Tin nhắn với Linh":
+      - listitem:
+        - paragraph: Linh
+        - paragraph: Gói tốt nghiệp có makeup còn lịch 24/10 lúc 09:00 không?
+        - paragraph:
+          - time: 09:41
+          - text: · Đã xem
+      - listitem:
+        - paragraph: GradStudio
+        - paragraph: Thợ makeup Mai bận 08:00–12:00. Mình đề xuất makeup 13:00–14:00 với Mai, chụp 14:00–16:00 với Tuấn ở Phòng B nhé.
+        - paragraph:
+          - time: 10:23
+      - listitem:
+        - paragraph: Linh
+        - paragraph: Ok, mình chốt 14:00 nhé!
+        - paragraph:
+          - time: 10:24
+          - text: · Đã xem
+    - paragraph:
+      - text: Linh đã đồng ý lịch
+      - time: 14:00 – Thứ Bảy 24/10/2026
+    - text: Tin nhắn cho Linh
+    - textbox "Tin nhắn cho Linh" [disabled]:
+      - /placeholder: Soạn tin đã khóa
+    - button "Gửi tin nhắn" [disabled]:
+      - img "Gửi tin nhắn"
+    - paragraph:
+      - text: Gửi tin nhắn chưa khả dụng ở bản PA#2. Lịch đã chốt, tiếp tục ở
+      - link "Booking mới":
+        - /url: "#booking-moi"
+      - text: bên dưới.
+  - region "Booking mới – Chụp ảnh tốt nghiệp":
+    - heading "Booking mới – Chụp ảnh tốt nghiệp" [level=2]
+    - paragraph: Thông tin đã điền
+    - paragraph: Chưa tạo booking · Mã dự kiến GS-1024 · Lịch đề xuất chưa giữ chỗ.
+    - text: Khách hàng
+    - textbox "Khách hàng": Nguyễn Thùy Linh
+    - text: Loại buổi chụp
+    - combobox "Loại buổi chụp":
+      - option "Tốt nghiệp cá nhân" [selected]
+      - option "Kỷ yếu lớp"
+      - option "Chân dung/CV"
+    - text: Gói
+    - textbox "Gói": Gói Tốt nghiệp Premium
+    - paragraph: 2 giờ, 30 ảnh chỉnh
+    - text: Ngày chụp
+    - textbox "Ngày chụp": 24/10/2026 (Thứ Bảy)
+    - text: Giờ bắt đầu chụp
+    - textbox "Giờ bắt đầu chụp": 14:00
+    - paragraph: Ngày và giờ theo lịch Linh đã đồng ý trong chat.
+    - group "Dịch vụ thêm":
+      - text: Dịch vụ thêm
+      - checkbox "Makeup (60 phút trước giờ chụp)" [checked]
+      - text: Makeup (60 phút trước giờ chụp)
+      - checkbox "Thuê áo cử nhân"
+      - text: Thuê áo cử nhân
+    - text: Giá
+    - textbox "Giá": 1.800.000đ
+    - group "Phân công":
+      - text: Phân công Makeup
+      - textbox "Makeup": Mai
+      - text: Thợ chụp
+      - textbox "Thợ chụp": Tuấn
+      - text: Phòng
+      - textbox "Phòng": Phòng B
+    - separator
+    - button "Tạo booking"
+    - paragraph: Booking tạo ra có trạng thái Chờ cọc 30% và hiện trong Lịch chụp của tôi của Linh. Studio chỉ giữ lịch sau khi khách đặt cọc thành công.
+    - 'link "Khách hàng: xem Lịch chụp của tôi"':
+      - /url: lich-chup-cua-toi.html
+  - region "Lịch tài nguyên · Thứ Bảy, 24/10":
+    - heading "Lịch tài nguyên · Thứ Bảy, 24/10" [level=2]
+    - paragraph:
+      - time: 24 / 10 / 2026
+    - paragraph: Lịch đề xuất · Chưa giữ chỗ
+    - paragraph: Khung làm việc 08:00–17:00 · 5 tài nguyên. Thanh ngang biểu thị khung giờ; thông tin đầy đủ nằm ngay dưới mỗi thanh.
+    - list:
+      - listitem:
+        - heading "Makeup · Mai" [level=3]
+        - list:
+          - listitem:
+            - paragraph:
+              - text: Mai bận
+              - time: 08:00
+              - text: –
+              - time: 12:00
+            - paragraph: Không nhận lịch makeup
+          - listitem:
+            - paragraph:
+              - text: Makeup
+              - time: 13:00
+              - text: –
+              - time: 14:00
+              - text: · Mai · Linh
+            - paragraph: Lịch đề xuất · Chưa giữ chỗ
+        - paragraph: "Còn trống: 12:00–13:00, 14:00–17:00."
+      - listitem:
+        - heading "Thợ chụp · Tuấn" [level=3]
+        - list:
+          - listitem:
+            - paragraph:
+              - text: Chụp
+              - time: 14:00
+              - text: –
+              - time: 16:00
+              - text: · Tuấn · Phòng B · Linh
+            - paragraph: Lịch đề xuất · Chưa giữ chỗ
+        - paragraph: "Còn trống: 08:00–14:00, 16:00–17:00."
+      - listitem:
+        - heading "Thợ chụp · Hà" [level=3]
+        - list:
+          - listitem:
+            - paragraph: Gia đình · Hà · Phòng A
+            - paragraph:
+              - time: 10:00
+              - text: –
+              - time: 12:00
+              - text: · Đã đặt lịch
+        - paragraph: "Còn trống: 08:00–10:00, 12:00–17:00."
+      - listitem:
+        - heading "Phòng A" [level=3]
+        - list:
+          - listitem:
+            - paragraph: Gia đình · Hà · Phòng A
+            - paragraph:
+              - time: 10:00
+              - text: –
+              - time: 12:00
+              - text: · Đã đặt lịch
+        - paragraph: "Còn trống: 08:00–10:00, 12:00–17:00."
+      - listitem:
+        - heading "Phòng B" [level=3]
+        - list:
+          - listitem:
+            - paragraph:
+              - text: Chụp
+              - time: 14:00
+              - text: –
+              - time: 16:00
+              - text: · Tuấn · Phòng B · Linh
+            - paragraph: Lịch đề xuất · Chưa giữ chỗ
+        - paragraph: "Còn trống: 08:00–14:00, 16:00–17:00."
+    - paragraph:
+      - strong:
+        - text: Trùng lịch lúc
+        - time: 09:00
+        - text: ":"
+      - text: thợ makeup Mai bận 08:00–12:00, không đủ nhân sự cho khung 09:00.
+    - separator
+    - heading "Gợi ý giờ trống" [level=3]
+    - list:
+      - listitem:
+        - paragraph:
+          - time: 14:00
+          - text: – Gần nhất
+        - paragraph: Đã chọn
+        - paragraph: Makeup 13:00–14:00 Mai · Chụp 14:00–16:00 Tuấn · Phòng B
+        - paragraph: Lịch đề xuất · Chưa giữ chỗ
+      - listitem:
+        - paragraph:
+          - time: 15:00
+          - text: – Trong ngày
+        - paragraph: Makeup 14:00–15:00 Mai · Chụp 15:00–17:00 Tuấn · Phòng B
+      - listitem:
+        - paragraph:
+          - time: 25/10 · 09:00
+          - text: – Ngày khác
+        - paragraph: Makeup 08:00–09:00 Mai · Chụp 09:00–11:00 Tuấn · Phòng B
+    - paragraph: Các giờ gợi ý là phương án thay thế, không phải các lịch đặt đồng thời.
+- contentinfo:
+  - paragraph: GradStudio
+  - paragraph: Một lời hẹn chỉn chu, một ngày đáng nhớ.

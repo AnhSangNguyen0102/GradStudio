@@ -2,6 +2,8 @@
 """Automated checks for the GradStudio PA#2 static pages.
 
 Run from the repository root:   python3 checks/run_checks.py
+Add --screenshots to also re-take screenshots/ (off by default, because the
+submitted screenshots are taken by hand in DevTools and must not be overwritten).
 Needs:  Python 3 + the `playwright` package with Chromium installed.
 
 What it does for every *.html file in the repository root:
@@ -12,7 +14,7 @@ What it does for every *.html file in the repository root:
   * checks links (target file and #fragment exist), external URLs, <script> tags
   * checks <html lang>, <title>, exactly one <h1>, heading order, image alt,
     duplicate ids, label/for and aria-describedby targets, unclosed tags
-  * saves screenshots (JS turned off, like the marking) to screenshots/
+  * with --screenshots only: saves screenshots (JS turned off) to screenshots/
   * writes a human-readable report to checks/results.md
 
 It is NOT the W3C validator (that needs the network): validate each page at
@@ -213,8 +215,11 @@ def main():
         return 1
     if not (ROOT / "index.html").is_file():
         print("index.html (the first page) is missing")
+    # Screenshots are opt-in: the ones in screenshots/ are DevTools captures.
+    take_shots = "--screenshots" in sys.argv[1:]
     shots = ROOT / "screenshots"
-    shots.mkdir(exist_ok=True)
+    if take_shots:
+        shots.mkdir(exist_ok=True)
 
     lints = {}
     for p in pages:
@@ -233,7 +238,7 @@ def main():
             lint, raw, res = lints[p.name]
             res = list(res) + check_links(p.resolve(), lint, {k: v for k, v in id_map.items()})
             for w in WIDTHS:
-                # JS ON: measure.  JS OFF: screenshot (this is how static pages are marked).
+                # JS ON: measure.  JS OFF (only with --screenshots): screenshot.
                 ctx = browser.new_context(viewport={"width": w, "height": 900})
                 pg = ctx.new_page()
                 pg.on("request", lambda r: external_requests.append(r.url)
@@ -249,11 +254,12 @@ def main():
                     found = [t for t in FORBIDDEN_TEXT if t.lower() in m["text"].lower()]
                     res.append(("PASS" if not found else "FAIL", "no forbidden demo text / 'Đã xác nhận'", ", ".join(found)))
                 ctx.close()
-                ctx = browser.new_context(viewport={"width": w, "height": 900}, java_script_enabled=False)
-                pg = ctx.new_page()
-                pg.goto(f"{base}/{p.name}")
-                pg.screenshot(path=str(shots / f"{p.stem}-{w}.png"), full_page=True)
-                ctx.close()
+                if take_shots:
+                    ctx = browser.new_context(viewport={"width": w, "height": 900}, java_script_enabled=False)
+                    pg = ctx.new_page()
+                    pg.goto(f"{base}/{p.name}")
+                    pg.screenshot(path=str(shots / f"{p.stem}-{w}.png"), full_page=True)
+                    ctx.close()
             all_rows.append((p.name, res))
         browser.close()
     httpd.shutdown()
@@ -262,7 +268,9 @@ def main():
     now = datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
     out = [f"# checks/results.md", "",
            f"Generated {now} by `python3 checks/run_checks.py` (Playwright + Chromium, pages served from localhost).", "",
-           "Screenshots (JS turned off) are in `screenshots/<page>-<width>.png`.", "",
+           ("Screenshots re-taken by this run (JS turned off) in `screenshots/<page>-<width>.png`."
+            if take_shots else
+            "Screenshots not taken by this run: `screenshots/` holds the team's DevTools captures."), "",
            "**Not covered here:** the W3C validator (needs network), contrast ratios, keyboard use, "
            "reading the page as a person. Do those by hand and record them in `AI-LOG.md` / `checks/`.", ""]
     for name, res in all_rows:
