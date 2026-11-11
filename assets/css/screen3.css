@@ -1,0 +1,708 @@
+/* ============================================================
+   GradStudio – Screen 3: Lịch chụp của tôi
+   Mobile-first (360 px), warm scrapbook / film-journal style
+   ============================================================ */
+
+/* ----------------------------------------------------------
+   1. DESIGN TOKENS
+   ---------------------------------------------------------- */
+:root {
+  /* Colour palette */
+  --color-bg:          #F7F1DF;
+  --color-surface:     #FFFDF9;
+  --color-kraft:       #ECE5D8;
+  --color-brand:       #8A5A2B;
+  --color-ink:         #1E1B18;
+  --color-muted:       #635B50;
+  --color-border:      #D5CFC5;
+  --color-border-light:#E6DEC8;
+  --color-error:       #B3402F;
+  --color-washi:       #D9C7A3;
+
+  /* Spacing scale (4 · 8 · 12 · 16 · 24 · 32 · 48) */
+  --sp-4:   4px;
+  --sp-8:   8px;
+  --sp-12:  12px;
+  --sp-16:  16px;
+  --sp-24:  24px;
+  --sp-32:  32px;
+  --sp-48:  48px;
+
+  /* Typography */
+  --font-serif:  Georgia, serif;
+  --font-sans:   system-ui, sans-serif;
+  --radius:      12px;
+  --radius-sm:   8px;
+}
+
+/* ----------------------------------------------------------
+   2. RESET & BASE
+   ---------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--color-ink);
+  background-color: var(--color-bg);
+  word-break: break-word;
+  max-width: 100%;
+}
+
+img,
+svg {
+  display: inline-block;
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
+a {
+  color: var(--color-brand);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--color-brand);
+  outline-offset: 2px;
+}
+
+button {
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid var(--color-border);
+}
+
+/* ----------------------------------------------------------
+   3. PAGE LAYOUT
+   ---------------------------------------------------------- */
+.page-wrapper {
+  max-width: 360px;
+  margin: 0 auto;
+  padding: var(--sp-32) var(--sp-16) var(--sp-48);
+}
+
+/* Gap between main blocks */
+.page-wrapper > main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-32);
+}
+
+/* ----------------------------------------------------------
+   4. HEADER
+   ---------------------------------------------------------- */
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--sp-24);
+}
+
+.site-brand {
+  font-family: var(--font-serif);
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--color-ink);
+  text-decoration: none;
+}
+
+.site-brand:hover {
+  text-decoration: underline;
+}
+
+/* User chip */
+.user-chip {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-8);
+}
+
+.user-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: var(--color-brand);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.user-name {
+  font-size: 0.875rem;
+  color: var(--color-muted);
+}
+
+/* Tabbed navigation */
+.site-nav {
+  display: flex;
+  gap: var(--sp-24);
+  border-bottom: 1px solid var(--color-border);
+  margin-bottom: var(--sp-32);
+}
+
+.site-nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding-bottom: var(--sp-8);
+  font-size: 0.875rem;
+  color: var(--color-muted);
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+}
+
+.site-nav a:hover {
+  color: var(--color-ink);
+}
+
+.site-nav a.active {
+  color: var(--color-brand);
+  border-bottom-color: var(--color-brand);
+  font-weight: 600;
+}
+
+/* ----------------------------------------------------------
+   5. PAGE TITLE
+   ---------------------------------------------------------- */
+.page-title {
+  font-family: var(--font-serif);
+  font-size: 2rem;             /* 32 px */
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--color-ink);
+  margin-bottom: var(--sp-8);
+}
+
+.page-subtitle {
+  font-size: 1rem;
+  color: var(--color-muted);
+  line-height: 1.5;
+}
+
+/* ----------------------------------------------------------
+   6. STATUS FILTER BUTTONS
+   ---------------------------------------------------------- */
+.filter-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-8);
+}
+
+.filter-btn {
+  min-height: 48px;
+  padding: var(--sp-8) var(--sp-16);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-surface);
+  color: var(--color-ink);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  text-align: center;
+  transition: background-color 0.15s, color 0.15s;
+}
+
+.filter-btn:hover {
+  background-color: var(--color-kraft);
+}
+
+.filter-btn.active {
+  background-color: var(--color-brand);
+  color: #fff;
+  border-color: var(--color-brand);
+}
+
+/* ----------------------------------------------------------
+   7. TIMELINE CARD (Frame specs from Figma:
+   - Resizing: W 328 Fill, H 639 Hug
+   - Corner radius: 2px
+   - Background: matches page bg (#F7F1DF / var(--color-bg))
+   - Border: 1px solid var(--color-border)
+   ---------------------------------------------------------- */
+.timeline-card {
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 2px;
+  padding: var(--sp-24) var(--sp-16);
+  position: relative;
+}
+
+/* Washi tape decoration at the top (exact 120x28, centered) */
+.washi-tape {
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+}
+
+/* Month heading - left aligned per Figma */
+.timeline-month {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 600;
+  text-align: left;
+  margin-bottom: var(--sp-16);
+  color: var(--color-ink);
+}
+
+/* Week day bar */
+.week-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--sp-4);
+  margin-bottom: var(--sp-16);
+}
+
+.week-day {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-4);
+  flex: 1;
+  min-width: 0;
+  padding: 8px 2px;
+  border-radius: var(--radius-sm);
+}
+
+.week-day__label {
+  font-size: 0.75rem;
+  color: var(--color-muted);
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+.week-day__date {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--color-ink);
+  line-height: 1.2;
+}
+
+/* Selected state: dark brown rounded rectangle covering BOTH label and date */
+.week-day--selected {
+  background-color: var(--color-brand);
+  border-radius: 8px;
+  padding: 8px 4px;
+}
+
+.week-day--selected .week-day__label,
+.week-day--selected .week-day__date {
+  color: #fff;
+  font-weight: 600;
+}
+
+/* Sunday accent */
+.week-day--sunday:not(.week-day--selected) .week-day__label,
+.week-day--sunday:not(.week-day--selected) .week-day__date {
+  color: var(--color-error);
+}
+
+/* Divider */
+.timeline-card hr {
+  margin: var(--sp-16) 0;
+}
+
+/* Day label */
+.day-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin-bottom: var(--sp-16);
+}
+
+/* Timeline list */
+.timeline-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-24);
+  counter-reset: tl-step;
+  /* Re-enable counter for ordered list semantics */
+  list-style: none;
+  padding: 0;
+}
+
+.timeline-item {
+  display: flex;
+  gap: var(--sp-12);
+  align-items: flex-start;
+}
+
+.timeline-item__icon {
+  flex-shrink: 0;
+}
+
+.timeline-item__body {
+  flex: 1;
+  min-width: 0;
+}
+
+.timeline-item__time {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-ink);
+  display: block;
+  margin-bottom: var(--sp-4);
+}
+
+/* Struck-out time (cancelled slot) */
+.timeline-item__time--cancelled {
+  text-decoration: line-through;
+  color: var(--color-error);
+}
+
+.timeline-item__desc {
+  font-size: 0.875rem;
+  color: var(--color-muted);
+  line-height: 1.5;
+}
+
+/* ----------------------------------------------------------
+   8. BOOKING CARD (article - Frame GS-1024)
+   Exact Figma Auto layout specs:
+   - Resizing: W 328 Fill, H Hug
+   - Flow: vertical (column)
+   - Gap: 24px
+   - Padding: 24px all sides
+   - Corner radius: 2px
+   - Fill: GradStudio/Bề mặt/kraft (#ECE5D8)
+   ---------------------------------------------------------- */
+.booking-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-24);
+  background-color: var(--color-kraft);
+  border: 1px solid var(--color-border);
+  border-radius: 2px;
+  padding: var(--sp-24);
+}
+
+/* Card header: code + bookmark */
+.booking-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.booking-card__code {
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--color-ink);
+}
+
+/* Status badge (Frame specs from Figma:
+   - Resizing: W 280 Fill, H 34 Hug
+   - Auto layout: Flow horizontal, Alignment Center-Left
+   - Gap: 8px
+   - Padding: Horizontal 12px, Vertical 8px
+   - Corner radius: 8px
+   - Fill: Nền/giấy (#F7F1DF / var(--color-bg))
+   - Stroke: 1px border (#D5CFC5)
+*/
+.status-badge {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-8);
+  width: 100%;
+  padding: 8px 12px;
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  color: var(--color-brand);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.status-badge svg {
+  flex-shrink: 0;
+}
+
+/* Booking title */
+.booking-card__title {
+  font-family: var(--font-serif);
+  font-size: 1.375rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--color-ink);
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: var(--sp-16);
+}
+
+/* Detail list (dl) - stacked vertical */
+.booking-details {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-12);
+}
+
+.booking-details dt {
+  font-size: 0.75rem;
+  color: var(--color-muted);
+}
+
+.booking-details dd {
+  font-size: 0.9375rem;
+  color: var(--color-ink);
+  font-weight: 500;
+  margin-top: 2px;
+}
+
+/* Pricing box (enclosed frame - Frame specs from Figma:
+   - W: 280 Fill, H: 210 Hug
+   - Auto layout: Flow vertical, Gap 16px, Padding 16px
+   - Corner radius: 2px
+   - Fill: GradStudio/Nền/giấy (#F7F1DF)
+   - Stroke: 1px border (#D5CFC5)
+*/
+.pricing-box {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-16);
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 2px;
+  padding: var(--sp-16);
+}
+
+.pricing-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-12);
+}
+
+.pricing-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 0.9375rem;
+}
+
+.pricing-row dt {
+  color: var(--color-ink);
+  font-weight: 500;
+}
+
+.pricing-row dd {
+  color: var(--color-ink);
+  text-align: right;
+  font-weight: 600;
+}
+
+.pricing-row--package {
+  border-bottom: 1px solid var(--color-border-light);
+  padding-bottom: var(--sp-12);
+}
+
+.pricing-row--highlight dt,
+.pricing-row--highlight dd {
+  color: var(--color-brand);
+  font-weight: 700;
+  font-size: 1.125rem;
+}
+
+.pricing-note {
+  font-size: 0.8125rem;
+  color: var(--color-muted);
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* Hold-note */
+.hold-note {
+  font-size: 0.875rem;
+  color: var(--color-ink);
+  line-height: 1.5;
+}
+
+/* CTA group */
+.cta-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-8);
+}
+
+/* CTA button */
+.btn-cta {
+  display: block;
+  width: 100%;
+  min-height: 48px;
+  padding: var(--sp-12) var(--sp-24);
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  background-color: var(--color-brand);
+  border: none;
+  border-radius: var(--radius-sm);
+  text-align: center;
+}
+
+.btn-cta:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.btn-cta-note {
+  display: block;
+  font-size: 0.8125rem;
+  color: var(--color-muted);
+  text-align: center;
+  font-style: italic;
+  margin-top: var(--sp-8);
+}
+
+/* ----------------------------------------------------------
+   9. STUDIO ADDRESS CARD (Frame specs from Figma:
+   - Resizing: W 328 Fill, H 100 Hug
+   - Auto layout: Flow vertical, Gap 0, Padding 24px
+   - Alignment: Top-Left
+   - Appearance: Corner radius 2px
+   - Fill: GradStudio/Nền/giấy (#F7F1DF)
+   - Border: 1px solid var(--color-border)
+   ---------------------------------------------------------- */
+.studio-address {
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 2px;
+  padding: var(--sp-24);
+  font-size: 0.9375rem;
+  color: var(--color-ink);
+  line-height: 1.5;
+  text-align: left;
+}
+
+/* ----------------------------------------------------------
+   10. CHAT LINK (Frame specs from Figma:
+   - Resizing: W 328 Fill, H 68 Hug
+   - Auto layout: Flow horizontal, Alignment Top-Left
+   - Gap: 8px
+   - Padding: Horizontal 0, Vertical 8px
+   - Appearance: Corner radius 0, No fill, No stroke
+   - Typography: color brand, underlined
+   ---------------------------------------------------------- */
+.chat-link {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-8);
+  min-height: 44px;
+  padding: var(--sp-8) 0;
+  color: var(--color-brand);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  border: none;
+  background: none;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+}
+
+.chat-link svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.chat-link:hover {
+  opacity: 0.85;
+}
+
+/* ----------------------------------------------------------
+   11. FOOTER
+   ---------------------------------------------------------- */
+.site-footer {
+  text-align: center;
+  font-size: 0.8125rem;
+  color: var(--color-muted);
+  padding: var(--sp-32) var(--sp-16) var(--sp-16);
+}
+
+/* ----------------------------------------------------------
+   12. RESPONSIVE – 768 px + (Tablet)
+   ---------------------------------------------------------- */
+@media (min-width: 768px) {
+  /* 1. Container mở rộng, căn giữa, tăng padding */
+  .page-wrapper {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: var(--sp-48) var(--sp-32) var(--sp-48);
+  }
+
+  /* 2. Bộ lọc trạng thái: 1 hàng ngang 4 nút đều nhau */
+  .filter-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--sp-12);
+  }
+
+  /* 3. Lịch tuần: tăng khoảng cách dãn đều giữa các ngày */
+  .week-bar {
+    gap: var(--sp-8);
+  }
+
+  .week-day {
+    padding: var(--sp-8) var(--sp-8);
+  }
+
+  .week-day--selected {
+    padding: var(--sp-8) var(--sp-12);
+  }
+
+  /* 4. Thẻ đơn GS-1024: thông tin chi tiết chuyển sang bố cục 2 cột */
+  .booking-details {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: var(--sp-12) var(--sp-24);
+    align-items: baseline;
+  }
+
+  .booking-details dd {
+    margin-top: 0;
+  }
+
+  /* 5. Bảng giá & cọc: padding thoáng hơn */
+  .pricing-box {
+    padding: var(--sp-24);
+  }
+}
+
+/* ----------------------------------------------------------
+   13. RESPONSIVE – 1280 px +
+   ---------------------------------------------------------- */
+@media (min-width: 1280px) {
+  .page-wrapper {
+    max-width: 960px;
+  }
+}
