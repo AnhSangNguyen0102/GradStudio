@@ -45,6 +45,7 @@ Read `brief.md` first. These rules are mandatory. If a request conflicts with a 
 - The pages share no code, so copy facts exactly from the example story in `brief.md`. Fixed story: Saturday 24/10/2026; customer Linh (Nguyễn Thùy Linh); Admin Thảo; make-up 13:00–14:00 with Mai; shoot 14:00–16:00 with Tuấn in Phòng B; Gói Tốt nghiệp Premium (2 giờ, 30 ảnh chỉnh); 1.800.000đ, deposit 540.000đ, remaining 1.260.000đ; booking GS-1024.
 - Status names, exactly. Conversations: Chưa trả lời / Đang tư vấn / Đã chốt lịch / Hoàn thành. Bookings: Chờ cọc 30% (Screen 3 may show "Đã thống nhất lịch · Chờ cọc 30%") / Đã đặt lịch / Hoàn thành. Never "Đã xác nhận" for a conversation.
 - Only say the studio holds the slot after the deposit succeeds.
+- Keep at least one long item so the layout is tested (rubric): the Screen 2 conversation "Tôn Nữ Hoàng Bảo Ngọc · Đại diện lớp 12A3 (kỷ yếu cả lớp)" (sample name). Do not shorten it; it must wrap at every width.
 - Do not build anything from the brief's "Not building" list.
 
 ## Forbidden (the "Fix these" list)

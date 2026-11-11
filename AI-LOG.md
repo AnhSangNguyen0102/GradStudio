@@ -354,3 +354,11 @@ Kept: the checker screenshot saved as `checks/validator-admin-tu-van.png`; a "su
 Changed: none.
 Rejected: none.
 By hand: re-ran the W3C Nu checker on `admin-tu-van.html` by file upload with outline and image report on: no errors or warnings, outline shows the new long name.
+
+## 2026-11-11 — Re-score the self-assessment after the last fixes
+Tool: Claude Code, Claude Opus 5.5
+Asked for: re-estimate `SELF_ASSESSMENT_REPORT.md` after the day's fixes, and say whether the long sample name needs a change in the brief, `CLAUDE.md` or `PROTOTYPE.md`.
+Kept: scores 19 / 25 / 20 / 8 / 8 / 9 / 4 = 93 (criterion 2 and 3 have no open flaw left; criterion 4 lowered to 8 after measuring 12–14 px secondary text on Screens 2 and 3; criterion 6 raised to 9 for the specific Rejected and By hand lines); zip name in the report changed to `_93`; one rule in `CLAUDE.md` to keep the long Screen 2 name; `brief.md` left unchanged because it records what was given to the assistant and §6b already asks for long names to wrap; `PROTOTYPE.md` §4 already names the long item.
+Changed: none.
+Rejected: none.
+By hand: none.
