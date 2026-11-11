@@ -100,4 +100,26 @@ Changed: thêm @font-face với unicode-range tiếng Việt và chỉnh fallbac
 Rejected: (person to fill in)
 By hand: (person to fill in)
 
+## 2026-11-11 — Redesign Section 02 Quy trình: Scrapbook stepped staircase, distinct paper textures, patterned washi, spiral holes & hand-drawn doodle arrows
+Tool: Antigravity, Gemini 3.8 Flash
+Asked for: thiết kế lại section 02 Quy trình theo phong cách scrapbook ảnh mẫu (giữ font serif và màu của trang, giữ toàn bộ nội dung mô tả); cấu trúc ol.steps với 4 li.step (số aria-hidden, h3 tên bước, p mô tả); bố cục bậc thang desktop (margin-top 0, 6%, 12%, 18%, margin âm, z-index tăng dần, xoay -2deg, 1.5deg, -1deg, 2deg); 4 chất liệu giấy khác nhau (kraft nâu nhạt, giấy kem trơn, giấy thô có hạt kèm tờ giấy sổ lò xo với hàng lỗ xé radial-gradient, giấy trắng mép dưới xé clip-path); 4 mẫu băng keo hoạ tiết răng cưa (sọc chéo, chấm bi xanh rêu, caro đỏ gạch, ô lưới xanh ngọc, thêm băng keo chấm bi xanh dương dán chéo dưới bước 02); số serif lớn màu nâu đậm; SVG overlay 3 mũi tên cong nối bước, ngôi sao, tia lấp lánh, vòng xoắn, kẹp giấy kim loại ở bước 04, gạch chân đôi vẽ tay cho nhãn "02 QUY TRÌNH"; responsive 2x2 ở 768-1023px và 1 cột có mũi tên xuống dưới 768px; chuẩn hoá NFC toàn bộ file HTML và kiểm tra @font-face.
+Kept: (person to fill in)
+Changed: chuẩn hoá Unicode NFC toàn bộ file HTML; kiểm tra và báo cáo việc thiếu tệp PlayfairDisplay-Bold.woff2 cục bộ trong assets/fonts; thay .process-grid bằng ol.steps role="list" với 4 li.step; tạo bố cục bậc thang 4 cột với margin-top lũy tiến (0, 6%, 12%, 18%) và margin âm chồng mép; tạo 4 loại giấy với lớp nền lệch góc (::before), thêm tấm giấy sổ lò xo với hàng lỗ bấm tròn bằng radial-gradient cho bước 03; thiết kế 5 miếng băng keo răng cưa với hoa văn chấm bi, sọc, caro và ô lưới; thêm kẹp giấy SVG ở bước 04; thêm nhãn có gạch chân đôi vẽ tay, 3 mũi tên cong nối bước và các doodle rải góc; xử lý responsive 2x2 không bậc thang ở tablet và 1 cột với mũi tên dọc ở mobile; thiết lập overflow-x: clip trên #quy-trinh chống tràn ngang.
+Rejected: (person to fill in)
+By hand: (person to fill in)
 
+## 2026-11-11 — Refactor Section 02 Quy trình header (curved textPath SVG, 2-column grid-template-areas) & fix card text overlap
+Tool: Antigravity, Gemini 3.8 Flash
+Asked for: sửa phần đầu section 02 Quy trình: đưa tiêu đề "Các bước đặt lịch chụp" sang góc phải đối diện nhãn "02 QUY TRÌNH" bằng grid-template-areas "label title" / "desc title"; tiêu đề chạy theo đường cong lượn sóng SVG textPath (viewBox 640x150, id wave-quy-trinh, h2 giữ chữ trong span.visually-hidden, SVG aria-hidden, font/màu biến CSS); dưới 768px xếp 1 cột theo thứ tự nhãn -> tiêu đề cong -> mô tả, không tràn khung ở 360px; dời ngôi sao doodle không đè lên chữ nhãn; khắc phục thẻ bước che mất chữ mô tả bước 01 và 02 bằng cách giảm độ chồng và tăng padding-right; kiểm tra nguyên nhân font tiêu đề/số bước hiển thị font dự phòng (Times).
+Kept: (person to fill in)
+Changed: tái cấu trúc .process-header dùng CSS Grid 2 cột với grid-template-areas "label title" / "desc title" ở desktop và "label" / "title" / "desc" ở mobile; tích hợp SVG textPath lượn sóng cho tiêu đề với h2 chứa span.visually-hidden; dời doodle sao lấp lánh sang góc trên phải tiêu đề; giảm margin-left chồng mép giữa các thẻ từ -20px xuống -8px và tăng padding-right lên 30-32px cho bước 01/02 để không chữ nào bị che; phân tích và giải thích cặn kẽ nguyên nhân thiếu tệp PlayfairDisplay-Bold.woff2 dẫn đến fallback sang Times New Roman.
+Rejected: (person to fill in)
+By hand: (person to fill in)
+
+## 2026-11-11 — Sticky header with glassmorphism paper tint, overflow fix & no-JS mobile details dropdown
+Tool: Antigravity, Gemini 3.8 Flash
+Asked for: làm header cố định (position: sticky, top: 0, z-index: 100, nền rgba bán trong suốt + backdrop-filter để thấy vân giấy); thêm scroll-padding-top cho html bằng chiều cao header; kiểm tra và đổi overflow: hidden / overflow-x: hidden của phần tử cha sang overflow-x: clip; dưới 768px header cao 56px, ẩn nav ngang và tên Linh (giữ avatar), thay bằng menu details/summary mở dropdown bên phải không dùng JavaScript; áp dụng cùng header cho cả 3 trang, link "Lịch chụp của tôi" trỏ file màn 3; kiểm tra không che nội dung link neo, không cuộn ngang và focus bàn phím (Tab).
+Kept: (person to fill in)
+Changed: đổi overflow-x: hidden trên body sang overflow-x: clip để position: sticky hoạt động chuẩn; thêm scroll-padding-top theo biến --header-height (68px desktop, 56px mobile); đặt position: sticky, top: 0, z-index: 100, nền rgba(246, 238, 222, 0.88) và backdrop-filter blur(8px) cho .site-header (đồng thời bỏ ghi đè transparent trên .page-home); thay nav mobile bằng cụm details/summary với dropdown .mobile-dropdown-nav mở bên phải thuần HTML/CSS không cần JS; ẩn tên Linh dưới 768px và giữ lại avatar; đồng bộ mã header trên cả index.html, admin-tu-van.html, lich-chup-cua-toi.html; dọn sạch thẻ đóng trùng lặp trong index.html.
+Rejected: (person to fill in)
+By hand: (person to fill in)

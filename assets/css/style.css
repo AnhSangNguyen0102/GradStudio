@@ -91,6 +91,9 @@
 
   /* Container width */
   --container-max: 1200px;
+
+  /* Header Height */
+  --header-height: 68px;
 }
 
 /* ==========================================================================
@@ -107,6 +110,7 @@ html {
   font-size: 16px;
   line-height: 1.6;
   scroll-behavior: smooth;
+  scroll-padding-top: var(--header-height, 68px);
   background-color: var(--color-bg);
   color: var(--color-text);
   font-family: var(--font-sans);
@@ -119,7 +123,7 @@ body {
   background-color: var(--color-bg);
   color: var(--color-text);
   font-family: var(--font-sans);
-  overflow-x: hidden;
+  overflow-x: clip; /* clip thay thế hidden để position: sticky hoạt động ổn định */
   position: relative;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paperNoise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.16 0 0 0 0 0.12 0 0 0 0 0.08 0 0 0 0.035 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paperNoise)'/%3E%3C/svg%3E");
   background-repeat: repeat;
@@ -150,7 +154,6 @@ body {
 }
 
 /* Chuyển các nền màu đặc trong trang chủ thành transparent hoặc rgba */
-.page-home .site-header,
 .page-home main,
 .page-home .section,
 .page-home .hero,
@@ -521,13 +524,20 @@ a:hover {
    Header & Navigation
    ========================================================================== */
 
+/* 1. Header cố định: sticky, top 0, z-index 100, nền rgba + blur */
 .site-header {
-  padding-top: var(--space-lg);
-  padding-bottom: var(--space-lg);
-  background-color: var(--color-bg);
-  border-bottom: 1px solid var(--color-border-subtle);
-  position: relative;
-  z-index: 20;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: var(--header-height, 68px);
+  background-color: rgba(246, 238, 222, 0.88);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(60, 42, 22, 0.1);
+  box-shadow: 0 1px 6px rgba(60, 42, 22, 0.05);
+  display: flex;
+  align-items: center;
+  transition: height 0.2s ease, background-color 0.2s ease;
 }
 
 .header-container {
@@ -535,6 +545,8 @@ a:hover {
   align-items: center;
   justify-content: space-between;
   gap: var(--space-md);
+  width: 100%;
+  position: relative;
 }
 
 .logo {
@@ -547,12 +559,20 @@ a:hover {
   display: inline-flex;
   align-items: center;
   gap: var(--space-2xs);
+  flex-shrink: 0;
 }
 
 .logo:hover {
   color: var(--color-primary);
 }
 
+.logo:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 4px;
+  border-radius: var(--radius-xs);
+}
+
+/* Navigation ngang trên Desktop (≥768px) */
 .main-nav {
   display: flex;
   align-items: center;
@@ -566,11 +586,17 @@ a:hover {
   padding: var(--space-xs) var(--space-sm);
   border-radius: var(--radius-sm);
   position: relative;
+  text-decoration: none;
   transition: color 0.2s ease;
 }
 
 .nav-link:hover {
   color: var(--color-primary);
+}
+
+.nav-link:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
 }
 
 .nav-link.active::after {
@@ -584,15 +610,23 @@ a:hover {
   border-radius: var(--radius-full);
 }
 
-.user-profile {
+/* Cụm góc phải: Profile + Menu Mobile */
+.header-right {
   display: flex;
   align-items: center;
   gap: var(--space-sm);
+  position: relative;
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
 }
 
 .avatar-circle {
-  width: 38px;
-  height: 38px;
+  width: 36px;
+  height: 36px;
   border-radius: var(--radius-full);
   background-color: var(--color-primary);
   color: #FFFFFF;
@@ -601,14 +635,114 @@ a:hover {
   justify-content: center;
   font-family: var(--font-serif);
   font-weight: 700;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   box-shadow: 0 2px 4px rgba(139, 90, 43, 0.25);
+  flex-shrink: 0;
 }
 
 .user-name {
   font-weight: 600;
   color: var(--color-text);
   font-size: 0.95rem;
+}
+
+/* 3. Menu <details> cho Mobile (Ẩn trên màn hình rộng >= 768px) */
+.mobile-menu-details {
+  display: none;
+  position: relative;
+}
+
+.mobile-menu-summary {
+  list-style: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #3D2616;
+  background-color: #EFE3C8;
+  border: 1px solid rgba(60, 42, 22, 0.2);
+  border-radius: var(--radius-xs, 4px);
+  cursor: pointer;
+  user-select: none;
+  box-shadow: 0 1px 3px rgba(60, 42, 22, 0.08);
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.mobile-menu-summary::-webkit-details-marker,
+.mobile-menu-summary::marker {
+  display: none;
+}
+
+.mobile-menu-summary:hover {
+  background-color: #E6D5B0;
+  border-color: rgba(60, 42, 22, 0.35);
+}
+
+.mobile-menu-summary:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Biểu tượng hamburger 3 gạch */
+.menu-icon {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 14px;
+  height: 10px;
+}
+
+.menu-icon span {
+  display: block;
+  width: 100%;
+  height: 1.5px;
+  background-color: currentColor;
+  border-radius: 1px;
+}
+
+/* Dropdown menu bên phải, không tràn màn hình */
+.mobile-dropdown-nav {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  width: 220px;
+  max-width: min(280px, calc(100vw - 32px));
+  background-color: #FAF4E8;
+  background-image: 
+    linear-gradient(175deg, #FFFDF8 0%, #FAF4E8 100%),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.18 0 0 0 0 0.14 0 0 0 0 0.1 0 0 0 0.035 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)'/%3E%3C/svg%3E");
+  border: 1px solid rgba(60, 42, 22, 0.18);
+  border-radius: var(--radius-sm, 6px);
+  box-shadow: 0 8px 24px rgba(60, 42, 22, 0.16), 0 2px 6px rgba(60, 42, 22, 0.08);
+  padding: 6px 0;
+  display: flex;
+  flex-direction: column;
+  z-index: 120;
+}
+
+.mobile-nav-link {
+  display: block;
+  padding: 10px 16px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #3D2616;
+  text-decoration: none;
+  transition: background-color 0.15s ease, color 0.15s ease;
+  border-bottom: 1px dashed rgba(60, 42, 22, 0.1);
+}
+
+.mobile-nav-link:last-child {
+  border-bottom: none;
+}
+
+.mobile-nav-link:hover,
+.mobile-nav-link:focus-visible {
+  background-color: #EFE3C8;
+  color: var(--color-primary);
+  outline: none;
 }
 
 /* ==========================================================================
@@ -1735,42 +1869,640 @@ a:hover {
   pointer-events: none;
 }
 
-/* ==========================================================================
-   Section 02 – Quy trình (4 Cột)
-   ========================================================================== */
-
-.process-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: var(--space-xl);
+/* Accessibility utility */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
-.process-col {
-  border-top: 1.5px solid var(--color-border);
-  padding-top: var(--space-lg);
-  display: flex;
-  flex-direction: column;
+/* ==========================================================================
+   Section 02 – Quy trình (Scrapbook Stepped Cards, Patterned Washi, Spiral Holes, Doodles)
+   ========================================================================== */
+
+#quy-trinh {
+  overflow-x: clip;
   position: relative;
 }
 
-.step-num {
-  font-family: var(--font-serif);
-  font-size: 2.25rem;
-  font-weight: 700;
-  color: var(--color-primary);
-  line-height: 1;
-  margin-bottom: var(--space-sm);
+/* 1. Header Section 02: 2 cột đối diện (label + desc bên trái, tiêu đề cong bên phải) */
+.process-header {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(280px, 1fr) 1.4fr;
+  grid-template-rows: auto auto;
+  grid-template-areas:
+    "label title"
+    "desc title";
+  align-items: center;
+  gap: var(--space-xs) var(--space-2xl);
+  text-align: left;
+  max-width: 100%;
+  margin: 0 0 var(--space-2xl);
 }
 
-.step-title {
-  font-size: 1.15rem;
+/* 7. Nhãn "02 QUY TRÌNH" có gạch chân đôi vẽ tay SVG */
+.process-tag-wrap {
+  grid-area: label;
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-self: start;
+  align-self: end;
   margin-bottom: var(--space-xs);
 }
 
-.step-desc {
-  font-size: 0.925rem;
-  color: var(--color-text-muted);
+.tag-double-underline-svg {
+  width: 116px;
+  height: 14px;
+  margin-top: 2px;
+  pointer-events: none;
+}
+
+/* Cột mô tả dưới nhãn bên trái */
+.process-desc {
+  grid-area: desc;
+  margin: 0;
+  max-width: 460px;
+  font-size: 0.95rem;
   line-height: 1.6;
+  color: var(--color-text-muted);
+  text-align: left;
+}
+
+/* Cột tiêu đề lượn sóng đối diện nhãn bên phải */
+.process-title-area {
+  grid-area: title;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  position: relative;
+  width: 100%;
+}
+
+.process-curved-heading {
+  margin: 0;
+  width: 100%;
+  max-width: 600px;
+  line-height: 1;
+}
+
+.process-curved-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
+}
+
+.curved-title-text {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 42px;
+  fill: var(--color-text);
+  letter-spacing: -0.01em;
+}
+
+/* 4. Dời ngôi sao doodle sang góc trên phải tiêu đề (đặt xa nhãn, không đè lên chữ) */
+.curved-title-doodle {
+  position: absolute;
+  top: -12px;
+  right: -8px;
+  width: 44px;
+  height: 38px;
+  pointer-events: none;
+}
+
+/* Khung chứa các bước */
+.steps-wrapper {
+  position: relative;
+  width: 100%;
+  padding: 30px 0 50px;
+}
+
+/* 1. Cấu trúc danh sách các bước */
+.steps {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: flex-start;
+  position: relative;
+}
+
+/* 2. Bố cục bậc thang (≥1024px) & góc xoay */
+.step {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s ease, filter 0.25s ease;
+}
+
+.step-01 {
+  --step-rot: -2deg;
+  transform: rotate(var(--step-rot));
+  margin-top: 0;
+  z-index: 1;
+}
+
+.step-02 {
+  --step-rot: 1.5deg;
+  transform: rotate(var(--step-rot));
+  margin-top: 6%;
+  margin-left: -8px; /* Giảm độ chồng mép để không che chữ bước 01 */
+  z-index: 2;
+}
+
+.step-03 {
+  --step-rot: -1deg;
+  transform: rotate(var(--step-rot));
+  margin-top: 12%;
+  margin-left: -8px; /* Giảm độ chồng mép để không che chữ bước 02 */
+  z-index: 3;
+}
+
+.step-04 {
+  --step-rot: 2deg;
+  transform: rotate(var(--step-rot));
+  margin-top: 18%;
+  margin-left: -8px;
+  z-index: 4;
+}
+
+.step:hover {
+  transform: translateY(-5px) rotate(var(--step-rot));
+}
+
+/* 3. Lớp giấy nền lệch góc phía sau (::before) */
+.step-01::before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: -8px;
+  right: 6px;
+  bottom: 6px;
+  background-color: #D8C3A4;
+  transform: rotate(-4deg);
+  border-radius: 2px;
+  z-index: 1;
+  pointer-events: none;
+  clip-path: polygon(
+    0% 3px, 20% 0%, 40% 3px, 60% 0%, 80% 3px, 100% 0%,
+    98% 30%, 100% 60%, 97% 90%, 100% 100%,
+    80% 98%, 50% 100%, 20% 97%, 0% 100%,
+    2% 70%, 0% 35%
+  );
+  box-shadow: 0 2px 8px rgba(60, 42, 22, 0.08);
+}
+
+.step-02::before {
+  content: "";
+  position: absolute;
+  top: 12px;
+  left: -4px; /* Thu hẹp chìa sang trái để bảo vệ chữ bước 01 */
+  right: 4px;
+  bottom: -14px;
+  background-color: #CCAFA0;
+  transform: rotate(-3.5deg);
+  border-radius: 2px;
+  z-index: 1;
+  pointer-events: none;
+  clip-path: polygon(
+    0% 4px, 25% 1px, 50% 5px, 75% 2px, 100% 4px,
+    98% 40%, 100% 80%, 97% 100%,
+    70% 97%, 40% 100%, 10% 98%, 0% 100%,
+    3% 60%, 1% 20%
+  );
+  box-shadow: 0 2px 8px rgba(60, 42, 22, 0.08);
+}
+
+.step-03::before {
+  content: "";
+  position: absolute;
+  top: 6px;
+  left: -6px;
+  right: 8px;
+  bottom: -8px;
+  background-color: #E2CCA8;
+  transform: rotate(3deg);
+  border-radius: 2px;
+  z-index: 0;
+  pointer-events: none;
+  box-shadow: 0 2px 6px rgba(60, 42, 22, 0.08);
+}
+
+.step-04::before {
+  content: "";
+  position: absolute;
+  top: 6px;
+  left: -8px;
+  right: 6px;
+  bottom: -6px;
+  background-color: #E8D9C5;
+  transform: rotate(-2.5deg);
+  border-radius: 2px;
+  z-index: 1;
+  pointer-events: none;
+  clip-path: polygon(
+    0% 3px, 25% 0%, 50% 3px, 75% 1px, 100% 3px,
+    98% 40%, 100% 80%, 97% 100%,
+    70% 98%, 35% 100%, 0% 98%,
+    2% 60%, 0% 20%
+  );
+  box-shadow: 0 2px 8px rgba(60, 42, 22, 0.08);
+}
+
+/* Tờ giấy sổ lò xo có hàng lỗ xé phía sau bước 03 (radial-gradient) */
+.spiral-notebook-sheet {
+  position: absolute;
+  top: -36px;
+  left: -4px; /* Thu hẹp chìa sang trái để bảo vệ chữ mô tả bước 02 */
+  right: -8px;
+  bottom: 4px;
+  background-color: #D8C0A0;
+  background-image: 
+    radial-gradient(circle 4.5px at 14px 14px, #FAF7F2 98%, transparent 100%),
+    linear-gradient(180deg, rgba(60, 40, 20, 0.08) 0%, transparent 26px);
+  background-size: 24px 100%, 100% 100%;
+  background-repeat: repeat-x, no-repeat;
+  border-radius: 2px;
+  transform: rotate(2.5deg);
+  z-index: 1;
+  pointer-events: none;
+  filter: drop-shadow(0 2px 6px rgba(60, 42, 22, 0.1));
+  clip-path: polygon(
+    0% 4px, 5% 0%, 10% 4px, 15% 0%, 20% 4px, 25% 0%, 30% 4px, 35% 0%, 40% 4px, 45% 0%, 50% 4px, 55% 0%, 60% 4px, 65% 0%, 70% 4px, 75% 0%, 80% 4px, 85% 0%, 90% 4px, 95% 0%, 100% 4px,
+    98% 30%, 100% 65%, 98% 100%,
+    80% 98%, 50% 100%, 20% 98%, 0% 100%,
+    2% 70%, 0% 30%
+  );
+}
+
+/* 5. Thẻ giấy chính & Bảo vệ chữ không bị che khuất */
+.step-card {
+  position: relative;
+  z-index: 2;
+  padding: 34px 22px 28px 20px;
+  border-radius: 2px;
+  filter: drop-shadow(0 4px 10px rgba(60, 42, 22, 0.12)) drop-shadow(0 12px 22px rgba(60, 42, 22, 0.08));
+}
+
+/* Tăng padding-right cho bước 01 và 02 để chữ mô tả không bị mép thẻ kế tiếp che */
+.step-01 .step-card {
+  padding-right: 32px;
+}
+
+.step-02 .step-card {
+  padding-right: 30px;
+}
+
+/* Bước 01: Giấy kraft nâu nhạt mép xé */
+.step-01 .step-card {
+  background: linear-gradient(172deg, #ECE0CB 0%, #DFCEB4 100%);
+  clip-path: polygon(
+    0% 3px, 10% 1px, 22% 4px, 35% 1px, 48% 4px, 62% 2px, 75% 5px, 88% 2px, 100% 3px,
+    98% 25%, 100% 48%, 97% 72%, 100% 92%, 98% 100%,
+    86% 98%, 72% 100%, 58% 97%, 42% 100%, 28% 98%, 14% 100%, 0% 98%,
+    2% 78%, 0% 52%, 3% 28%
+  );
+}
+
+/* Bước 02: Giấy kem trơn mép dưới xé */
+.step-02 .step-card {
+  background: linear-gradient(175deg, #FFFDF8 0%, #FAF4E8 100%);
+  clip-path: polygon(
+    0% 2px, 15% 1px, 30% 3px, 50% 1px, 70% 3px, 85% 1px, 100% 2px,
+    99% 25%, 100% 55%, 98% 80%, 100% 100%,
+    90% 97%, 80% 100%, 68% 96%, 55% 100%, 42% 96%, 30% 100%, 18% 97%, 8% 100%, 0% 97%,
+    1% 75%, 0% 50%, 2% 25%
+  );
+}
+
+/* Bước 03: Giấy vân thô có hạt */
+.step-03 .step-card {
+  background: 
+    linear-gradient(170deg, rgba(245, 238, 219, 0.95) 0%, rgba(235, 221, 194, 0.95) 100%),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.15 0 0 0 0 0.1 0 0 0 0 0.05 0 0 0 0.07 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)'/%3E%3C/svg%3E");
+  clip-path: polygon(
+    0% 3px, 18% 1px, 34% 4px, 52% 2px, 68% 4px, 84% 1px, 100% 3px,
+    98% 30%, 100% 60%, 98% 85%, 100% 100%,
+    85% 98%, 70% 100%, 54% 97%, 38% 100%, 22% 97%, 0% 100%,
+    2% 70%, 0% 40%, 2% 15%
+  );
+}
+
+/* Bước 04: Giấy trắng mép dưới xé */
+.step-04 .step-card {
+  background: linear-gradient(180deg, #FFFFFF 0%, #F9F9F7 100%);
+  clip-path: polygon(
+    0% 0%, 100% 0%,
+    100% calc(100% - 12px),
+    96% 100%, 91% calc(100% - 8px), 85% calc(100% - 2px), 79% calc(100% - 10px),
+    72% calc(100% - 3px), 66% calc(100% - 9px), 60% calc(100% - 1px), 53% calc(100% - 8px),
+    47% calc(100% - 3px), 41% calc(100% - 10px), 34% calc(100% - 2px), 28% calc(100% - 9px),
+    21% calc(100% - 1px), 15% calc(100% - 7px), 9% calc(100% - 2px), 4% calc(100% - 8px),
+    0% calc(100% - 4px)
+  );
+}
+
+/* 4. Băng keo hoạ tiết (repeating-linear-gradient / radial-gradient) */
+.tape-moss-dots {
+  background-color: rgba(94, 115, 84, 0.88);
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.88) 2px, transparent 2.2px);
+  background-size: 11px 11px;
+  background-position: 2px 2px;
+}
+
+.tape-blue-dots {
+  background-color: rgba(100, 142, 168, 0.9);
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.88) 2px, transparent 2.2px);
+  background-size: 11px 11px;
+  background-position: 2px 2px;
+}
+
+.tape-crab-caro {
+  background-color: rgba(181, 100, 60, 0.9);
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 5px, rgba(255, 255, 255, 0.4) 5px, rgba(255, 255, 255, 0.4) 9px),
+    repeating-linear-gradient(90deg, transparent, transparent 5px, rgba(255, 255, 255, 0.4) 5px, rgba(255, 255, 255, 0.4) 9px);
+}
+
+.tape-teal-grid {
+  background-color: rgba(112, 168, 164, 0.9);
+  background-image:
+    linear-gradient(rgba(40, 85, 80, 0.35) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(40, 85, 80, 0.35) 1px, transparent 1px);
+  background-size: 7px 7px;
+}
+
+/* Vị trí các miếng băng keo */
+.step-tape-01 {
+  top: -10px;
+  left: 20px;
+  width: 95px;
+  transform: rotate(-14deg);
+}
+
+.step-tape-02 {
+  top: -12px;
+  left: 50%;
+  width: 100px;
+  transform: translateX(-50%) rotate(2deg);
+}
+
+.step-tape-02-bottom {
+  bottom: -14px;
+  right: -24px;
+  width: 95px;
+  transform: rotate(26deg);
+  z-index: 7;
+}
+
+.step-tape-03 {
+  top: -12px;
+  left: 50%;
+  width: 95px;
+  transform: translateX(-50%) rotate(-1deg);
+}
+
+.step-tape-04 {
+  top: -12px;
+  left: 50%;
+  width: 100px;
+  transform: translateX(-50%) rotate(1deg);
+}
+
+/* Kẹp giấy kim loại trên bước 04 */
+.step-paperclip {
+  top: -24px;
+  left: 18%;
+  transform: rotate(6deg);
+  z-index: 8;
+}
+
+/* 5. Typography */
+.step-num {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: clamp(2.4rem, 3.6vw, 3.2rem);
+  font-weight: 700;
+  color: #3D2616;
+  line-height: 1;
+  margin-bottom: 8px;
+  letter-spacing: -0.02em;
+}
+
+.step-title {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #24140A;
+  line-height: 1.25;
+  margin-bottom: 8px;
+}
+
+.step-desc {
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  color: #584537;
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* 6. SVG Mũi tên cong vẽ tay nối các bước & Doodles */
+.step-arrow {
+  position: absolute;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.step-arrow-1-2 {
+  right: -24px;
+  top: 38%;
+  width: 48px;
+  height: 30px;
+}
+
+.step-arrow-2-3 {
+  right: -24px;
+  top: 34%;
+  width: 50px;
+  height: 36px;
+}
+
+.step-arrow-3-4 {
+  right: -24px;
+  top: 36%;
+  width: 48px;
+  height: 30px;
+}
+
+.step-arrow svg {
+  width: 100%;
+  height: 100%;
+}
+
+.step-arrow-down {
+  display: none;
+}
+
+/* Doodles rải các góc */
+.step-doodle {
+  position: absolute;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.step-doodle-bl-01 {
+  bottom: -22px;
+  left: -28px;
+  width: 44px;
+  height: 54px;
+}
+
+.step-doodle-star-02 {
+  top: -24px;
+  left: -20px;
+  width: 24px;
+  height: 24px;
+}
+
+.step-doodle-bottom-03 {
+  bottom: -24px;
+  right: 10px;
+  width: 62px;
+  height: 26px;
+}
+
+.step-doodle-bottom-04 {
+  bottom: -18px;
+  right: -24px;
+  width: 32px;
+  height: 32px;
+}
+
+.step-doodle svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Responsive cho Section 02 Quy trình */
+/* 768–1023px: lưới 2×2, giữ băng keo và xoay, bỏ bậc thang, ẩn mũi tên ngang */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .process-header {
+    gap: var(--space-xs) var(--space-lg);
+  }
+
+  .steps {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-2xl) var(--space-xl);
+  }
+
+  .step-01, .step-02, .step-03, .step-04 {
+    margin-top: 0;
+    margin-left: 0;
+  }
+
+  .step-arrow {
+    display: none;
+  }
+
+  .step-arrow-down {
+    display: none;
+  }
+}
+
+/* 3. Dưới 768px: 1 cột theo thứ tự nhãn -> tiêu đề cong -> mô tả, không tràn khung ở 360px */
+@media (max-width: 767px) {
+  .process-header {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "label"
+      "title"
+      "desc";
+    gap: var(--space-xs);
+    text-align: center;
+    margin-bottom: var(--space-xl);
+  }
+
+  .process-tag-wrap {
+    justify-self: center;
+    align-items: center;
+    margin-bottom: var(--space-xs);
+  }
+
+  .process-title-area {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .process-curved-heading {
+    max-width: 100%;
+  }
+
+  .curved-title-text {
+    font-size: 44px;
+  }
+
+  .process-desc {
+    justify-self: center;
+    text-align: center;
+    margin: var(--space-xs) auto 0;
+  }
+
+  .curved-title-doodle {
+    display: none;
+  }
+
+  .steps {
+    grid-template-columns: 1fr;
+    max-width: 380px;
+    margin: 0 auto;
+    gap: 0;
+  }
+
+  .step-01, .step-02, .step-03, .step-04 {
+    margin-top: 0;
+    margin-left: 0;
+  }
+
+  .step-01 .step-card,
+  .step-02 .step-card {
+    padding-right: 22px;
+  }
+
+  .step-tape-02-bottom {
+    right: 8px;
+  }
+
+  .step-arrow {
+    display: none;
+  }
+
+  .step-arrow-down {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 14px auto;
+    width: 28px;
+    height: 36px;
+    pointer-events: none;
+  }
+
+  .step-04 .step-arrow-down {
+    display: none;
+  }
+
+  .step-doodle {
+    display: none;
+  }
 }
 
 /* ==========================================================================
@@ -2010,11 +2742,6 @@ a:hover {
    Mobile: 360px -> không vỡ giao diện, không tràn ngang
    ========================================================================== */
 
-@media (max-width: 992px) {
-  .process-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
 
 @media (max-width: 900px) {
   .hero-grid {
@@ -2047,18 +2774,37 @@ a:hover {
     font-size: 1.65rem;
   }
 
-  .header-container {
-    flex-wrap: wrap;
-    gap: var(--space-sm);
+  :root {
+    --header-height: 56px;
   }
 
-  .main-nav {
-    order: 3;
-    width: 100%;
-    justify-content: center;
-    gap: var(--space-md);
-    padding-top: var(--space-xs);
-    border-top: 1px solid var(--color-border-subtle);
+  html {
+    scroll-padding-top: 56px;
+  }
+
+  /* 3. Dưới 768px: header cao 56px */
+  .site-header {
+    height: 56px;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .logo {
+    font-size: 1.45rem;
+  }
+
+  /* Ẩn nav ngang và tên Linh (giữ avatar) */
+  .nav-desktop {
+    display: none;
+  }
+
+  .user-profile .user-name {
+    display: none;
+  }
+
+  /* Hiện menu <details> dropdown bên phải */
+  .mobile-menu-details {
+    display: block;
   }
 
   .hero {
@@ -2109,14 +2855,6 @@ a:hover {
     transform: translateY(-3px);
   }
 
-  .process-grid {
-    grid-template-columns: 1fr;
-    gap: var(--space-lg);
-  }
-
-  .process-col {
-    padding-top: var(--space-md);
-  }
 
   .chat-card {
     padding: var(--space-md);

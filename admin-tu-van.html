@@ -12,13 +12,37 @@
       <a href="index.html" class="logo" aria-label="Trang chủ GradStudio">
         <span>GradStudio</span>
       </a>
-      <nav class="main-nav" aria-label="Điều hướng chính">
-        <a href="index.html" class="nav-link">Trang chủ</a>
+
+      <!-- Navigation ngang trên Desktop (≥768px) -->
+      <nav class="main-nav nav-desktop" aria-label="Điều hướng chính">
+        <a href="index.html#dich-vu" class="nav-link">Dịch vụ</a>
+        <a href="index.html#quy-trinh" class="nav-link">Quy trình</a>
         <a href="lich-chup-cua-toi.html" class="nav-link">Lịch chụp của tôi</a>
       </nav>
-      <div class="user-profile" aria-label="Tài khoản quản lý">
-        <div class="avatar-circle" aria-hidden="true">T</div>
-        <span class="user-name">Admin Thảo</span>
+
+      <!-- Cụm bên phải: Profile + Menu Dropdown Mobile (<768px) -->
+      <div class="header-right">
+        <div class="user-profile" aria-label="Tài khoản khách hàng">
+          <div class="avatar-circle" aria-hidden="true">L</div>
+          <span class="user-name">Linh</span>
+        </div>
+
+        <!-- Menu Dropdown bằng HTML thuần <details> cho Mobile (<768px, không dùng JS) -->
+        <details class="mobile-menu-details">
+          <summary class="mobile-menu-summary" aria-label="Mở menu điều hướng">
+            <span class="menu-icon" aria-hidden="true">
+              <span></span>
+              <span></span>
+              <span></span>
+            </span>
+            <span class="menu-text">Menu</span>
+          </summary>
+          <nav class="mobile-dropdown-nav" aria-label="Menu di động">
+            <a href="index.html#dich-vu" class="mobile-nav-link">Dịch vụ</a>
+            <a href="index.html#quy-trinh" class="mobile-nav-link">Quy trình</a>
+            <a href="lich-chup-cua-toi.html" class="mobile-nav-link">Lịch chụp của tôi</a>
+          </nav>
+        </details>
       </div>
     </div>
   </header>
