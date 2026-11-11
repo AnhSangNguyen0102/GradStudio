@@ -1,0 +1,806 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GradStudio – Studio Ảnh Tốt Nghiệp &amp; Chân Dung</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="page-home">
+
+  <!-- Mép trái trang web dạng mép giấy xé trang trí (.torn-left) -->
+  <div class="page-torn-border" aria-hidden="true"></div>
+
+  <!-- ======================================================================
+       Header & Navigation
+       ====================================================================== -->
+  <header class="site-header">
+    <div class="container header-container">
+      <a href="index.html" class="logo" aria-label="Trang chủ GradStudio">
+        <span>GradStudio</span>
+      </a>
+
+      <nav class="main-nav" aria-label="Điều hướng chính">
+        <a href="#dich-vu" class="nav-link">Dịch vụ</a>
+        <a href="lich-chup-cua-toi.html" class="nav-link">Lịch chụp của tôi</a>
+      </nav>
+
+      <div class="user-profile" aria-label="Tài khoản khách hàng">
+        <div class="avatar-circle" aria-hidden="true">L</div>
+        <span class="user-name">Linh</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ======================================================================
+       Main Content
+       ====================================================================== -->
+  <main>
+
+    <!-- Hero Section: 2 Cột (Nội dung & Cụm Scrapbook/Polaroid/Film/Lined Notes) -->
+    <section class="section hero" aria-labelledby="hero-title">
+      <div class="container hero-grid">
+        
+        <!-- Khối 1: Giới thiệu (eyebrow, h1, mô tả) -->
+        <div class="hero-intro">
+          <p class="hero-eyebrow">
+            <svg class="hero-feature-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+            </svg>
+            <span>STUDIO ẢNH TỐT NGHIỆP &amp; CHÂN DUNG</span>
+          </p>
+
+          <h1 id="hero-title" class="hero-title">
+            Lưu lại ngày <em>ra trường</em> theo cách của bạn
+          </h1>
+
+          <p class="hero-desc">
+            Đặt lịch chụp tốt nghiệp cá nhân, kỷ yếu lớp và chân dung studio nhanh chóng. Kiểm tra lịch trực tiếp, thống nhất khung giờ và nhận ảnh trọn vẹn trong một trải nghiệm ấm áp.
+          </p>
+        </div>
+
+        <!-- Khối 2: Cụm Scrapbook Collage tỷ lệ 620/400 -->
+        <div class="collage" aria-hidden="true">
+            <!-- 8. Giấy kraft dài: left 38%, top 12%, width 32%, height 10% (z-index: 1) -->
+            <div class="collage-item collage-kraft"></div>
+
+            <!-- 9. Giấy kẻ dòng (repeating-linear-gradient): left 26%, top 52%, width 20%, height 22%, rotate -2deg (z-index: 1) -->
+            <div class="collage-item collage-lined"></div>
+
+            <!-- 1. Polaroid nhỏ phía sau: left 4%, top 30%, width 16%, rotate -8deg (z-index: 2). Ruột nền be -->
+            <div class="collage-item collage-polaroid-sm">
+              <div class="polaroid-inner bg-pastel-beige">
+                <svg class="collage-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 22V12"></path>
+                  <path d="M12 12C12 7 7 4 2 4c0 6 4 10 10 10z"></path>
+                  <path d="M12 12c0-5 5-8 10-8 0 6-4 10-10 10z"></path>
+                </svg>
+              </div>
+            </div>
+
+            <!-- 2. Film dọc 3 ô: left 12%, top 40%, width 13%, rotate -6deg (z-index: 3). 3 ô icon người/tim/sao -->
+            <div class="collage-item collage-film-left">
+              <div class="film-v-strip">
+                <div class="film-v-frame bg-pastel-sage">
+                  <svg class="film-v-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="8" r="4"></circle>
+                    <path d="M6 20v-2a6 6 0 0 1 12 0v2"></path>
+                  </svg>
+                </div>
+                <div class="film-v-frame bg-pastel-pink">
+                  <svg class="film-v-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                  </svg>
+                </div>
+                <div class="film-v-frame bg-pastel-butter">
+                  <svg class="film-v-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <!-- 3. Polaroid ngang: left 18%, top 6%, width 25%, rotate -3deg (z-index: 3), băng keo trơn ở mép trên. Ruột nền sage, icon máy ảnh -->
+            <div class="collage-item collage-polaroid-sage">
+              <div class="polaroid-inner bg-pastel-sage">
+                <svg class="collage-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+                  <circle cx="12" cy="13" r="4"></circle>
+                </svg>
+              </div>
+            </div>
+
+            <!-- 5. Polaroid ngang: left 64%, top 3%, width 22%, rotate 4deg (z-index: 3). Ruột nền be, icon hoa -->
+            <div class="collage-item collage-polaroid-flower">
+              <div class="polaroid-inner bg-pastel-beige">
+                <svg class="collage-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="3"></circle>
+                  <path d="M12 2a3 3 0 0 0-3 3c0 2 3 4 3 4s3-2 3-4a3 3 0 0 0-3-3z"></path>
+                  <path d="M12 22a3 3 0 0 0 3-3c0-2-3-4-3-4s-3 2-3 4a3 3 0 0 0 3 3z"></path>
+                  <path d="M2 12a3 3 0 0 0 3 3c2 0 4-3 4-3s-2-3-4-3a3 3 0 0 0-3 3z"></path>
+                  <path d="M22 12a3 3 0 0 0-3-3c-2 0-4 3-4 3s2 3 4 3a3 3 0 0 0 3-3z"></path>
+                </svg>
+              </div>
+            </div>
+
+            <!-- 6. Film dọc 3 ô: left 79%, top 32%, width 14%, rotate 3deg (z-index: 4) -->
+            <div class="collage-item collage-film-right">
+              <div class="film-v-strip">
+                <div class="film-v-frame bg-pastel-butter">
+                  <svg class="film-v-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                    <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                  </svg>
+                </div>
+                <div class="film-v-frame bg-pastel-sage">
+                  <svg class="film-v-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 3v3m0 12v3M3 12h3m12 0h3"></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                </div>
+                <div class="film-v-frame bg-pastel-pink">
+                  <svg class="film-v-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="9"></circle>
+                    <path d="M10 9a2 2 0 0 1 4 0v4a2 2 0 0 1-4 0z"></path>
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <!-- 7. Ảnh ngang viền xé: left 60%, top 60%, width 26%, rotate -2deg (z-index: 4). Ruột hoạ tiết đồi + mặt trời -->
+            <div class="collage-item collage-torn-landscape">
+              <svg class="landscape-svg" viewBox="0 0 160 110" preserveAspectRatio="none">
+                <rect width="160" height="110" fill="#FCEEE2"></rect>
+                <circle cx="80" cy="46" r="22" fill="#E8BD70" opacity="0.85"></circle>
+                <path d="M-10 110 Q40 58 90 85 Q130 65 170 110 Z" fill="#BCCBBF"></path>
+                <path d="M-10 110 Q50 80 110 95 Q140 85 170 110 Z" fill="#A4B9A8"></path>
+              </svg>
+            </div>
+
+            <!-- 4. Ảnh lớn ở giữa: left 40%, top 18%, width 28%, rotate 1deg (z-index: 5), mép dưới xé bằng clip-path. Ruột hồng, chữ "L" serif lớn -->
+            <div class="collage-item collage-center-photo">
+              <div class="center-photo-content bg-pastel-pink">
+                <span class="center-photo-initial">L</span>
+              </div>
+            </div>
+
+            <!-- 10. Băng keo có chữ (font Caveat): "24.10.2026" chéo góc dưới-trái ảnh 4, rotate 35deg; "Phòng B" chéo góc trên-trái ảnh 5, rotate 35deg (z-index: 6) -->
+            <div class="collage-tape-text collage-tape-date">24.10.2026</div>
+            <div class="collage-tape-text collage-tape-room">Phòng B</div>
+
+            <!-- 11. 3 băng keo trơn bán trong suốt ở mép trên ảnh 3, 5 và giữa ảnh 8 (z-index: 6) -->
+            <div class="collage-tape-plain tape-photo3"></div>
+            <div class="collage-tape-plain tape-photo5"></div>
+            <div class="collage-tape-plain tape-paper8"></div>
+
+            <!-- 12. SVG overlay phủ toàn khung (z-index: 7): 4 mũi tên cong nét mảnh nâu, 3 nét xoắn; chữ "stories made of light" (Caveat) ở left 30%, top 86%, có mũi tên chỉ lên ảnh 4 -->
+            <svg class="collage-svg-overlay" viewBox="0 0 620 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <marker id="arrowhead" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 1 2 L 8 5 L 1 8" stroke="#8B5A2B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"></path>
+                </marker>
+              </defs>
+
+              <!-- Mũi tên 1: Từ "stories made of light" chỉ lên Ảnh 4 ở giữa -->
+              <path class="collage-arrow" d="M 285 330 C 305 300, 315 270, 310 238" stroke="#8B5A2B" stroke-width="1.6" stroke-linecap="round" marker-end="url(#arrowhead)"></path>
+
+              <!-- Mũi tên 2: Chỉ vào Polaroid ngang máy ảnh (Ảnh 3) -->
+              <path class="collage-arrow" d="M 115 24 C 135 15, 155 22, 172 38" stroke="#8B5A2B" stroke-width="1.6" stroke-linecap="round" marker-end="url(#arrowhead)"></path>
+
+              <!-- Mũi tên 3: Chỉ vào Polaroid hoa (Ảnh 5) -->
+              <path class="collage-arrow" d="M 585 18 C 565 14, 545 22, 532 35" stroke="#8B5A2B" stroke-width="1.6" stroke-linecap="round" marker-end="url(#arrowhead)"></path>
+
+              <!-- Mũi tên 4: Chỉ vào tranh đồi & mặt trời (Ảnh 7) -->
+              <path class="collage-arrow" d="M 515 365 C 532 355, 542 335, 546 312" stroke="#8B5A2B" stroke-width="1.6" stroke-linecap="round" marker-end="url(#arrowhead)"></path>
+
+              <!-- 3 nét xoắn vẽ tay (swirl doodles) -->
+              <path class="collage-swirl" d="M 45 70 C 40 60, 58 55, 62 68 C 65 78, 48 84, 46 76 C 45 70, 52 68, 55 72" stroke="#8B5A2B" stroke-width="1.4" stroke-linecap="round"></path>
+              <path class="collage-swirl" d="M 52 352 C 46 342, 64 338, 68 350 C 70 360, 55 365, 52 358 C 50 352, 56 350, 60 354" stroke="#8B5A2B" stroke-width="1.4" stroke-linecap="round"></path>
+              <path class="collage-swirl" d="M 582 145 C 576 135, 594 130, 598 142 C 600 152, 585 157, 582 150 C 580 144, 586 142, 590 146" stroke="#8B5A2B" stroke-width="1.4" stroke-linecap="round"></path>
+
+              <!-- Chữ "stories made of light" (Caveat) ở left 30%, top 86% (x=186, y=354) -->
+              <text x="186" y="354" class="collage-caption-text">stories made of light</text>
+            </svg>
+        </div>
+
+        <!-- Khối 3: Kêu gọi hành động & Tính năng (2 nút + danh sách tính năng) -->
+        <div class="hero-actions">
+          <div class="hero-cta">
+            <a href="#dich-vu" class="btn btn-primary">
+              <svg class="btn-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+              </svg>
+              <span>Xem gói chụp</span>
+            </a>
+
+            <a href="#chat" class="btn btn-secondary">
+              <svg class="btn-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+              </svg>
+              <span>Chat với studio</span>
+            </a>
+          </div>
+
+          <!-- 3 dòng thông điệp nhỏ có icon -->
+          <ul class="hero-features" role="list">
+            <li class="hero-feature-item">
+              <svg class="hero-feature-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+              </svg>
+              <span>Tư vấn trực tiếp trên web</span>
+            </li>
+            <li class="hero-feature-item">
+              <svg class="hero-feature-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+              <span>Không lo trùng lịch</span>
+            </li>
+            <li class="hero-feature-item">
+              <svg class="hero-feature-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                <polyline points="21 15 16 10 5 21"></polyline>
+              </svg>
+              <span>Chọn ảnh ngay trong tài khoản</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         Section 01: Dịch vụ (Nền be đậm, mép giấy xé .torn-top & .tape)
+         ====================================================================== -->
+    <section id="dich-vu" class="section section-alt section-dich-vu" aria-labelledby="heading-dich-vu">
+      <div class="container dich-vu-container">
+        
+        <header class="section-header dich-vu-header">
+          <!-- Ngôi sao vẽ tay cạnh tiêu đề section -->
+          <div class="doodle-star-wrap" aria-hidden="true">
+            <svg class="doodle-star-svg" viewBox="0 0 44 44" fill="none" stroke="#2B2625" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M 22 3 L 27 16 L 41 18 L 30 28 L 33 42 L 22 34 L 10 41 L 14 27 L 3 17 L 17 15 Z" />
+              <path d="M 21 7 L 25 17 L 37 18 L 28 26 L 31 38 L 22 31 L 12 37 L 15 25 L 5 18 L 17 16 Z" stroke-width="1.2" opacity="0.5"/>
+            </svg>
+          </div>
+
+          <span class="section-tag">01 Dịch vụ</span>
+          <h2 id="heading-dich-vu" class="section-title">Các gói chụp tại GradStudio</h2>
+          <p class="section-desc">
+            Bảng giá minh bạch, hỗ trợ trang phục cử nhân và trang điểm chuyên nghiệp. Mọi gói chụp đều bao gồm dịch vụ kiểm tra khung giờ trống và <span class="doodle-underline-wrap">chọn ảnh trong tài khoản<svg class="doodle-squiggly-svg" viewBox="0 0 190 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M 2 8 C 35 2, 70 12, 105 4 C 138 0, 168 8, 188 5" stroke="#3D2B1F" stroke-width="2.2" stroke-linecap="round"/></svg></span>.
+          </p>
+        </header>
+
+        <!-- 3 Thẻ dịch vụ dạng giấy kraft 4 mép xé, xoay lệch và trang trí scrapbook -->
+        <div class="cards-grid">
+          
+          <!-- Thẻ 1: Kỷ yếu lớp (Xoay -1deg, 2 polaroid chồng ra mép trái, kẹp giấy, mũ cử nhân, băng keo gạch cua) -->
+          <article class="service-card card-kraft card-kraft-1" aria-labelledby="pkg-ky-yeu-title">
+            
+            <!-- Băng keo dán chéo góc trên-trái: màu gạch cua #B5643C răng cưa -->
+            <div class="washi-tape tape-crab card-tape-tl" aria-hidden="true"></div>
+
+            <!-- Kẹp giấy kim loại ở mép trên thẻ 1 -->
+            <div class="paperclip-wrap" aria-hidden="true">
+              <svg class="paperclip-svg" viewBox="0 0 24 64" fill="none">
+                <path d="M 12 56 V 16 C 12 8, 20 8, 20 16 V 46 C 20 52, 6 52, 6 46 V 10 C 6 2, 16 2, 16 10 V 42" stroke="#525866" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" filter="drop-shadow(1px 2px 2px rgba(45,33,24,0.25))"/>
+                <path d="M 12 56 V 16 C 12 8, 20 8, 20 16 V 46 C 20 52, 6 52, 6 46 V 10 C 6 2, 16 2, 16 10 V 42" stroke="#9CA3AF" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+
+            <!-- Sticker Mũ tốt nghiệp góc trên phải thẻ 1 -->
+            <div class="sticker-grad-cap" aria-hidden="true">
+              <svg class="sticker-svg" viewBox="0 0 72 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <polygon points="36 8 68 20 36 32 4 20" fill="#2B2625" stroke="#1A1716" stroke-width="1.5"/>
+                <polygon points="36 10 64 20 36 30 8 20" fill="#3B3534"/>
+                <path d="M 22 25 L 22 36 C 22 42, 50 42, 50 36 L 50 25" fill="#2B2625"/>
+                <ellipse cx="36" cy="20" rx="3" ry="2" fill="#C9A24A"/>
+                <path d="M 36 20 C 42 22, 56 26, 58 35" stroke="#C9A24A" stroke-width="2" stroke-linecap="round"/>
+                <polygon points="56 35 60 35 62 48 54 48" fill="#C9A24A"/>
+              </svg>
+            </div>
+
+            <!-- 2 Khung ảnh Polaroid chồng ra mép trái thẻ 1 (KHÔNG ảnh người) -->
+            <figure class="polaroid polaroid-card1-top" aria-hidden="true">
+              <div class="photo-slot">
+                <!-- 4:5 · assets/img/dich-vu-kyyeu-01.webp -->
+                <svg class="placeholder-art" viewBox="0 0 80 100" preserveAspectRatio="none">
+                  <rect width="80" height="100" fill="#D2DDD5"/>
+                  <circle cx="40" cy="35" r="14" fill="#E8B4A2"/>
+                  <path d="M 0 100 Q 40 65, 80 85 L 80 100 Z" fill="#9FB89E"/>
+                  <polygon points="40 22 55 28 40 34 25 28" fill="#4A3425"/>
+                </svg>
+              </div>
+            </figure>
+
+            <figure class="polaroid polaroid-card1-bottom" aria-hidden="true">
+              <div class="photo-slot">
+                <!-- 4:5 · assets/img/dich-vu-kyyeu-02.webp -->
+                <svg class="placeholder-art" viewBox="0 0 80 100" preserveAspectRatio="none">
+                  <rect width="80" height="100" fill="#F4EBD9"/>
+                  <circle cx="28" cy="40" r="12" fill="#CFDEC9"/>
+                  <circle cx="56" cy="46" r="10" fill="#F4D8D8"/>
+                  <path d="M 0 100 Q 40 70, 80 90 L 80 100 Z" fill="#B5643C" opacity="0.65"/>
+                </svg>
+              </div>
+            </figure>
+
+            <!-- Icon trong vòng tròn con dấu viền đôi: màu nâu gạch cua -->
+            <div class="card-stamp-seal seal-butter" aria-hidden="true">
+              <svg class="stamp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+            </div>
+
+            <h3 id="pkg-ky-yeu-title" class="card-title">Kỷ yếu lớp</h3>
+            
+            <p class="card-price">
+              <span class="price-prefix">từ</span>
+              <strong class="price-amount">350.000đ</strong>
+              <span class="price-unit">/người</span>
+            </p>
+
+            <ul class="card-features" role="list">
+              <li class="card-feature">
+                <svg class="card-feature-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>Chụp tập thể lớp và nhóm nhỏ tại trường hoặc studio</span>
+              </li>
+              <li class="card-feature">
+                <svg class="card-feature-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>Đầy đủ áo cử nhân, bằng tốt nghiệp &amp; bóng bay trang trí</span>
+              </li>
+              <li class="card-feature">
+                <svg class="card-feature-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>Giao toàn bộ file gốc đã xử lý sáng và ảnh tập thể in ấn</span>
+              </li>
+            </ul>
+
+            <!-- Mũi tên vẽ tay chỉ nút -->
+            <div class="doodle-arrow-card1" aria-hidden="true">
+              <svg viewBox="0 0 32 36" fill="none">
+                <path d="M 6 6 Q 24 16 16 30" stroke="#4A2E18" stroke-width="1.6" stroke-linecap="round"/>
+                <path d="M 12 24 L 16 30 L 22 26" stroke="#4A2E18" stroke-width="1.6" stroke-linecap="round"/>
+              </svg>
+            </div>
+
+            <!-- Nút Xem chi tiết kiểu tem thư -->
+            <button type="button" class="btn btn-stamp" disabled aria-disabled="true" aria-describedby="note-pkg-1">
+              Xem chi tiết
+            </button>
+            <p id="note-pkg-1" class="card-disabled-note">Chưa có ở bản này</p>
+          </article>
+
+          <!-- Thẻ 2: Tốt nghiệp (Xoay 0.5deg, polaroid ở góc trên, cuộn bằng nơ đỏ, băng keo xanh rêu, hoa hướng dương ở mép dưới) -->
+          <article class="service-card card-kraft card-kraft-2" aria-labelledby="pkg-tot-nghiep-title">
+            
+            <!-- Băng keo dán chéo góc trên-trái: màu xanh rêu #5E7354 răng cưa -->
+            <div class="washi-tape tape-moss card-tape-tl" aria-hidden="true"></div>
+
+            <!-- Khung ảnh Polaroid ở góc trên thẻ 2 (KHÔNG ảnh người) -->
+            <figure class="polaroid polaroid-card2" aria-hidden="true">
+              <div class="photo-slot">
+                <!-- 4:5 · assets/img/dich-vu-totnghiep-01.webp -->
+                <svg class="placeholder-art" viewBox="0 0 80 100" preserveAspectRatio="none">
+                  <rect width="80" height="100" fill="#EBD8CF"/>
+                  <circle cx="40" cy="30" r="13" fill="#D2DDD5"/>
+                  <path d="M 20 100 L 40 55 L 60 100 Z" fill="#8B5A2B"/>
+                  <path d="M 32 60 L 48 60 L 40 70 Z" fill="#B5643C"/>
+                </svg>
+              </div>
+            </figure>
+
+            <!-- Sticker cuộn bằng có nơ đỏ -->
+            <div class="sticker-diploma" aria-hidden="true">
+              <svg class="sticker-svg" viewBox="0 0 68 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="14" y="10" width="38" height="22" rx="3" fill="#F4EBD9" stroke="#C8B89A" stroke-width="1.2" transform="rotate(-15 33 21)"/>
+                <ellipse cx="14" cy="26" rx="4" ry="11" fill="#EADBC0" stroke="#C8B89A" stroke-width="1.2" transform="rotate(-15 14 26)"/>
+                <ellipse cx="52" cy="16" rx="4" ry="11" fill="#FFFBF5" stroke="#C8B89A" stroke-width="1.2" transform="rotate(-15 52 16)"/>
+                <rect x="30" y="8" width="7" height="25" fill="#C23B22" transform="rotate(-15 33 20)"/>
+                <circle cx="33" cy="21" r="3.5" fill="#992612"/>
+                <path d="M 33 21 Q 38 32 44 36" stroke="#C23B22" stroke-width="2.5" stroke-linecap="round"/>
+                <path d="M 33 21 Q 28 33 26 38" stroke="#C23B22" stroke-width="2.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+
+            <!-- Icon con dấu viền đôi: màu xanh rêu -->
+            <div class="card-stamp-seal seal-sage" aria-hidden="true">
+              <svg class="stamp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+              </svg>
+            </div>
+
+            <h3 id="pkg-tot-nghiep-title" class="card-title">Tốt nghiệp</h3>
+            
+            <p class="card-price">
+              <span class="price-prefix">từ</span>
+              <strong class="price-amount">1.800.000đ</strong>
+            </p>
+
+            <ul class="card-features" role="list">
+              <li class="card-feature">
+                <svg class="card-feature-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>2 giờ chụp studio cá nhân hoặc chụp cùng người thân</span>
+              </li>
+              <li class="card-feature">
+                <svg class="card-feature-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>Tùy chọn chuyên viên makeup &amp; làm tóc trước buổi chụp</span>
+              </li>
+              <li class="card-feature">
+                <svg class="card-feature-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>30 ảnh chỉnh sửa tỉ mỉ cao cấp và nhận toàn bộ ảnh gốc</span>
+              </li>
+            </ul>
+
+            <!-- Ghi chú Caveat "viền cổ chữ tay" kèm mũi tên -->
+            <div class="doodle-note-edge" aria-hidden="true">
+              <span>viền cổ chữ tay</span>
+              <svg class="doodle-arrow-curved" viewBox="0 0 36 28" fill="none">
+                <path d="M 26 4 Q 8 14 16 24" stroke="#4A2E18" stroke-width="1.6" stroke-linecap="round"/>
+                <path d="M 10 20 L 16 24 L 20 18" stroke="#4A2E18" stroke-width="1.6" stroke-linecap="round"/>
+              </svg>
+            </div>
+
+            <!-- Nút Xem chi tiết kiểu tem thư -->
+            <button type="button" class="btn btn-stamp" disabled aria-disabled="true" aria-describedby="note-pkg-2">
+              Xem chi tiết
+            </button>
+            <p id="note-pkg-2" class="card-disabled-note">Chưa có ở bản này</p>
+          </article>
+
+          <!-- Sticker Hoa hướng dương ở mép dưới giữa thẻ 1 và 2 -->
+          <div class="doodle-sunflower" aria-hidden="true">
+            <div class="sunflower-tape"></div>
+            <svg class="sunflower-svg" viewBox="0 0 70 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M 35 45 Q 33 75 35 98" stroke="#5E7354" stroke-width="4" stroke-linecap="round"/>
+              <path d="M 35 68 Q 20 62 14 70 Q 25 78 35 72" fill="#5E7354"/>
+              <path d="M 35 78 Q 48 70 54 80 Q 45 86 35 80" fill="#5E7354"/>
+              <g fill="#F5B82E" stroke="#E09B16" stroke-width="0.8">
+                <ellipse cx="35" cy="18" rx="4.5" ry="12"/>
+                <ellipse cx="35" cy="52" rx="4.5" ry="12"/>
+                <ellipse cx="18" cy="35" rx="12" ry="4.5"/>
+                <ellipse cx="52" cy="35" rx="12" ry="4.5"/>
+                <ellipse cx="23" cy="23" rx="5" ry="12" transform="rotate(-45 23 23)"/>
+                <ellipse cx="47" cy="47" rx="5" ry="12" transform="rotate(-45 47 47)"/>
+                <ellipse cx="47" cy="23" rx="5" ry="12" transform="rotate(45 47 23)"/>
+                <ellipse cx="23" cy="47" rx="5" ry="12" transform="rotate(45 23 47)"/>
+                <ellipse cx="35" cy="21" rx="4" ry="9" fill="#F8C74D"/>
+                <ellipse cx="35" cy="49" rx="4" ry="9" fill="#F8C74D"/>
+                <ellipse cx="21" cy="35" rx="9" ry="4" fill="#F8C74D"/>
+                <ellipse cx="49" cy="35" rx="9" ry="4" fill="#F8C74D"/>
+              </g>
+              <circle cx="35" cy="35" r="12" fill="#5C3614" stroke="#3D2109" stroke-width="1.5"/>
+              <circle cx="35" cy="35" r="9" fill="#75471B" stroke="#4A2808" stroke-dasharray="2 2" stroke-width="1"/>
+              <circle cx="35" cy="35" r="5" fill="#3D2109"/>
+            </svg>
+          </div>
+
+          <!-- Thẻ 3: Chân dung / CV (Xoay -0.5deg, polaroid + dải film ở mép phải, máy ảnh cổ, băng keo vàng mù tạt & sọc màu) -->
+          <article class="service-card card-kraft card-kraft-3" aria-labelledby="pkg-chan-dung-title">
+            
+            <!-- Băng keo dán chéo góc trên-trái: vàng mù tạt #C9A24A răng cưa -->
+            <div class="washi-tape tape-mustard card-tape-tl" aria-hidden="true"></div>
+
+            <!-- Băng keo sọc nhiều màu ở mép trên thẻ 3 -->
+            <div class="washi-tape tape-striped card-tape-tr" aria-hidden="true"></div>
+
+            <!-- Băng keo vàng mù tạt ở góc dưới-trái thẻ 3 -->
+            <div class="washi-tape tape-mustard card-tape-bl" aria-hidden="true"></div>
+
+            <!-- Khung ảnh Polaroid ở mép phải thẻ 3 (KHÔNG ảnh người) -->
+            <figure class="polaroid polaroid-card3" aria-hidden="true">
+              <div class="photo-slot">
+                <!-- 4:5 · assets/img/dich-vu-chandung-01.webp -->
+                <svg class="placeholder-art" viewBox="0 0 80 100" preserveAspectRatio="none">
+                  <rect width="80" height="100" fill="#F4D8D8"/>
+                  <circle cx="40" cy="36" r="15" fill="#EFE3C8"/>
+                  <path d="M 15 100 C 15 70, 65 70, 65 100 Z" fill="#5E7354" opacity="0.75"/>
+                </svg>
+              </div>
+            </figure>
+
+            <!-- Dải film dọc 3 ô ở mép phải thẻ 3 -->
+            <figure class="film-strip film-strip-card3" aria-hidden="true">
+              <div class="film-holes film-holes-left"></div>
+              <div class="film-frames-col">
+                <div class="film-frame-slot">
+                  <div class="photo-slot">
+                    <!-- 1:1 · assets/img/dich-vu-chandung-film-01.webp -->
+                    <svg class="placeholder-art" viewBox="0 0 60 60" preserveAspectRatio="none">
+                      <rect width="60" height="60" fill="#D2DDD5"/>
+                      <circle cx="30" cy="24" r="10" fill="#F4EBD9"/>
+                      <path d="M 10 60 C 10 40, 50 40, 50 60 Z" fill="#8B5A2B"/>
+                    </svg>
+                  </div>
+                </div>
+                <div class="film-frame-slot">
+                  <div class="photo-slot">
+                    <!-- 1:1 · assets/img/dich-vu-chandung-film-02.webp -->
+                    <svg class="placeholder-art" viewBox="0 0 60 60" preserveAspectRatio="none">
+                      <rect width="60" height="60" fill="#E8B4A2"/>
+                      <circle cx="30" cy="20" r="8" fill="#F4EBD9"/>
+                      <path d="M 12 60 Q 30 35, 48 60 Z" fill="#5E7354"/>
+                    </svg>
+                  </div>
+                </div>
+                <div class="film-frame-slot">
+                  <div class="photo-slot">
+                    <!-- 1:1 · assets/img/dich-vu-chandung-film-03.webp -->
+                    <svg class="placeholder-art" viewBox="0 0 60 60" preserveAspectRatio="none">
+                      <rect width="60" height="60" fill="#CFDEC9"/>
+                      <circle cx="30" cy="22" r="9" fill="#EBD8CF"/>
+                      <path d="M 10 60 C 10 42, 50 42, 50 60 Z" fill="#4A3425"/>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+              <div class="film-holes film-holes-right"></div>
+            </figure>
+
+            <!-- Ghi chú Caveat "washi tape" kèm mũi tên -->
+            <div class="doodle-note-tape" aria-hidden="true">
+              <span>washi<br>tape</span>
+              <svg class="doodle-arrow-curved" viewBox="0 0 35 30" fill="none">
+                <path d="M 25 24 Q 30 10 15 6" stroke="#4A2E18" stroke-width="1.6" stroke-linecap="round"/>
+                <path d="M 18 2 L 15 6 L 20 9" stroke="#4A2E18" stroke-width="1.6" stroke-linecap="round"/>
+              </svg>
+            </div>
+
+            <!-- Sticker Máy ảnh cổ ở góc dưới phải thẻ 3 -->
+            <div class="sticker-camera" aria-hidden="true">
+              <svg class="sticker-svg" viewBox="0 0 74 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="4" y="14" width="66" height="36" rx="5" fill="#E8D5B5" stroke="#6B4E31" stroke-width="1.8"/>
+                <rect x="4" y="22" width="66" height="24" fill="#A87545"/>
+                <line x1="4" y1="22" x2="70" y2="22" stroke="#6B4E31" stroke-width="1"/>
+                <line x1="4" y1="46" x2="70" y2="46" stroke="#6B4E31" stroke-width="1"/>
+                <rect x="4" y="14" width="66" height="8" rx="2" fill="#D9D5CC"/>
+                <rect x="12" y="9" width="8" height="5" rx="1.5" fill="#8C887E"/>
+                <rect x="52" y="10" width="10" height="4" rx="1.5" fill="#8C887E"/>
+                <rect x="46" y="16" width="6" height="4" fill="#3D3B36"/>
+                <circle cx="36" cy="34" r="14" fill="#3D3B36" stroke="#D9D5CC" stroke-width="2"/>
+                <circle cx="36" cy="34" r="10" fill="#242320"/>
+                <circle cx="36" cy="34" r="7" fill="#4B6B82"/>
+                <ellipse cx="33" cy="31" rx="3" ry="1.5" fill="#FFFFFF" opacity="0.6" transform="rotate(-30 33 31)"/>
+              </svg>
+            </div>
+
+            <!-- Icon con dấu viền đôi: màu hồng đất -->
+            <div class="card-stamp-seal seal-pink" aria-hidden="true">
+              <svg class="stamp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                <circle cx="12" cy="10" r="3"></circle>
+                <path d="M7 21v-2a5 5 0 0 1 10 0v2"></path>
+              </svg>
+            </div>
+
+            <h3 id="pkg-chan-dung-title" class="card-title">Chân dung / CV</h3>
+            
+            <p class="card-price">
+              <span class="price-prefix">từ</span>
+              <strong class="price-amount">690.000đ</strong>
+            </p>
+
+            <ul class="card-features" role="list">
+              <li class="card-feature">
+                <svg class="card-feature-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>Chụp ảnh profile doanh nghiệp, CV xin việc &amp; ảnh thẻ chuẩn</span>
+              </li>
+              <li class="card-feature">
+                <svg class="card-feature-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>1 concept phông nền màu studio và hướng dẫn tạo dáng</span>
+              </li>
+              <li class="card-feature">
+                <svg class="card-feature-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>5 ảnh hoàn thiện kỹ thuật số chất lượng cao lấy nhanh trong ngày</span>
+              </li>
+            </ul>
+
+            <!-- Nút Xem chi tiết kiểu tem thư -->
+            <button type="button" class="btn btn-stamp" disabled aria-disabled="true" aria-describedby="note-pkg-3">
+              Xem chi tiết
+            </button>
+            <p id="note-pkg-3" class="card-disabled-note">Chưa có ở bản này</p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         Section 02: Quy trình (4 Cột có đường kẻ trên, số serif)
+         ====================================================================== -->
+    <section id="quy-trinh" class="section" aria-labelledby="heading-quy-trinh">
+      <div class="container">
+        
+        <header class="section-header">
+          <span class="section-tag">02 Quy trình</span>
+          <h2 id="heading-quy-trinh" class="section-title">Các bước đặt lịch chụp</h2>
+          <p class="section-desc">
+            Quy trình 4 bước tinh gọn giúp bạn nắm rõ lịch chụp, tránh trùng lịch tài nguyên và nhận ảnh hoàn thiện thuận tiện.
+          </p>
+        </header>
+
+        <div class="process-grid">
+          
+          <!-- Cột 01: Hỏi -->
+          <div class="process-col">
+            <div class="step-num" aria-hidden="true">01</div>
+            <h3 class="step-title">Hỏi</h3>
+            <p class="step-desc">
+              Chia sẻ gói chụp và ngày giờ bạn mong muốn.
+            </p>
+          </div>
+
+          <!-- Cột 02: Chốt lịch trong chat -->
+          <div class="process-col">
+            <div class="step-num" aria-hidden="true">02</div>
+            <h3 class="step-title">Chốt lịch trong chat</h3>
+            <p class="step-desc">
+              Thống nhất chi tiết và xác nhận khung giờ còn trống.
+            </p>
+          </div>
+
+          <!-- Cột 03: Đặt cọc 30% để giữ lịch -->
+          <div class="process-col">
+            <div class="step-num" aria-hidden="true">03</div>
+            <h3 class="step-title">Đặt cọc 30% để giữ lịch</h3>
+            <p class="step-desc">
+              Studio chỉ giữ khung giờ sau khi bạn đặt cọc 30% thành công.
+            </p>
+          </div>
+
+          <!-- Cột 04: Chụp & nhận ảnh -->
+          <div class="process-col">
+            <div class="step-num" aria-hidden="true">04</div>
+            <h3 class="step-title">Chụp &amp; nhận ảnh</h3>
+            <p class="step-desc">
+              Đến buổi chụp và chọn ảnh ngay trong tài khoản.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         Section 03: Chat với studio (Khung chat scrapbook dạng giấy .paper)
+         ====================================================================== -->
+    <section id="chat" class="section section-alt" aria-labelledby="heading-chat">
+      <div class="container">
+        
+        <header class="section-header">
+          <span class="section-tag">03 Chat với studio</span>
+          <h2 id="heading-chat" class="section-title">Tư vấn lịch chụp trực tiếp</h2>
+          <p class="section-desc">
+            Trò chuyện với studio để kiểm tra phòng chụp và lịch làm việc của nhân sự trước khi chốt lịch.
+          </p>
+        </header>
+
+        <!-- Khung chat scrapbook dạng giấy bo góc (.paper) kèm washi tape (.tape) -->
+        <div class="chat-card paper" role="region" aria-label="Cửa sổ hội thoại với studio">
+          
+          <div class="tape tape-sage chat-card-tape" aria-hidden="true"></div>
+
+          <!-- Doodle chú thích chat -->
+          <div class="doodle doodle-chat" aria-hidden="true">
+            <svg class="doodle-svg" width="32" height="24" viewBox="0 0 40 30">
+              <path d="M5,20 C15,5 25,25 35,10"></path>
+              <path d="M26,10 L35,10 L33,18"></path>
+            </svg>
+            <span>Tư vấn 1-1 trực tiếp</span>
+          </div>
+
+          <!-- Dòng trạng thái: Chấm xanh + GradStudio · Đang hoạt động -->
+          <div class="chat-header">
+            <div class="status-badge">
+              <span class="status-dot" aria-hidden="true"></span>
+              <span>GradStudio · Đang hoạt động</span>
+            </div>
+            <span class="chat-header-hint">Thường phản hồi trong vài phút</span>
+          </div>
+
+          <!-- Nội dung tin nhắn -->
+          <div class="chat-messages" aria-live="polite">
+            
+            <!-- Bong bóng bên phải (Khách hàng Linh) -->
+            <div class="message-group message-customer">
+              <span class="message-author">Linh</span>
+              <div class="message-bubble bubble-customer">
+                Gói tốt nghiệp có makeup còn lịch 24/10 lúc 09:00 không?
+              </div>
+              <span class="message-meta">
+                <time datetime="09:41">09:41</time> · Đã xem
+              </span>
+            </div>
+
+            <!-- Bong bóng bên trái (Studio) -->
+            <div class="message-group message-studio">
+              <span class="message-author">GradStudio</span>
+              <div class="message-bubble bubble-studio">
+                Để mình kiểm tra lịch cho bạn nhé
+              </div>
+              <span class="message-meta">
+                <time datetime="10:20">10:20</time>
+              </span>
+            </div>
+
+          </div>
+
+          <!-- Ô nhập tin nhắn (ở bản PA#2 ở trạng thái vô hiệu hoá) -->
+          <div class="chat-input-box">
+            <div class="chat-input-row">
+              <button type="button" class="chat-btn-action" disabled aria-label="Đính kèm tệp">
+                <svg class="hero-feature-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"></path>
+                </svg>
+              </button>
+
+              <label for="chat-text-input" class="visually-hidden" style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0;">Nhập tin nhắn</label>
+              <input type="text" id="chat-text-input" class="chat-input-field" placeholder="Nhập tin nhắn..." disabled aria-describedby="chat-disabled-note">
+
+              <button type="button" class="chat-btn-send" disabled aria-label="Gửi tin nhắn" aria-describedby="chat-disabled-note">
+                <svg class="hero-feature-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="22" y1="2" x2="11" y2="13"></line>
+                  <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+              </button>
+            </div>
+
+            <!-- Ghi chú hiển thị cho trạng thái disabled -->
+            <p id="chat-disabled-note" class="chat-note">
+              Gửi tin nhắn chưa khả dụng ở bản PA#2
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ======================================================================
+       Footer
+       ====================================================================== -->
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <p class="footer-copy">
+        © GradStudio · TP. Hồ Chí Minh · Địa chỉ chỉ gửi khi đã cọc
+      </p>
+      <p class="footer-admin">
+        <a href="admin-tu-van.html" class="footer-admin-link">Nhân viên studio: mở cuộc trò chuyện này</a>
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>

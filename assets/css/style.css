@@ -1,0 +1,2159 @@
+/* ==========================================================================
+   GradStudio – PA#2 Stylesheet
+   Scrapbook & Film-Journal Aesthetic (Tactile Paper, Torn Edges, Washi Tape, Doodles)
+   Pure CSS & Inline SVG – No frameworks, no external dependencies
+   ========================================================================== */
+
+/* Typography & Font Faces (Unicode-range Vietnamese) */
+@font-face {
+  font-family: "Playfair Display";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../fonts/PlayfairDisplay-Bold.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+02C6, U+0300-0301, U+0303, U+0309, U+0323;
+}
+
+:root {
+  /* Colors – Paper & Scrapbook Palette */
+  --color-bg: #F6EFE2;            /* Nền giấy kem cổ điển */
+  --color-bg-alt: #EFE6D5;        /* Nền be đậm cho section Dịch vụ & Chat */
+  --color-bg-card: #FAF6EE;       /* Nền giấy thẻ trắng kem */
+  --color-bg-ivory: #FAF7F0;      /* Viền ngà đặc trưng của Polaroid */
+  --color-bg-note: #FFFDF9;       /* Giấy tập kẻ dòng */
+  --color-bg-subtle: #F3ECE0;     /* Nền phụ kiện, bubble chat studio */
+
+  /* Text Colors – Tương phản cao đạt chuẩn WCAG AAA/AA */
+  --color-text: #2D2118;          /* Nâu espresso đậm (> 7:1 trên nền kem) */
+  --color-text-muted: #655243;    /* Nâu xám trung tính cho mô tả/phụ đề */
+  --color-text-light: #8A7769;    /* Nâu nhạt cho meta, timestamp */
+
+  /* Accent Colors */
+  --color-primary: #8B5A2B;       /* Nâu caramel chủ đạo */
+  --color-primary-hover: #6F451F; /* Nâu caramel đậm khi hover */
+  --color-primary-light: #F7EFE4; /* Nền mờ của caramel */
+  
+  /* Scrapbook Pastel Accents */
+  --color-sage: #CFDEC9;          /* Xanh sage pastel */
+  --color-sage-dark: #375336;     /* Xanh sage đậm */
+  --color-pink: #F3D3D3;          /* Hồng phấn pastel */
+  --color-pink-dark: #7A3F3F;     /* Hồng phấn đậm */
+  --color-butter: #EFE3CD;        /* Vàng bơ pastel */
+  --color-butter-dark: #6C572D;   /* Vàng bơ đậm */
+
+  /* Analog Film */
+  --color-film: #1C1815;          /* Đen than analog film */
+  --color-film-hole: #EDE3CE;     /* Màu lỗ răng cưa trên film */
+
+  /* Washi Tape Colors */
+  --color-washi-tape: rgba(225, 210, 182, 0.78);
+  --color-washi-sage: rgba(207, 222, 201, 0.82);
+  --color-washi-pink: rgba(243, 211, 211, 0.82);
+  --color-washi-butter: rgba(239, 227, 205, 0.82);
+  --color-border: #DBCDBB;        /* Đường viền giấy xé mộc */
+  --color-border-subtle: #E8DDCE;
+  --color-ruled-line: #E8DCC9;    /* Dòng kẻ giấy tập */
+  --color-margin-line: rgba(215, 140, 140, 0.45); /* Đường lề đỏ vở học sinh */
+
+  /* Disabled State */
+  --color-disabled-bg: #E7DFD4;
+  --color-disabled-text: #8C7C70;
+  --color-disabled-border: #D4C9BC;
+
+  /* Typography */
+  --font-serif: "Playfair Display", "Times New Roman", Times, Georgia, serif;
+  --font-sans: "Be Vietnam Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-handwriting: "Caveat", "Dancing Script", "Segoe Script", "Comic Sans MS", cursive;
+
+  /* Spacing Scale */
+  --space-2xs: 0.25rem;  /* 4px */
+  --space-xs: 0.5rem;    /* 8px */
+  --space-sm: 0.75rem;   /* 12px */
+  --space-md: 1rem;      /* 16px */
+  --space-lg: 1.5rem;    /* 24px */
+  --space-xl: 2rem;      /* 32px */
+  --space-2xl: 3rem;     /* 48px */
+  --space-3xl: 5rem;     /* 80px */
+
+  /* Shadows – Đổ bóng giấy mềm 2 lớp */
+  --shadow-paper: 0 2px 6px rgba(45, 33, 24, 0.06), 0 1px 2px rgba(45, 33, 24, 0.04);
+  --shadow-polaroid: 0 3px 6px rgba(45, 33, 24, 0.08), 0 12px 28px -4px rgba(45, 33, 24, 0.16);
+  --shadow-polaroid-hover: 0 4px 8px rgba(45, 33, 24, 0.1), 0 18px 36px -4px rgba(45, 33, 24, 0.22);
+  --shadow-hover: 0 4px 8px rgba(45, 33, 24, 0.08), 0 14px 30px -4px rgba(45, 33, 24, 0.16);
+
+  /* Border Radii */
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  /* Container width */
+  --container-max: 1200px;
+}
+
+/* ==========================================================================
+   Base & Reset
+   ========================================================================== */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  line-height: 1.6;
+  scroll-behavior: smooth;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  -webkit-text-size-adjust: 100%;
+}
+
+/* Nền body có vân giấy bằng SVG feTurbulence nhúng data URI, độ đậm rất nhẹ */
+body {
+  min-height: 100vh;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  position: relative;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paperNoise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.16 0 0 0 0 0.12 0 0 0 0 0.08 0 0 0 0.035 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paperNoise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+}
+
+/* ==========================================================================
+   Trang chủ (.page-home) – Nền ảnh giấy thật có mép xé tự nhiên
+   Chỉ áp dụng cho index.html; hai trang còn lại không bị ảnh hưởng
+   ========================================================================== */
+
+.page-home {
+  isolation: isolate;
+  background-color: transparent;
+  background-image: none;
+}
+
+.page-home::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-color: #F3EAD6;
+  background-image: url("../img/paper-bg.webp");
+  background-size: cover;
+  background-position: left center;
+  background-repeat: no-repeat;
+  pointer-events: none;
+}
+
+/* Chuyển các nền màu đặc trong trang chủ thành transparent hoặc rgba */
+.page-home .site-header,
+.page-home main,
+.page-home .section,
+.page-home .hero,
+.page-home .site-footer {
+  background-color: transparent;
+}
+
+/* Section Dịch vụ dùng rgba để vân giấy hiện qua */
+.page-home .section-alt {
+  background-color: rgba(239, 230, 214, 0.65);
+}
+
+/* Ẩn dải mép xé CSS vì ảnh nền đã có sẵn mép xé thật bên sườn trái */
+.page-home .page-torn-border {
+  display: none;
+}
+
+/* ==========================================================================
+   Reusable Scrapbook Classes:
+   .paper, .torn-top, .torn-left, .tape, .polaroid, .lined-note, .film-strip, .doodle
+   ========================================================================== */
+
+/* 1. .paper – Chất liệu giấy mộc có vân nhẹ */
+.paper {
+  background-color: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-paper);
+  position: relative;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.18 0 0 0 0 0.14 0 0 0 0 0.1 0 0 0 0.025 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)'/%3E%3C/svg%3E");
+}
+
+/* 2. .torn-top – Mép giấy xé ở trên dùng clip-path polygon với điểm ngẫu nhiên */
+.torn-top {
+  clip-path: polygon(
+    0% 7px, 3% 2px, 6% 6px, 9% 1px, 13% 5px, 17% 2px, 21% 7px, 26% 2px, 
+    31% 6px, 36% 1px, 41% 5px, 46% 3px, 51% 7px, 56% 2px, 61% 6px, 66% 1px, 
+    71% 5px, 76% 2px, 81% 6px, 86% 2px, 91% 7px, 95% 1px, 100% 5px, 
+    100% 100%, 0% 100%
+  );
+}
+
+/* 3. .torn-left – Mép giấy xé ở bên trái dùng clip-path polygon với điểm ngẫu nhiên */
+.torn-left {
+  clip-path: polygon(
+    8px 0%, 100% 0%, 100% 100%, 8px 100%,
+    3px 96%, 7px 92%, 2px 88%, 8px 84%, 3px 80%, 7px 76%, 2px 72%, 
+    8px 68%, 4px 64%, 7px 60%, 2px 56%, 8px 52%, 3px 48%, 7px 44%, 
+    2px 40%, 8px 36%, 4px 32%, 7px 28%, 2px 24%, 8px 20%, 3px 16%, 
+    7px 12%, 2px 8%, 7px 4%
+  );
+}
+
+/* Mép trái trang web trang trí (deckled left page border) */
+.page-torn-border {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 10px;
+  background-color: rgba(220, 203, 175, 0.45);
+  clip-path: polygon(
+    0 0, 100% 0, 
+    6px 2%, 10px 5%, 4px 8%, 10px 11%, 5px 14%, 9px 17%, 3px 20%, 10px 23%,
+    5px 26%, 10px 29%, 4px 32%, 9px 35%, 6px 38%, 10px 41%, 4px 44%, 9px 47%,
+    5px 50%, 10px 53%, 3px 56%, 9px 59%, 6px 62%, 10px 65%, 4px 68%, 9px 71%,
+    5px 74%, 10px 77%, 3px 80%, 9px 83%, 6px 86%, 10px 89%, 4px 92%, 9px 95%,
+    5px 98%, 100% 100%, 0 100%
+  );
+  pointer-events: none;
+  z-index: 50;
+}
+
+/* 4. .tape – Băng keo washi bán trong suốt, xoay lệch, hai đầu răng cưa */
+.tape {
+  position: absolute;
+  width: 96px;
+  height: 24px;
+  background-color: var(--color-washi-tape);
+  box-shadow: 0 1px 3px rgba(45, 33, 24, 0.08);
+  /* Hai đầu răng cưa zigzag bằng clip-path polygon */
+  clip-path: polygon(
+    5px 0%, 100% 0%, calc(100% - 5px) 20%, 100% 40%, calc(100% - 5px) 60%, 100% 80%, calc(100% - 5px) 100%,
+    5px 100%, 0% 80%, 5px 60%, 0% 40%, 5px 20%
+  );
+  z-index: 5;
+  pointer-events: none;
+}
+
+.tape-sage { background-color: var(--color-washi-sage); }
+.tape-pink { background-color: var(--color-washi-pink); }
+.tape-butter { background-color: var(--color-washi-butter); }
+
+/* 5. .polaroid – Viền ngà, đáy dày, đổ bóng mềm 2 lớp, xoay góc (-4° đến 4°) */
+.polaroid {
+  background-color: var(--color-bg-ivory);
+  padding: 12px 12px 34px 12px; /* Đáy dày đặc trưng polaroid */
+  border: 1px solid rgba(45, 33, 24, 0.1);
+  box-shadow: var(--shadow-polaroid);
+  border-radius: var(--radius-xs);
+  transition: transform 0.3s cubic-bezier(0.2, 0, 0.2, 1), box-shadow 0.3s ease;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.polaroid:hover {
+  transform: scale(1.03) rotate(0deg) !important;
+  box-shadow: var(--shadow-polaroid-hover);
+  z-index: 12 !important;
+}
+
+.polaroid-rot-neg4 { transform: rotate(-3.8deg); }
+.polaroid-rot-neg2 { transform: rotate(-2.2deg); }
+.polaroid-rot-pos2 { transform: rotate(2.4deg); }
+.polaroid-rot-pos4 { transform: rotate(3.5deg); }
+
+.polaroid-photo {
+  width: 100%;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-xs);
+  border: 1px solid rgba(45, 33, 24, 0.08);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+.polaroid-sage .polaroid-photo {
+  background-color: var(--color-sage);
+  color: var(--color-sage-dark);
+}
+
+.polaroid-pink .polaroid-photo {
+  background-color: var(--color-pink);
+  color: var(--color-pink-dark);
+}
+
+.polaroid-icon {
+  width: 52px;
+  height: 52px;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+}
+
+.polaroid-label {
+  font-family: var(--font-handwriting);
+  font-size: 1.15rem;
+  color: var(--color-text);
+  margin-top: 8px;
+  display: block;
+  text-align: center;
+  line-height: 1.2;
+}
+
+/* 6. .lined-note – Mảnh giấy kẻ dòng chồng lệch */
+.lined-note {
+  background-color: var(--color-bg-note);
+  background-image: 
+    repeating-linear-gradient(transparent, transparent 23px, var(--color-ruled-line) 24px),
+    linear-gradient(90deg, transparent 28px, var(--color-margin-line) 28px, transparent 30px);
+  border: 1px solid var(--color-border);
+  box-shadow: 0 2px 8px rgba(45, 33, 24, 0.08), 0 1px 3px rgba(45, 33, 24, 0.05);
+  border-radius: var(--radius-xs);
+  padding: 14px 14px 14px 34px;
+  font-family: var(--font-handwriting);
+  color: var(--color-text);
+  line-height: 24px;
+  position: absolute;
+  transition: transform 0.3s ease;
+}
+
+/* 7. .film-strip – Dải film đen có lỗ răng cưa bằng radial-gradient */
+.film-strip {
+  background-color: var(--color-film);
+  border-radius: var(--radius-sm);
+  padding: 8px 12px;
+  box-shadow: 0 4px 18px rgba(28, 24, 21, 0.3);
+  border: 1px solid #100D0B;
+  position: relative;
+  width: 100%;
+}
+
+.film-sprockets-top,
+.film-sprockets-bottom {
+  height: 10px;
+  width: 100%;
+  background-image: radial-gradient(ellipse 4px 3px at center, var(--color-film-hole) 95%, transparent 100%);
+  background-size: 18px 10px;
+  background-repeat: repeat-x;
+  background-position: center;
+  opacity: 0.95;
+}
+
+.film-sprockets-top { margin-bottom: 6px; }
+.film-sprockets-bottom { margin-top: 6px; }
+
+.film-frames {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.film-frame {
+  height: 60px;
+  border-radius: var(--radius-xs);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 0 6px rgba(0,0,0,0.18);
+}
+
+.frame-sage {
+  background-color: var(--color-sage);
+  color: var(--color-sage-dark);
+}
+
+.frame-pink {
+  background-color: var(--color-pink);
+  color: var(--color-pink-dark);
+}
+
+.frame-butter {
+  background-color: var(--color-butter);
+  color: var(--color-butter-dark);
+}
+
+.frame-icon {
+  width: 24px;
+  height: 24px;
+  opacity: 0.85;
+}
+
+.film-caption {
+  font-family: var(--font-handwriting);
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-top: var(--space-xs);
+  transform: rotate(-3deg);
+  letter-spacing: 0.02em;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.6);
+}
+
+/* 8. .doodle – Nét vẽ tay SVG stroke mảnh màu nâu & chữ Caveat */
+.doodle {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-handwriting);
+  color: var(--color-primary);
+  font-size: 1.25rem;
+  pointer-events: none;
+  z-index: 6;
+  white-space: nowrap;
+}
+
+.doodle-svg {
+  stroke: var(--color-primary);
+  stroke-width: 1.75;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex-shrink: 0;
+}
+
+/* ==========================================================================
+   Typography
+   ========================================================================== */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  color: var(--color-text);
+  line-height: 1.25;
+  font-weight: 700;
+}
+
+h1 {
+  font-size: 2.75rem; /* 44px */
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: 2rem; /* 32px */
+  letter-spacing: -0.01em;
+}
+
+h3 {
+  font-size: 1.25rem; /* 20px */
+}
+
+p {
+  margin-bottom: 0;
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+a:hover {
+  color: var(--color-primary-hover);
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+/* ==========================================================================
+   Container & Layout
+   ========================================================================== */
+
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--space-lg);
+  padding-right: var(--space-lg);
+}
+
+.section {
+  padding-top: var(--space-3xl);
+  padding-bottom: var(--space-3xl);
+  position: relative;
+}
+
+.section-alt {
+  background-color: var(--color-bg-alt);
+  border-top: 1px dashed var(--color-border);
+  border-bottom: 1px dashed var(--color-border);
+}
+
+.section-header {
+  margin-bottom: var(--space-2xl);
+  text-align: left;
+  position: relative;
+}
+
+.section-tag {
+  display: inline-block;
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: var(--space-xs);
+  padding-bottom: var(--space-2xs);
+  border-bottom: 2px solid var(--color-primary);
+}
+
+.section-title {
+  margin-top: var(--space-xs);
+  margin-bottom: var(--space-sm);
+}
+
+.section-desc {
+  color: var(--color-text-muted);
+  max-width: 640px;
+  font-size: 1.05rem;
+}
+
+/* ==========================================================================
+   Header & Navigation
+   ========================================================================== */
+
+.site-header {
+  padding-top: var(--space-lg);
+  padding-bottom: var(--space-lg);
+  background-color: var(--color-bg);
+  border-bottom: 1px solid var(--color-border-subtle);
+  position: relative;
+  z-index: 20;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+}
+
+.logo {
+  font-family: var(--font-serif);
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--color-text);
+  letter-spacing: -0.02em;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2xs);
+}
+
+.logo:hover {
+  color: var(--color-primary);
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xl);
+}
+
+.nav-link {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text);
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-sm);
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+.nav-link:hover {
+  color: var(--color-primary);
+}
+
+.nav-link.active::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: var(--space-sm);
+  right: var(--space-sm);
+  height: 2px;
+  background-color: var(--color-primary);
+  border-radius: var(--radius-full);
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.avatar-circle {
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-primary);
+  color: #FFFFFF;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 1.1rem;
+  box-shadow: 0 2px 4px rgba(139, 90, 43, 0.25);
+}
+
+.user-name {
+  font-weight: 600;
+  color: var(--color-text);
+  font-size: 0.95rem;
+}
+
+/* ==========================================================================
+   Hero Section (2 Cột)
+   ========================================================================== */
+
+.hero {
+  padding-top: var(--space-2xl);
+  padding-bottom: var(--space-3xl);
+  overflow: hidden; /* Đảm bảo góc nghiêng không tràn ngang */
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  grid-template-areas:
+    "intro collage"
+    "actions collage";
+  align-items: center;
+  gap: var(--space-xl) var(--space-2xl);
+  max-width: 1440px;
+}
+
+.hero-intro {
+  grid-area: intro;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-intro .hero-desc {
+  margin-bottom: 0;
+}
+
+.hero-actions {
+  grid-area: actions;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-eyebrow {
+  font-size: 0.825rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  margin-bottom: var(--space-md);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.hero-title {
+  margin-bottom: var(--space-lg);
+  line-height: 1.2;
+}
+
+.hero-title em {
+  font-style: italic;
+  color: var(--color-primary);
+  font-family: var(--font-serif);
+  position: relative;
+  display: inline-block;
+}
+
+.hero-title em::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  width: 100%;
+  height: 6px;
+  background-color: rgba(207, 222, 201, 0.6);
+  z-index: -1;
+  border-radius: var(--radius-sm);
+}
+
+.hero-desc {
+  font-size: 1.1rem;
+  line-height: 1.65;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-xl);
+  max-width: 540px;
+}
+
+.hero-cta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-2xl);
+  flex-wrap: wrap;
+}
+
+.hero-features {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  padding-top: var(--space-lg);
+  border-top: 1px dashed var(--color-border);
+}
+
+.hero-feature-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-size: 0.95rem;
+  color: var(--color-text);
+  font-weight: 500;
+}
+
+.hero-feature-icon {
+  width: 20px;
+  height: 20px;
+  color: var(--color-primary);
+  flex-shrink: 0;
+}
+
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px; /* Khoảng cách chuẩn 8px giữa icon và chữ */
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.btn-icon {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+  flex-shrink: 0;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.btn-primary {
+  background-color: var(--color-primary);
+  color: #FFFFFF;
+  box-shadow: 0 4px 12px rgba(139, 90, 43, 0.25);
+}
+
+.btn-primary .btn-icon {
+  color: #FFFFFF;
+  stroke: #FFFFFF;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-hover);
+  color: #FFFFFF;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(139, 90, 43, 0.3);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--color-primary);
+  border: 2px solid var(--color-primary);
+}
+
+.btn-secondary .btn-icon {
+  color: var(--color-primary);
+  stroke: var(--color-primary);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-primary-light);
+  color: var(--color-primary-hover);
+  border-color: var(--color-primary-hover);
+  transform: translateY(-1px);
+}
+
+.btn-card {
+  width: 100%;
+  margin-top: auto;
+  padding: 0.7rem 1rem;
+  font-size: 0.9rem;
+}
+
+.btn:disabled,
+.btn[aria-disabled="true"] {
+  background-color: var(--color-disabled-bg);
+  color: var(--color-disabled-text);
+  border-color: var(--color-disabled-border);
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none !important;
+}
+
+/* ==========================================================================
+   Hero Visual – Scrapbook Collage (.collage container 620 / 400)
+   ========================================================================== */
+
+.collage {
+  grid-area: collage;
+  position: relative;
+  width: 100%;
+  max-width: 820px;
+  justify-self: end;
+  align-self: center;
+  aspect-ratio: 620 / 400;
+  container-type: inline-size;
+  margin: 0;
+}
+
+/* Các thành phần con định vị tuyệt đối theo % */
+.collage-item {
+  position: absolute;
+  box-sizing: border-box;
+}
+
+/* Màu nền pastel cho các khung ảnh */
+.bg-pastel-beige {
+  background-color: #F4EBD9;
+}
+
+.bg-pastel-sage {
+  background-color: #D2DDD5;
+}
+
+.bg-pastel-pink {
+  background-color: #F4D8D8;
+}
+
+.bg-pastel-butter {
+  background-color: #F6ECD3;
+}
+
+/* Cấu trúc Polaroid: nền #FBF8F2, padding đáy dày hơn, bóng mềm 2 lớp */
+.collage-polaroid-sm,
+.collage-polaroid-sage,
+.collage-polaroid-flower {
+  background-color: #FBF8F2;
+  border-radius: 2px;
+  box-shadow: 0 4px 12px rgba(90, 60, 30, 0.08), 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.polaroid-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 1px;
+}
+
+.collage-icon {
+  width: 48%;
+  height: 48%;
+  stroke: var(--color-primary);
+}
+
+/* 8. Giấy kraft dài: left 38%, top 12%, width 32%, height 10% (z-index: 1) */
+.collage-kraft {
+  left: 38%;
+  top: 12%;
+  width: 32%;
+  height: 10%;
+  background-color: #DCC6AA;
+  border: 1px solid rgba(139, 90, 43, 0.18);
+  box-shadow: 0 2px 6px rgba(110, 80, 50, 0.1);
+  z-index: 1;
+}
+
+/* 9. Giấy kẻ dòng (repeating-linear-gradient): left 26%, top 52%, width 20%, height 22%, rotate -2deg (z-index: 1) */
+.collage-lined {
+  left: 26%;
+  top: 52%;
+  width: 20%;
+  height: 22%;
+  transform: rotate(-2deg);
+  background: repeating-linear-gradient(
+    to bottom,
+    #FAF5EA,
+    #FAF5EA 1.8cqw,
+    rgba(139, 90, 43, 0.18) 1.9cqw,
+    #FAF5EA 2cqw
+  );
+  border: 1px solid rgba(139, 90, 43, 0.15);
+  box-shadow: 0 3px 8px rgba(90, 60, 30, 0.07);
+  z-index: 1;
+}
+
+/* 1. Polaroid nhỏ phía sau: left 4%, top 30%, width 16%, rotate -8deg (z-index: 2). Ruột nền be */
+.collage-polaroid-sm {
+  left: 4%;
+  top: 30%;
+  width: 16%;
+  aspect-ratio: 1 / 1.18;
+  transform: rotate(-8deg);
+  padding: 1cqw 1cqw 2.8cqw 1cqw;
+  z-index: 2;
+}
+
+/* 2. Film dọc 3 ô: left 12%, top 40%, width 13%, rotate -6deg (z-index: 3). 3 ô icon người/tim/sao */
+.collage-film-left {
+  left: 12%;
+  top: 40%;
+  width: 13%;
+  transform: rotate(-6deg);
+  z-index: 3;
+}
+
+/* 3. Polaroid ngang: left 18%, top 6%, width 25%, rotate -3deg (z-index: 3), băng keo trơn ở mép trên. Ruột nền sage, icon máy ảnh */
+.collage-polaroid-sage {
+  left: 18%;
+  top: 6%;
+  width: 25%;
+  aspect-ratio: 1.25 / 1;
+  transform: rotate(-3deg);
+  padding: 1cqw 1cqw 2.6cqw 1cqw;
+  z-index: 3;
+}
+
+/* 5. Polaroid ngang: left 64%, top 3%, width 22%, rotate 4deg (z-index: 3). Ruột nền be, icon hoa */
+.collage-polaroid-flower {
+  left: 64%;
+  top: 3%;
+  width: 22%;
+  aspect-ratio: 1.2 / 1;
+  transform: rotate(4deg);
+  padding: 1cqw 1cqw 2.6cqw 1cqw;
+  z-index: 3;
+}
+
+/* 6. Film dọc 3 ô: left 79%, top 32%, width 14%, rotate 3deg (z-index: 4) */
+.collage-film-right {
+  left: 79%;
+  top: 32%;
+  width: 14%;
+  transform: rotate(3deg);
+  z-index: 4;
+}
+
+/* Dải phim dọc phong cách analog với hàng lỗ răng cưa hai bên */
+.film-v-strip {
+  position: relative;
+  background-color: #201C1A;
+  border-radius: 3px;
+  padding: 2.2cqw 1.8cqw;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2cqw;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.16);
+}
+
+.film-v-strip::before,
+.film-v-strip::after {
+  content: "";
+  position: absolute;
+  top: 1.5cqw;
+  bottom: 1.5cqw;
+  width: 0.8cqw;
+  background: repeating-linear-gradient(
+    to bottom,
+    #FAF5EA 0,
+    #FAF5EA 0.8cqw,
+    transparent 0.8cqw,
+    transparent 1.8cqw
+  );
+  border-radius: 1px;
+}
+
+.film-v-strip::before {
+  left: 0.5cqw;
+}
+
+.film-v-strip::after {
+  right: 0.5cqw;
+}
+
+.film-v-frame {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.film-v-icon {
+  width: 52%;
+  height: 52%;
+  stroke: var(--color-primary);
+}
+
+/* 7. Ảnh ngang viền xé: left 58%, top 58%, width 26%, rotate -2deg (z-index: 5, nổi trên dải film phải). Ruột hoạ tiết đồi + mặt trời */
+.collage-torn-landscape {
+  left: 58%;
+  top: 58%;
+  width: 26%;
+  aspect-ratio: 160 / 110;
+  transform: rotate(-2deg);
+  z-index: 5;
+  clip-path: polygon(
+    0% 3%, 3% 0%, 97% 0%, 100% 3%,
+    98% 22%, 100% 45%, 97% 70%, 100% 97%,
+    97% 100%, 75% 98%, 50% 100%, 25% 97%,
+    3% 100%, 0% 97%, 2% 70%, 0% 45%, 2% 22%
+  );
+  filter: drop-shadow(0 3px 8px rgba(90, 60, 30, 0.12));
+}
+
+.landscape-svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* 4. Ảnh lớn ở giữa: left 40%, top 18%, width 28%, rotate 1deg (z-index: 5), mép dưới xé bằng clip-path. Ruột hồng, chữ "L" serif lớn */
+.collage-center-photo {
+  left: 40%;
+  top: 18%;
+  width: 28%;
+  aspect-ratio: 1 / 1.25;
+  transform: rotate(1deg);
+  z-index: 5;
+  background-color: #FBF8F2;
+  padding: 1.2cqw 1.2cqw 0 1.2cqw;
+  clip-path: polygon(
+    0% 0%, 100% 0%,
+    100% 93%, 97% 96%, 93% 92%, 89% 97%, 85% 93%,
+    80% 98%, 76% 92%, 71% 97%, 67% 93%,
+    62% 98%, 57% 92%, 53% 97%, 48% 93%,
+    43% 98%, 38% 92%, 34% 97%, 29% 93%,
+    24% 97%, 19% 92%, 15% 98%, 10% 93%,
+    6% 97%, 2% 92%, 0% 96%
+  );
+  filter: drop-shadow(0 4px 12px rgba(90, 60, 30, 0.12));
+}
+
+.center-photo-content {
+  width: 100%;
+  height: 94%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.center-photo-initial {
+  font-family: var(--font-serif);
+  font-size: 11cqw;
+  font-weight: 700;
+  color: #7B3E28;
+  line-height: 1;
+}
+
+/* 10. Băng keo có chữ (font Caveat): rotate 35deg (z-index: 6) – nền bán trong suốt thật, hai đầu răng cưa không cắt chữ */
+.collage-tape-text {
+  position: absolute;
+  z-index: 6;
+  font-family: var(--font-handwriting);
+  font-weight: 700;
+  color: #4A2B11;
+  background-color: rgba(246, 236, 214, 0.85);
+  box-shadow: 0 2px 6px rgba(90, 60, 30, 0.14);
+  padding: 0.35cqw 2.2cqw;
+  line-height: 1.1;
+  text-align: center;
+  white-space: nowrap;
+  backdrop-filter: blur(1px);
+  clip-path: polygon(
+    0% 0%, 100% 0%,
+    97% 20%, 100% 40%, 97% 60%, 100% 80%, 97% 100%,
+    0% 100%,
+    3% 80%, 0% 60%, 3% 40%, 0% 20%
+  );
+}
+
+/* "24.10.2026" chéo góc dưới-trái ảnh 4 */
+.collage-tape-date {
+  left: 33%;
+  top: 48%;
+  font-size: 2.3cqw;
+  transform: rotate(35deg);
+}
+
+/* "Phòng B" chéo góc trên-trái ảnh 5 */
+.collage-tape-room {
+  left: 60%;
+  top: 2%;
+  font-size: 2.5cqw;
+  transform: rotate(35deg);
+}
+
+/* 11. 3 băng keo trơn bán trong suốt (z-index: 6) */
+.collage-tape-plain {
+  position: absolute;
+  z-index: 6;
+  background-color: rgba(246, 238, 222, 0.78);
+  box-shadow: 0 1px 3px rgba(90, 60, 30, 0.08);
+  clip-path: polygon(
+    0% 0%, 100% 0%, 97% 50%, 100% 100%,
+    0% 100%, 3% 50%
+  );
+}
+
+/* Mép trên ảnh 3 */
+.tape-photo3 {
+  left: 25%;
+  top: 3.5%;
+  width: 10%;
+  height: 4.8%;
+  transform: rotate(-2deg);
+}
+
+/* Mép trên ảnh 5 */
+.tape-photo5 {
+  left: 70%;
+  top: 1%;
+  width: 9%;
+  height: 4.5%;
+  transform: rotate(3deg);
+}
+
+/* Giữa ảnh 8 */
+.tape-paper8 {
+  left: 49%;
+  top: 9.5%;
+  width: 9%;
+  height: 4.8%;
+  transform: rotate(1deg);
+}
+
+/* 12. SVG overlay phủ toàn khung (z-index: 7) */
+.collage-svg-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 7;
+}
+
+.collage-caption-text {
+  font-family: var(--font-handwriting);
+  font-size: 28px;
+  font-weight: 700;
+  fill: var(--color-primary);
+  letter-spacing: 0.02em;
+}
+
+/* ==========================================================================
+   Section 01 – Dịch vụ (Scrapbook Kraft Paper, Washi Tape, Stickers, Polaroids)
+   ========================================================================== */
+
+#dich-vu {
+  overflow-x: clip;
+  position: relative;
+}
+
+.dich-vu-header {
+  position: relative;
+  display: inline-block;
+  max-width: 800px;
+}
+
+/* Ngôi sao vẽ tay cạnh tiêu đề section */
+.doodle-star-wrap {
+  position: absolute;
+  top: 10px;
+  left: -52px;
+  width: 44px;
+  height: 44px;
+  pointer-events: none;
+}
+
+.doodle-star-svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Gạch chân nguệch ngoạc dưới "chọn ảnh trong tài khoản" */
+.doodle-underline-wrap {
+  position: relative;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.doodle-squiggly-svg {
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 100%;
+  height: 10px;
+  pointer-events: none;
+}
+
+/* Grid 3 thẻ dịch vụ */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-xl);
+  align-items: stretch;
+  position: relative;
+  padding: 15px 0;
+}
+
+/* Thẻ giấy kraft */
+.service-card {
+  position: relative;
+  border-radius: var(--radius-xs);
+  padding: calc(var(--space-xl) + 12px) var(--space-lg) var(--space-lg) var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  background: transparent;
+  filter: drop-shadow(0 4px 10px rgba(60, 42, 22, 0.12)) drop-shadow(0 14px 26px rgba(60, 42, 22, 0.08));
+  transition: transform 0.25s ease, filter 0.25s ease;
+  z-index: 2;
+}
+
+/* Nền giấy kraft be ấm có vân giấy bằng SVG feTurbulence */
+.service-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(175deg, #EFE3C8 0%, #E6D5B0 100%);
+  background-image: 
+    linear-gradient(175deg, #EFE3C8 0%, #E6D5B0 100%),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='k'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.18 0 0 0 0 0.14 0 0 0 0 0.1 0 0 0 0.035 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23k)'/%3E%3C/svg%3E");
+  background-blend-mode: multiply;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Mép xé 4 cạnh không đều và góc xoay riêng cho từng thẻ */
+.card-kraft-1 {
+  transform: rotate(-1deg);
+}
+
+.card-kraft-1::before {
+  clip-path: polygon(
+    0% 6px, 4% 2px, 9% 7px, 14% 3px, 19% 6px, 24% 2px, 30% 7px, 36% 3px, 42% 6px, 48% 2px, 54% 7px, 60% 3px, 67% 6px, 73% 2px, 80% 7px, 86% 3px, 92% 6px, 97% 2px, 100% 5px,
+    calc(100% - 3px) 6%, calc(100% - 7px) 13%, calc(100% - 2px) 20%, calc(100% - 6px) 28%, calc(100% - 2px) 36%, calc(100% - 7px) 44%, calc(100% - 3px) 52%, calc(100% - 6px) 60%, calc(100% - 2px) 68%, calc(100% - 7px) 76%, calc(100% - 3px) 84%, calc(100% - 6px) 92%, calc(100% - 2px) 97%,
+    calc(100% - 5px) calc(100% - 3px), 94% calc(100% - 7px), 88% calc(100% - 2px), 81% calc(100% - 6px), 75% calc(100% - 3px), 69% calc(100% - 7px), 62% calc(100% - 2px), 56% calc(100% - 6px), 49% calc(100% - 3px), 43% calc(100% - 7px), 37% calc(100% - 2px), 30% calc(100% - 6px), 24% calc(100% - 2px), 18% calc(100% - 7px), 11% calc(100% - 3px), 5% calc(100% - 6px),
+    3px calc(100% - 4px), 6px 93%, 2px 86%, 7px 79%, 3px 72%, 6px 64%, 2px 57%, 7px 49%, 3px 42%, 6px 34%, 2px 27%, 7px 19%, 3px 12%, 6px 5%
+  );
+}
+
+.card-kraft-2 {
+  transform: rotate(0.5deg);
+}
+
+.card-kraft-2::before {
+  clip-path: polygon(
+    0% 4px, 5% 7px, 10% 2px, 16% 6px, 22% 1px, 28% 6px, 35% 2px, 41% 7px, 47% 3px, 53% 6px, 59% 2px, 66% 7px, 72% 3px, 78% 6px, 85% 2px, 91% 7px, 96% 3px, 100% 6px,
+    calc(100% - 6px) 7%, calc(100% - 2px) 15%, calc(100% - 7px) 23%, calc(100% - 3px) 31%, calc(100% - 6px) 39%, calc(100% - 2px) 47%, calc(100% - 7px) 55%, calc(100% - 3px) 63%, calc(100% - 6px) 71%, calc(100% - 2px) 79%, calc(100% - 7px) 87%, calc(100% - 3px) 94%,
+    calc(100% - 4px) calc(100% - 2px), 95% calc(100% - 6px), 89% calc(100% - 2px), 83% calc(100% - 7px), 76% calc(100% - 3px), 70% calc(100% - 6px), 63% calc(100% - 2px), 57% calc(100% - 7px), 51% calc(100% - 3px), 44% calc(100% - 6px), 38% calc(100% - 2px), 31% calc(100% - 7px), 25% calc(100% - 3px), 19% calc(100% - 6px), 12% calc(100% - 2px), 6% calc(100% - 7px),
+    2px calc(100% - 5px), 7px 92%, 3px 85%, 6px 77%, 2px 69%, 7px 61%, 3px 53%, 6px 45%, 2px 37%, 7px 29%, 3px 21%, 6px 13%, 2px 6%
+  );
+}
+
+.card-kraft-3 {
+  transform: rotate(-0.5deg);
+}
+
+.card-kraft-3::before {
+  clip-path: polygon(
+    0% 5px, 6% 2px, 12% 6px, 18% 2px, 25% 7px, 32% 3px, 38% 6px, 45% 2px, 52% 7px, 58% 3px, 65% 6px, 71% 2px, 77% 7px, 84% 3px, 90% 6px, 96% 2px, 100% 4px,
+    calc(100% - 2px) 8%, calc(100% - 6px) 16%, calc(100% - 2px) 24%, calc(100% - 7px) 32%, calc(100% - 3px) 40%, calc(100% - 6px) 48%, calc(100% - 2px) 56%, calc(100% - 7px) 64%, calc(100% - 3px) 72%, calc(100% - 6px) 80%, calc(100% - 2px) 88%, calc(100% - 6px) 95%,
+    calc(100% - 3px) calc(100% - 5px), 93% calc(100% - 2px), 87% calc(100% - 6px), 80% calc(100% - 2px), 74% calc(100% - 7px), 67% calc(100% - 3px), 61% calc(100% - 6px), 54% calc(100% - 2px), 48% calc(100% - 7px), 41% calc(100% - 3px), 35% calc(100% - 6px), 28% calc(100% - 2px), 22% calc(100% - 7px), 16% calc(100% - 3px), 9% calc(100% - 6px), 3% calc(100% - 2px),
+    4px calc(100% - 4px), 2px 94%, 6px 87%, 2px 80%, 7px 73%, 3px 65%, 6px 58%, 2px 50%, 7px 43%, 3px 35%, 6px 28%, 2px 20%, 6px 13%, 2px 6%
+  );
+}
+
+.card-kraft-1:hover {
+  transform: translateY(-4px) rotate(-1deg);
+  filter: drop-shadow(0 8px 18px rgba(60, 42, 22, 0.18)) drop-shadow(0 18px 32px rgba(60, 42, 22, 0.1));
+}
+
+.card-kraft-2:hover {
+  transform: translateY(-4px) rotate(0.5deg);
+  filter: drop-shadow(0 8px 18px rgba(60, 42, 22, 0.18)) drop-shadow(0 18px 32px rgba(60, 42, 22, 0.1));
+}
+
+.card-kraft-3:hover {
+  transform: translateY(-4px) rotate(-0.5deg);
+  filter: drop-shadow(0 8px 18px rgba(60, 42, 22, 0.18)) drop-shadow(0 18px 32px rgba(60, 42, 22, 0.1));
+}
+
+/* Băng keo washi tape với hai đầu răng cưa */
+.washi-tape {
+  position: absolute;
+  height: 24px;
+  width: 90px;
+  opacity: 0.88;
+  box-shadow: 0 1px 3px rgba(60, 40, 20, 0.15);
+  clip-path: polygon(
+    0% 0%, 4px 4px, 0% 8px, 4px 12px, 0% 16px, 4px 20px, 0% 24px,
+    100% 24px,
+    calc(100% - 4px) 20px, 100% 16px, calc(100% - 4px) 12px, 100% 8px, calc(100% - 4px) 4px, 100% 0%,
+    0% 0%
+  );
+  z-index: 6;
+  pointer-events: none;
+}
+
+.tape-crab {
+  background-color: rgba(181, 100, 60, 0.88); /* #B5643C gạch cua */
+}
+
+.tape-moss {
+  background-color: rgba(94, 115, 84, 0.88); /* #5E7354 xanh rêu */
+}
+
+.tape-mustard {
+  background-color: rgba(201, 162, 74, 0.88); /* #C9A24A vàng mù tạt */
+}
+
+.tape-striped {
+  background: repeating-linear-gradient(
+    135deg,
+    #B5643C 0px,
+    #B5643C 6px,
+    #F4EBD9 6px,
+    #F4EBD9 10px,
+    #5E7354 10px,
+    #5E7354 16px,
+    #F4EBD9 16px,
+    #F4EBD9 20px,
+    #C9A24A 20px,
+    #C9A24A 26px,
+    #F4EBD9 26px,
+    #F4EBD9 30px
+  );
+  opacity: 0.92;
+}
+
+.card-tape-tl {
+  top: -12px;
+  left: 20px;
+  transform: rotate(-18deg);
+}
+
+.card-tape-tr {
+  top: -10px;
+  right: 25px;
+  width: 95px;
+  transform: rotate(8deg);
+}
+
+.card-tape-bl {
+  bottom: 12px;
+  left: -20px;
+  width: 76px;
+  transform: rotate(45deg);
+}
+
+/* Kẹp giấy kim loại trên thẻ 1 */
+.paperclip-wrap {
+  position: absolute;
+  top: -18px;
+  left: 62%;
+  width: 22px;
+  height: 52px;
+  z-index: 7;
+  pointer-events: none;
+}
+
+.paperclip-svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Stickers viền trắng dày + bóng nhẹ */
+.sticker-grad-cap {
+  position: absolute;
+  top: -14px;
+  right: -12px;
+  width: 72px;
+  height: 56px;
+  z-index: 6;
+  filter: drop-shadow(0 0 0 3px #ffffff) drop-shadow(0 3px 6px rgba(45, 33, 24, 0.22));
+  transform: rotate(10deg);
+  pointer-events: none;
+}
+
+.sticker-diploma {
+  position: absolute;
+  top: 155px;
+  right: -14px;
+  width: 64px;
+  height: 44px;
+  z-index: 6;
+  filter: drop-shadow(0 0 0 3px #ffffff) drop-shadow(0 3px 6px rgba(45, 33, 24, 0.22));
+  transform: rotate(8deg);
+  pointer-events: none;
+}
+
+.doodle-sunflower {
+  position: absolute;
+  left: calc(33.333% - 24px);
+  bottom: -22px;
+  width: 68px;
+  height: 98px;
+  z-index: 7;
+  filter: drop-shadow(0 0 0 3px #ffffff) drop-shadow(0 3px 6px rgba(45, 33, 24, 0.22));
+  transform: rotate(-5deg);
+  pointer-events: none;
+}
+
+.sunflower-tape {
+  position: absolute;
+  bottom: 8px;
+  left: 5px;
+  width: 58px;
+  height: 18px;
+  background-color: rgba(235, 215, 175, 0.85);
+  box-shadow: 0 1px 3px rgba(60, 40, 20, 0.15);
+  clip-path: polygon(
+    0% 0%, 3px 3px, 0% 6px, 3px 9px, 0% 12px, 3px 15px, 0% 18px,
+    100% 18px,
+    calc(100% - 3px) 15px, 100% 12px, calc(100% - 3px) 9px, 100% 6px, calc(100% - 3px) 3px, 100% 0%,
+    0% 0%
+  );
+  transform: rotate(12deg);
+}
+
+.sticker-camera {
+  position: absolute;
+  bottom: -15px;
+  right: -15px;
+  width: 74px;
+  height: 54px;
+  z-index: 6;
+  filter: drop-shadow(0 0 0 3px #ffffff) drop-shadow(0 3px 6px rgba(45, 33, 24, 0.22));
+  transform: rotate(-6deg);
+  pointer-events: none;
+}
+
+/* Khung ảnh Polaroid ruột pastel */
+.polaroid {
+  background-color: #FBF8F2;
+  padding: 6px 6px 18px 6px;
+  box-shadow: 0 3px 8px rgba(45, 33, 24, 0.18), 0 1px 3px rgba(45, 33, 24, 0.1);
+  border-radius: 2px;
+  position: absolute;
+  pointer-events: none;
+}
+
+.polaroid-card1-top {
+  top: 190px;
+  left: -48px;
+  width: 82px;
+  transform: rotate(-7deg);
+  z-index: 4;
+}
+
+.polaroid-card1-bottom {
+  top: 295px;
+  left: -38px;
+  width: 82px;
+  transform: rotate(4deg);
+  z-index: 5;
+}
+
+.polaroid-card2 {
+  top: -24px;
+  right: -24px;
+  width: 90px;
+  transform: rotate(6deg);
+  z-index: 4;
+}
+
+.polaroid-card3 {
+  top: 25px;
+  right: -42px;
+  width: 88px;
+  transform: rotate(6deg);
+  z-index: 4;
+}
+
+/* Dải film dọc 3 ô ở thẻ 3 */
+.film-strip-card3 {
+  position: absolute;
+  top: 145px;
+  right: -36px;
+  width: 70px;
+  background-color: #1A1817;
+  padding: 8px 6px;
+  border-radius: 2px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transform: rotate(-3deg);
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  pointer-events: none;
+}
+
+.film-strip-card3::before,
+.film-strip-card3::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 5px;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 4px,
+    #FBF8F2 4px,
+    #FBF8F2 8px,
+    transparent 8px,
+    transparent 12px
+  );
+}
+
+.film-strip-card3::before {
+  left: 2px;
+}
+
+.film-strip-card3::after {
+  right: 2px;
+}
+
+.film-frame-slot {
+  margin: 0 4px;
+  background: #000;
+  padding: 2px;
+}
+
+.film-frame-slot .photo-slot {
+  aspect-ratio: 1 / 1;
+}
+
+/* Khung slot ảnh chuẩn hoá cho polaroid & film */
+.photo-slot {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background-color: #E8DFD0;
+}
+
+.photo-slot > svg,
+.photo-slot > img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+/* Icon kiểu con dấu viền đôi */
+.card-stamp-seal {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-md);
+  border: 2px solid currentColor;
+  box-shadow: inset 0 0 0 2px #EFE3C8, inset 0 0 0 3.5px currentColor;
+  flex-shrink: 0;
+}
+
+.seal-butter {
+  color: #B5643C;
+  background-color: rgba(181, 100, 60, 0.08);
+}
+
+.seal-sage {
+  color: #5E7354;
+  background-color: rgba(94, 115, 84, 0.08);
+}
+
+.seal-pink {
+  color: #8C4E43;
+  background-color: rgba(140, 78, 67, 0.08);
+}
+
+.stamp-icon {
+  width: 28px;
+  height: 28px;
+}
+
+/* Tiêu đề & giá tiền */
+.card-title {
+  font-size: 1.45rem;
+  margin-bottom: var(--space-xs);
+  color: #2B2625;
+}
+
+.card-price {
+  font-family: var(--font-serif);
+  margin-bottom: var(--space-md);
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2xs);
+}
+
+.price-prefix {
+  font-size: 0.95rem;
+  font-family: var(--font-serif);
+  color: #8C7C70;
+  font-weight: 500;
+}
+
+.price-amount {
+  font-size: 1.55rem;
+  font-family: var(--font-serif);
+  font-weight: 700;
+  color: #B5643C; /* Màu gạch cua */
+  letter-spacing: -0.01em;
+}
+
+.price-unit {
+  font-size: 0.95rem;
+  font-family: var(--font-sans);
+  color: #8C7C70;
+  font-weight: normal;
+}
+
+.card-features {
+  list-style: none;
+  margin-bottom: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  flex-grow: 1;
+}
+
+.card-feature {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-xs);
+  font-size: 0.925rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+}
+
+.card-feature-icon {
+  width: 16px;
+  height: 16px;
+  color: var(--color-primary);
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+/* Nút Xem chi tiết kiểu tem thư */
+.btn-stamp {
+  width: 100%;
+  background-color: #D8C7A6;
+  color: #4A2E18;
+  border: 1.5px solid #8B6543;
+  outline: 1.5px dashed #8B6543;
+  outline-offset: -5px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 700;
+  padding: 0.75rem 1.25rem;
+  box-shadow: 0 2px 4px rgba(60, 40, 20, 0.1);
+  cursor: not-allowed;
+  transition: transform 0.2s ease;
+  margin-top: auto;
+}
+
+.btn-stamp:disabled {
+  opacity: 0.95;
+}
+
+.card-disabled-note {
+  font-size: 0.8rem;
+  color: var(--color-text-light);
+  text-align: center;
+  margin-top: var(--space-xs);
+  font-style: italic;
+}
+
+/* Ghi chú nét vẽ tay Caveat & mũi tên */
+.doodle-note-edge {
+  position: absolute;
+  bottom: 58px;
+  right: -24px;
+  font-family: var(--font-handwriting);
+  font-size: 1.15rem;
+  color: #5C3D24;
+  line-height: 1.1;
+  text-align: right;
+  transform: rotate(-4deg);
+  z-index: 5;
+  pointer-events: none;
+}
+
+.doodle-note-tape {
+  position: absolute;
+  top: 68px;
+  right: -10px;
+  font-family: var(--font-handwriting);
+  font-size: 1.15rem;
+  color: #5C3D24;
+  line-height: 1.1;
+  transform: rotate(-2deg);
+  z-index: 5;
+  pointer-events: none;
+}
+
+.doodle-arrow-curved {
+  display: block;
+  margin-left: auto;
+  margin-top: 2px;
+}
+
+.doodle-arrow-card1 {
+  position: absolute;
+  bottom: 52px;
+  right: 18px;
+  width: 32px;
+  height: 36px;
+  z-index: 5;
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   Section 02 – Quy trình (4 Cột)
+   ========================================================================== */
+
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-xl);
+}
+
+.process-col {
+  border-top: 1.5px solid var(--color-border);
+  padding-top: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.step-num {
+  font-family: var(--font-serif);
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  line-height: 1;
+  margin-bottom: var(--space-sm);
+}
+
+.step-title {
+  font-size: 1.15rem;
+  margin-bottom: var(--space-xs);
+}
+
+.step-desc {
+  font-size: 0.925rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   Section 03 – Chat với studio (Scrapbook Chat Card)
+   ========================================================================== */
+
+.chat-card {
+  max-width: 760px;
+  margin: 0 auto;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-polaroid);
+  padding: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.chat-card-tape {
+  top: -12px;
+  right: 40px;
+  transform: rotate(3deg);
+}
+
+.doodle-chat {
+  top: -30px;
+  left: 20px;
+  transform: rotate(-3deg);
+}
+
+.chat-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: var(--space-md);
+  margin-bottom: var(--space-lg);
+  border-bottom: 1px dashed var(--color-border);
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: var(--radius-full);
+  background-color: #2E7D32;
+  box-shadow: 0 0 0 2px rgba(46, 125, 50, 0.2);
+}
+
+.chat-header-hint {
+  font-size: 0.825rem;
+  color: var(--color-text-light);
+}
+
+.chat-messages {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  margin-bottom: var(--space-xl);
+}
+
+.message-group {
+  display: flex;
+  flex-direction: column;
+  max-width: 82%;
+}
+
+.message-customer {
+  align-self: flex-end;
+  align-items: flex-end;
+}
+
+.message-studio {
+  align-self: flex-start;
+  align-items: flex-start;
+}
+
+.message-author {
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: var(--space-2xs);
+  color: var(--color-text);
+}
+
+.message-studio .message-author {
+  color: var(--color-primary);
+  font-family: var(--font-serif);
+}
+
+.message-bubble {
+  padding: 0.85rem 1.15rem;
+  border-radius: var(--radius-lg);
+  font-size: 0.95rem;
+  line-height: 1.55;
+  box-shadow: var(--shadow-paper);
+}
+
+.bubble-customer {
+  background-color: #E8DCC9;
+  color: var(--color-text);
+  border-bottom-right-radius: 4px;
+  border: 1px solid #D5C4AE;
+}
+
+.bubble-studio {
+  background-color: var(--color-bg-card);
+  color: var(--color-text);
+  border-bottom-left-radius: 4px;
+  border: 1px solid var(--color-border);
+}
+
+.message-meta {
+  font-size: 0.775rem;
+  color: var(--color-text-light);
+  margin-top: 4px;
+}
+
+.chat-input-box {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  padding-top: var(--space-md);
+  border-top: 1px dashed var(--color-border);
+}
+
+.chat-input-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.chat-btn-action {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  background-color: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: not-allowed;
+  flex-shrink: 0;
+}
+
+.chat-input-field {
+  flex-grow: 1;
+  height: 44px;
+  padding: 0 var(--space-md);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background-color: var(--color-bg-card);
+  color: var(--color-disabled-text);
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  cursor: not-allowed;
+}
+
+.chat-btn-send {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  background-color: var(--color-disabled-bg);
+  border: 1px solid var(--color-disabled-border);
+  color: var(--color-disabled-text);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: not-allowed;
+  flex-shrink: 0;
+}
+
+.chat-input-field:disabled,
+.chat-btn-action:disabled,
+.chat-btn-send:disabled {
+  cursor: not-allowed;
+}
+
+.chat-note {
+  font-size: 0.8rem;
+  color: var(--color-text-light);
+  text-align: center;
+  font-style: italic;
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
+.site-footer {
+  background-color: var(--color-bg);
+  border-top: 1px solid var(--color-border);
+  padding: var(--space-xl) 0;
+  position: relative;
+  z-index: 20;
+}
+
+.footer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  text-align: center;
+}
+
+.footer-copy {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+.footer-admin {
+  font-size: 0.85rem;
+}
+
+.footer-admin-link {
+  color: var(--color-primary);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.footer-admin-link:hover {
+  color: var(--color-primary-hover);
+}
+
+/* ==========================================================================
+   Responsive Breakpoints
+   Desktop: 1200px (Default)
+   Tablet: dưới 768px -> 1 cột
+   Mobile: 360px -> không vỡ giao diện, không tràn ngang
+   ========================================================================== */
+
+@media (max-width: 992px) {
+  .process-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "intro"
+      "collage"
+      "actions";
+    gap: var(--space-xl);
+  }
+
+  .collage {
+    max-width: 560px;
+    justify-self: center;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --space-3xl: 3.5rem;
+    --space-2xl: 2.25rem;
+  }
+
+  h1 {
+    font-size: 2.15rem;
+  }
+
+  h2 {
+    font-size: 1.65rem;
+  }
+
+  .header-container {
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+  }
+
+  .main-nav {
+    order: 3;
+    width: 100%;
+    justify-content: center;
+    gap: var(--space-md);
+    padding-top: var(--space-xs);
+    border-top: 1px solid var(--color-border-subtle);
+  }
+
+  .hero {
+    padding-top: var(--space-lg);
+  }
+
+  .hero-cta {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-cta .btn {
+    width: 100%;
+  }
+
+  /* Section 01 Dịch vụ: Thẻ xếp 1 cột dưới 768px */
+  .cards-grid {
+    grid-template-columns: 1fr;
+    max-width: 440px;
+    margin: 0 auto;
+    gap: var(--space-2xl);
+  }
+
+  /* Ẩn polaroid, film strip, hoa hướng dương, mũi tên vẽ tay, ghi chú và ngôi sao */
+  .polaroid-card1-top,
+  .polaroid-card1-bottom,
+  .polaroid-card2,
+  .polaroid-card3,
+  .film-strip-card3,
+  .doodle-sunflower,
+  .doodle-arrow-card1,
+  .doodle-note-edge,
+  .doodle-note-tape,
+  .doodle-star-wrap {
+    display: none !important;
+  }
+
+  /* Giữ thẻ thẳng trên mobile để không tràn khung hay lệch lề */
+  .card-kraft-1,
+  .card-kraft-2,
+  .card-kraft-3 {
+    transform: none;
+  }
+
+  .card-kraft-1:hover,
+  .card-kraft-2:hover,
+  .card-kraft-3:hover {
+    transform: translateY(-3px);
+  }
+
+  .process-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+
+  .process-col {
+    padding-top: var(--space-md);
+  }
+
+  .chat-card {
+    padding: var(--space-md);
+  }
+
+  .message-group {
+    max-width: 95%;
+  }
+
+  /* Ẩn nét xoắn nhỏ trên màn hình nhỏ để tránh rối */
+  .collage-swirl {
+    display: none;
+  }
+}
+
+@media (max-width: 420px) {
+  .container {
+    padding-left: var(--space-md);
+    padding-right: var(--space-md);
+  }
+
+  h1 {
+    font-size: 1.85rem;
+  }
+
+  .collage {
+    width: 100%;
+  }
+}
+
+/* ==========================================================================
+   Class mẫu cho ảnh thực tế trong .photo-slot
+   ========================================================================== */
+.photo-slot img {
+  object-position: center 30%;
+  /* Hướng dẫn chỉnh:
+     - Giá trị thứ nhất (X-axis): 'center', 'left', 'right' hoặc tỉ lệ % (VD: 50%) để chỉnh lề ngang của ảnh.
+     - Giá trị thứ hai (Y-axis): '30%' giúp canh tiêu điểm vào khuôn mặt / chủ thể ở 1/3 trên của khung polaroid/film.
+     - Điều chỉnh từ 20% đến 40% tuỳ ảnh chụp góc cận hay góc toàn để không bị cắt đầu nhân vật. */
+}
