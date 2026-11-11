@@ -2,66 +2,404 @@
 <html lang="vi">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tư Vấn &amp; Xử Lý Trùng Lịch – GradStudio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tư vấn &amp; xử lý trùng lịch – GradStudio</title>
   <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/admin-tu-van.css">
 </head>
-<body>
-  <header class="site-header">
-    <div class="container header-container">
-      <a href="index.html" class="logo" aria-label="Trang chủ GradStudio">
-        <span>GradStudio</span>
-      </a>
+<body class="page-admin">
 
-      <!-- Navigation ngang trên Desktop (≥768px) -->
-      <nav class="main-nav nav-desktop" aria-label="Điều hướng chính">
-        <a href="index.html#dich-vu" class="nav-link">Dịch vụ</a>
-        <a href="index.html#quy-trinh" class="nav-link">Quy trình</a>
-        <a href="lich-chup-cua-toi.html" class="nav-link">Lịch chụp của tôi</a>
-      </nav>
-
-      <!-- Cụm bên phải: Profile + Menu Dropdown Mobile (<768px) -->
-      <div class="header-right">
-        <div class="user-profile" aria-label="Tài khoản khách hàng">
-          <div class="avatar-circle" aria-hidden="true">L</div>
-          <span class="user-name">Linh</span>
-        </div>
-
-        <!-- Menu Dropdown bằng HTML thuần <details> cho Mobile (<768px, không dùng JS) -->
-        <details class="mobile-menu-details">
-          <summary class="mobile-menu-summary" aria-label="Mở menu điều hướng">
-            <span class="menu-icon" aria-hidden="true">
-              <span></span>
-              <span></span>
-              <span></span>
-            </span>
-            <span class="menu-text">Menu</span>
-          </summary>
-          <nav class="mobile-dropdown-nav" aria-label="Menu di động">
-            <a href="index.html#dich-vu" class="mobile-nav-link">Dịch vụ</a>
-            <a href="index.html#quy-trinh" class="mobile-nav-link">Quy trình</a>
-            <a href="lich-chup-cua-toi.html" class="mobile-nav-link">Lịch chụp của tôi</a>
-          </nav>
-        </details>
-      </div>
-    </div>
+  <!-- Studio header: this page is the studio manager's view (Admin Thảo), not the customer's -->
+  <header class="studio-header">
+    <a class="studio-brand" href="index.html">
+      <span class="studio-brand__logo">GradStudio</span>
+      <span class="studio-brand__tag">Studio</span>
+    </a>
+    <nav class="studio-nav" aria-label="Điều hướng studio">
+      <ul>
+        <li><a href="admin-tu-van.html" aria-current="page">Hội thoại</a></li>
+      </ul>
+    </nav>
+    <p class="studio-account">
+      <span class="avatar avatar--washi" aria-hidden="true">T</span>
+      Thảo · Quản lý studio
+    </p>
   </header>
 
-  <main>
-    <section class="section" aria-labelledby="admin-title">
-      <div class="container">
-        <h1 id="admin-title" class="section-title">Quản lý tư vấn &amp; xếp lịch chụp</h1>
-        <p class="section-desc">
-          Màn hình tư vấn và xử lý trùng lịch của Admin Thảo. Chuyển về <a href="index.html">Trang chủ</a> để xem gói chụp và chat của khách hàng.
-        </p>
+  <main class="workspace">
+
+    <div class="intro">
+      <p class="eyebrow">Studio / Hội thoại</p>
+      <h1>Từ lời hẹn đến buổi chụp.</h1>
+      <p class="intro__lead">Linh đã đồng ý lịch đề xuất. Hoàn tất thông tin để tạo booking chờ cọc.</p>
+    </div>
+
+    <div class="desk">
+
+      <!-- Column 1: conversation list -->
+      <section class="desk__convos" aria-labelledby="convos-title">
+        <div class="list-head">
+          <h2 id="convos-title">Khách đang chờ</h2>
+          <p class="list-head__count">5 hội thoại</p>
+        </div>
+
+        <div class="filters" role="group" aria-label="Lọc hội thoại">
+          <button type="button" class="filter filter--on" aria-pressed="true" disabled aria-describedby="filter-note">Tất cả</button>
+          <button type="button" class="filter" aria-pressed="false" disabled aria-describedby="filter-note">Chưa trả lời</button>
+          <button type="button" class="filter" aria-pressed="false" disabled aria-describedby="filter-note">Đang tư vấn</button>
+        </div>
+        <p class="note" id="filter-note">Bộ lọc chưa có ở bản PA#2, danh sách đang hiện tất cả.</p>
+
+        <ul class="convo-list">
+          <li>
+            <article class="convo convo--open" aria-current="true" aria-labelledby="convo-linh">
+              <div class="person">
+                <span class="avatar avatar--brand" aria-hidden="true">L</span>
+                <h3 id="convo-linh">Nguyễn Thùy Linh</h3>
+              </div>
+              <p class="convo__last">Gói tốt nghiệp có makeup còn lịch 24/10 lúc 09:00 không?</p>
+              <p class="chip chip--ok"><img src="assets/icons/status-da-chot-lich.svg" alt="" width="16" height="16"> Đã chốt lịch</p>
+            </article>
+          </li>
+          <li>
+            <article class="convo" aria-labelledby="convo-khoa">
+              <div class="person">
+                <span class="avatar avatar--washi" aria-hidden="true">K</span>
+                <h3 id="convo-khoa">Trần Minh Khoa</h3>
+              </div>
+              <p class="convo__last">Chụp chân dung CV mất bao lâu ạ?</p>
+              <p class="chip chip--muted"><img src="assets/icons/status-chua-tra-loi.svg" alt="" width="16" height="16"> Chưa trả lời</p>
+            </article>
+          </li>
+          <li>
+            <article class="convo" aria-labelledby="convo-bao">
+              <div class="person">
+                <span class="avatar avatar--washi" aria-hidden="true">B</span>
+                <h3 id="convo-bao">Hồ Gia Bảo · Lớp 12A3</h3>
+              </div>
+              <p class="convo__last">Lớp mình chốt 24/10 nhé</p>
+              <p class="chip chip--brand"><img src="assets/icons/status-dang-tu-van.svg" alt="" width="16" height="16"> Đang tư vấn</p>
+            </article>
+          </li>
+          <li>
+            <article class="convo" aria-labelledby="convo-han">
+              <div class="person">
+                <span class="avatar avatar--washi" aria-hidden="true">H</span>
+                <h3 id="convo-han">Lê Ngọc Hân</h3>
+              </div>
+              <p class="convo__last">Gói gia đình 4 người giá sao ạ?</p>
+              <p class="chip chip--muted"><img src="assets/icons/status-chua-tra-loi.svg" alt="" width="16" height="16"> Chưa trả lời</p>
+            </article>
+          </li>
+          <li>
+            <article class="convo" aria-labelledby="convo-anh">
+              <div class="person">
+                <span class="avatar avatar--washi" aria-hidden="true">A</span>
+                <h3 id="convo-anh">Phạm Hoàng Anh</h3>
+              </div>
+              <p class="convo__last">Cảm ơn studio, ảnh đẹp lắm!</p>
+              <p class="chip chip--ok"><img src="assets/icons/status-hoan-thanh.svg" alt="" width="16" height="16"> Hoàn thành</p>
+            </article>
+          </li>
+        </ul>
+      </section>
+
+      <!-- Column 2: the open chat, with the "Booking mới" form below it -->
+      <div class="desk__main">
+
+        <section aria-labelledby="chat-title">
+          <h2 id="chat-title">Hội thoại</h2>
+          <div class="card card--kraft talk-card">
+            <div class="person person--large">
+              <span class="avatar avatar--brand" aria-hidden="true">L</span>
+              <div>
+                <h3>Nguyễn Thùy Linh</h3>
+                <p class="person__topic">Tư vấn chụp ảnh tốt nghiệp</p>
+              </div>
+            </div>
+            <p class="chip chip--ok"><img src="assets/icons/status-da-chot-lich.svg" alt="" width="16" height="16"> Đã chốt lịch</p>
+            <hr>
+
+            <ol class="chat" aria-label="Tin nhắn với Linh">
+              <li class="msg msg--customer">
+                <p class="msg__from">Linh</p>
+                <p>Gói tốt nghiệp có makeup còn lịch 24/10 lúc 09:00 không?</p>
+                <p class="msg__meta"><time datetime="09:41">09:41</time> · Đã xem</p>
+              </li>
+              <li class="msg msg--studio">
+                <p class="msg__from">GradStudio</p>
+                <p>Thợ makeup Mai bận 08:00–12:00. Mình đề xuất makeup 13:00–14:00 với Mai, chụp 14:00–16:00 với Tuấn ở Phòng B nhé.</p>
+                <p class="msg__meta"><time datetime="10:23">10:23</time></p>
+              </li>
+              <li class="msg msg--customer">
+                <p class="msg__from">Linh</p>
+                <p>Ok, mình chốt 14:00 nhé!</p>
+                <p class="msg__meta"><time datetime="10:24">10:24</time> · Đã xem</p>
+              </li>
+            </ol>
+
+            <p class="callout">
+              <img src="assets/icons/calendar-check.svg" alt="" width="20" height="20">
+              <span>Linh đã đồng ý lịch <time datetime="2026-10-24T14:00">14:00 – Thứ Bảy 24/10/2026</time></span>
+            </p>
+
+            <!-- Sending messages has no page yet in PA#2: disabled controls with a visible note -->
+            <div class="composer">
+              <label for="chat-input">Tin nhắn cho Linh</label>
+              <div class="composer__box">
+                <img src="assets/icons/paperclip.svg" alt="" width="20" height="20">
+                <input id="chat-input" type="text" placeholder="Soạn tin đã khóa" disabled aria-describedby="chat-note">
+                <button type="button" class="composer__send" disabled aria-describedby="chat-note">
+                  <img src="assets/icons/arrow-up.svg" alt="Gửi tin nhắn" width="20" height="20">
+                </button>
+              </div>
+              <p class="note" id="chat-note">Gửi tin nhắn chưa khả dụng ở bản PA#2. Lịch đã chốt, tiếp tục ở <a href="#booking-moi">Booking mới</a> bên dưới.</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="booking-moi" aria-labelledby="booking-title">
+          <h2 id="booking-title">Booking mới – Chụp ảnh tốt nghiệp</h2>
+
+          <!-- "Tạo booking" submits to Screen 3, where Linh sees GS-1024 waiting for the deposit -->
+          <form class="card card--kraft booking" action="lich-chup-cua-toi.html" method="get">
+            <div class="booking__state">
+              <p class="eyebrow eyebrow--ink">Thông tin đã điền</p>
+              <p>Chưa tạo booking · Mã dự kiến GS-1024 · Lịch đề xuất chưa giữ chỗ.</p>
+            </div>
+
+            <div class="field-row">
+              <div class="field">
+                <label for="f-customer">Khách hàng</label>
+                <input id="f-customer" type="text" value="Nguyễn Thùy Linh" readonly>
+              </div>
+              <div class="field">
+                <label for="f-type">Loại buổi chụp</label>
+                <select id="f-type">
+                  <option selected>Tốt nghiệp cá nhân</option>
+                  <option>Kỷ yếu lớp</option>
+                  <option>Chân dung/CV</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="f-package">Gói</label>
+              <input id="f-package" type="text" value="Gói Tốt nghiệp Premium" aria-describedby="f-package-hint">
+              <p class="field__hint" id="f-package-hint">2 giờ, 30 ảnh chỉnh</p>
+            </div>
+
+            <div class="field-row">
+              <div class="field">
+                <label for="f-date">Ngày chụp</label>
+                <input id="f-date" type="text" value="24/10/2026 (Thứ Bảy)" readonly aria-describedby="f-time-hint">
+              </div>
+              <div class="field">
+                <label for="f-time">Giờ bắt đầu chụp</label>
+                <input id="f-time" type="text" value="14:00" readonly aria-describedby="f-time-hint">
+              </div>
+            </div>
+            <p class="field__hint" id="f-time-hint">Ngày và giờ theo lịch Linh đã đồng ý trong chat.</p>
+
+            <fieldset class="choices">
+              <legend>Dịch vụ thêm</legend>
+              <div class="choice">
+                <input id="f-makeup" type="checkbox" checked>
+                <label for="f-makeup">Makeup (60 phút trước giờ chụp)</label>
+              </div>
+              <div class="choice">
+                <input id="f-gown" type="checkbox">
+                <label for="f-gown">Thuê áo cử nhân</label>
+              </div>
+            </fieldset>
+
+            <div class="field">
+              <label for="f-price">Giá</label>
+              <input id="f-price" type="text" value="1.800.000đ">
+            </div>
+
+            <fieldset class="assign">
+              <legend>Phân công</legend>
+              <div class="field">
+                <label for="f-makeup-artist">Makeup</label>
+                <input id="f-makeup-artist" type="text" value="Mai" readonly>
+              </div>
+              <div class="field">
+                <label for="f-photographer">Thợ chụp</label>
+                <input id="f-photographer" type="text" value="Tuấn" readonly>
+              </div>
+              <div class="field">
+                <label for="f-room">Phòng</label>
+                <input id="f-room" type="text" value="Phòng B" readonly>
+              </div>
+            </fieldset>
+
+            <hr>
+
+            <div class="booking__submit">
+              <button type="submit" class="btn-create" aria-describedby="create-note">Tạo booking</button>
+              <p class="note" id="create-note">Booking tạo ra có trạng thái Chờ cọc 30% và hiện trong Lịch chụp của tôi của Linh. Studio chỉ giữ lịch sau khi khách đặt cọc thành công.</p>
+            </div>
+
+            <a class="next-link" href="lich-chup-cua-toi.html">
+              <span>Khách hàng: xem Lịch chụp của tôi</span>
+              <img src="assets/icons/arrow-up-right.svg" alt="" width="20" height="20">
+            </a>
+          </form>
+        </section>
       </div>
-    </section>
+
+      <!-- Column 3: resource calendar and suggested times -->
+      <section class="desk__resources" aria-labelledby="res-title">
+        <h2 id="res-title">Lịch tài nguyên · Thứ Bảy, 24/10</h2>
+        <div class="card card--paper calendar">
+          <div>
+            <p class="eyebrow"><time datetime="2026-10-24">24 / 10 / 2026</time></p>
+            <p>Lịch đề xuất · Chưa giữ chỗ</p>
+          </div>
+          <p class="calendar__caption">Khung làm việc 08:00–17:00 · 5 tài nguyên. Thanh ngang biểu thị khung giờ; thông tin đầy đủ nằm ngay dưới mỗi thanh.</p>
+
+          <!-- Hour scale for the bars; decorative, the times are written out in each card -->
+          <div class="hours" aria-hidden="true">
+            <span>08</span><span>09</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span>
+          </div>
+
+          <ul class="resources">
+            <li class="res">
+              <h3 class="res__name">Makeup · Mai</h3>
+              <div class="res__body">
+                <div class="track" aria-hidden="true">
+                  <span class="bar bar--busy from-08 to-12"></span>
+                  <span class="bar bar--proposed from-13 to-14"></span>
+                </div>
+                <ul class="slots">
+                  <li class="slot slot--busy">
+                    <img src="assets/icons/circle-slash.svg" alt="" width="20" height="20">
+                    <div>
+                      <p class="slot__title">Mai bận <time datetime="08:00">08:00</time>–<time datetime="12:00">12:00</time></p>
+                      <p class="slot__sub">Không nhận lịch makeup</p>
+                    </div>
+                  </li>
+                  <li class="slot slot--proposed">
+                    <img src="assets/icons/clock-3.svg" alt="" width="20" height="20">
+                    <div>
+                      <p class="slot__title">Makeup <time datetime="13:00">13:00</time>–<time datetime="14:00">14:00</time> · Mai · Linh</p>
+                      <p class="slot__sub">Lịch đề xuất · Chưa giữ chỗ</p>
+                    </div>
+                  </li>
+                </ul>
+                <p class="res__free">Còn trống: 12:00–13:00, 14:00–17:00.</p>
+              </div>
+            </li>
+            <li class="res">
+              <h3 class="res__name">Thợ chụp · Tuấn</h3>
+              <div class="res__body">
+                <div class="track" aria-hidden="true">
+                  <span class="bar bar--proposed from-14 to-16"></span>
+                </div>
+                <ul class="slots">
+                  <li class="slot slot--proposed">
+                    <img src="assets/icons/clock-3.svg" alt="" width="20" height="20">
+                    <div>
+                      <p class="slot__title">Chụp <time datetime="14:00">14:00</time>–<time datetime="16:00">16:00</time> · Tuấn · Phòng B · Linh</p>
+                      <p class="slot__sub">Lịch đề xuất · Chưa giữ chỗ</p>
+                    </div>
+                  </li>
+                </ul>
+                <p class="res__free">Còn trống: 08:00–14:00, 16:00–17:00.</p>
+              </div>
+            </li>
+            <li class="res">
+              <h3 class="res__name">Thợ chụp · Hà</h3>
+              <div class="res__body">
+                <div class="track" aria-hidden="true">
+                  <span class="bar bar--booked from-10 to-12"></span>
+                </div>
+                <ul class="slots">
+                  <li class="slot">
+                    <img src="assets/icons/calendar-days.svg" alt="" width="20" height="20">
+                    <div>
+                      <p class="slot__title">Gia đình · Hà · Phòng A</p>
+                      <p class="slot__sub"><time datetime="10:00">10:00</time>–<time datetime="12:00">12:00</time> · Đã đặt lịch</p>
+                    </div>
+                  </li>
+                </ul>
+                <p class="res__free">Còn trống: 08:00–10:00, 12:00–17:00.</p>
+              </div>
+            </li>
+            <li class="res">
+              <h3 class="res__name">Phòng A</h3>
+              <div class="res__body">
+                <div class="track" aria-hidden="true">
+                  <span class="bar bar--booked from-10 to-12"></span>
+                </div>
+                <ul class="slots">
+                  <li class="slot">
+                    <img src="assets/icons/calendar-days.svg" alt="" width="20" height="20">
+                    <div>
+                      <p class="slot__title">Gia đình · Hà · Phòng A</p>
+                      <p class="slot__sub"><time datetime="10:00">10:00</time>–<time datetime="12:00">12:00</time> · Đã đặt lịch</p>
+                    </div>
+                  </li>
+                </ul>
+                <p class="res__free">Còn trống: 08:00–10:00, 12:00–17:00.</p>
+              </div>
+            </li>
+            <li class="res">
+              <h3 class="res__name">Phòng B</h3>
+              <div class="res__body">
+                <div class="track" aria-hidden="true">
+                  <span class="bar bar--proposed from-14 to-16"></span>
+                </div>
+                <ul class="slots">
+                  <li class="slot slot--proposed">
+                    <img src="assets/icons/clock-3.svg" alt="" width="20" height="20">
+                    <div>
+                      <p class="slot__title">Chụp <time datetime="14:00">14:00</time>–<time datetime="16:00">16:00</time> · Tuấn · Phòng B · Linh</p>
+                      <p class="slot__sub">Lịch đề xuất · Chưa giữ chỗ</p>
+                    </div>
+                  </li>
+                </ul>
+                <p class="res__free">Còn trống: 08:00–14:00, 16:00–17:00.</p>
+              </div>
+            </li>
+          </ul>
+
+          <p class="callout callout--danger">
+            <img src="assets/icons/triangle-alert.svg" alt="" width="20" height="20">
+            <span><strong>Trùng lịch lúc <time datetime="09:00">09:00</time>:</strong> thợ makeup Mai bận 08:00–12:00, không đủ nhân sự cho khung 09:00.</span>
+          </p>
+
+          <hr>
+
+          <h3 class="calendar__subtitle">Gợi ý giờ trống</h3>
+          <ol class="suggestions">
+            <li class="suggestion suggestion--chosen">
+              <p class="suggestion__time"><time datetime="2026-10-24T14:00">14:00</time> – Gần nhất</p>
+              <p class="suggestion__chosen"><img src="assets/icons/circle-check.svg" alt="" width="20" height="20"> Đã chọn</p>
+              <p>Makeup 13:00–14:00 Mai · Chụp 14:00–16:00 Tuấn · Phòng B</p>
+              <p class="suggestion__sub">Lịch đề xuất · Chưa giữ chỗ</p>
+            </li>
+            <li class="suggestion">
+              <p class="suggestion__time"><time datetime="2026-10-24T15:00">15:00</time> – Trong ngày</p>
+              <p>Makeup 14:00–15:00 Mai · Chụp 15:00–17:00 Tuấn · Phòng B</p>
+            </li>
+            <li class="suggestion">
+              <p class="suggestion__time"><time datetime="2026-10-25T09:00">25/10 · 09:00</time> – Ngày khác</p>
+              <p>Makeup 08:00–09:00 Mai · Chụp 09:00–11:00 Tuấn · Phòng B</p>
+            </li>
+          </ol>
+          <p class="calendar__caption">Các giờ gợi ý là phương án thay thế, không phải các lịch đặt đồng thời.</p>
+        </div>
+      </section>
+
+    </div>
   </main>
 
-  <footer class="site-footer">
-    <div class="container footer-container">
-      <p class="footer-copy">© GradStudio · TP. Hồ Chí Minh · Hệ thống quản lý studio</p>
-    </div>
+  <footer class="studio-footer">
+    <p class="studio-footer__brand">GradStudio</p>
+    <p>Một lời hẹn chỉn chu, một ngày đáng nhớ.</p>
   </footer>
+
 </body>
 </html>
