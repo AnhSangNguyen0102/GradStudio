@@ -603,8 +603,12 @@ hr {
 }
 
 /* Hero row: Title + Photo cluster */
+/* wrap: between 1024 and ~1190 px the card column is too narrow for the title
+   and the 220 px photo cluster side by side; the photos move below the title
+   instead of squeezing it to one letter per line. */
 .booking-card__hero {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: flex-start;
   position: relative;
