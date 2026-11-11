@@ -36,6 +36,7 @@ Mọi link là link tương đối tới file (`admin-tu-van.html`), không có 
 - **Màn 3 có 2 cột từ 1024 px** (lịch tuần + timeline | thẻ booking). Thẻ booking hiện "Chờ cọc 30%" và nói rõ studio chỉ giữ lịch sau khi cọc thành công.
 - **Header cuộn cùng trang** (không `sticky`/`fixed`). Ở điện thoại, menu là `<details>`, nên mở được khi tắt JavaScript.
 - **Avatar dùng chữ cái đầu** (L, T); không có ảnh người thật.
+- **Một mục dữ liệu dài để thử bố cục:** ở màn 2, hội thoại "Tôn Nữ Hoàng Bảo Ngọc · Đại diện lớp 12A3 (kỷ yếu cả lớp)" (tên mẫu, không phải người thật). Tên xuống dòng trong thẻ ở 360, 768 và 1280 px, không đẩy trang rộng ra và không bị cắt bằng `…`.
 
 ## 5. Not wired yet
 

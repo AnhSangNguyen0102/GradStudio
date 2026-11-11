@@ -314,3 +314,43 @@ Kept: the three screenshots as `checks/validator-<page>.png`.
 Changed: the checker's outline (outline option on) showed Screen 3's `h2` as "Chụp ảnhtốt nghiệp": `Chụp ảnh<br>tốt nghiệp` has no space, so the heading's name, read by screen readers and shown in the Accessibility pane, ran the two words together. Added a space before `<br>`; re-validated: 0 errors, `run_checks.py` 0 FAIL.
 Rejected: none.
 By hand: re-ran the W3C Nu checker by file upload on the three pages after the fixes, with outline and image report on: 0 errors, 0 warnings on every page; took the screenshots.
+
+## 2026-11-11 — Screen 2: long sample name and 44 px checkboxes
+Tool: Claude Code, Claude Opus 5.5
+Asked for: fix the two criterion-2 risks found when reviewing the self-assessment: no long item on the pages, and the two "Dịch vụ thêm" checkboxes under 44 px.
+Kept: on `admin-tu-van.html` the conversation "Hồ Gia Bảo · Lớp 12A3" became "Tôn Nữ Hoàng Bảo Ngọc · Đại diện lớp 12A3 (kỷ yếu cả lớp)" (sample name, avatar N, id `convo-ngoc`); `.choice input` is now 44 × 44 px (`var(--tap)`); one line on the long item in `PROTOTYPE.md` §4; the checkbox deduction removed from `SELF_ASSESSMENT_REPORT.md` (total kept at 91). After the change a Playwright measurement at 360 px shows no button, link or input on Screen 2 under 44 px; `run_checks.py` 66 PASS / 0 FAIL, Screen 2 screenshots regenerated; the W3C checker was not re-run.
+Changed: none, the fix was kept as delivered.
+Rejected: none.
+By hand: no code; I saw the long name and the 44 px checkboxes on the page while taking the DevTools screenshots afterwards.
+
+## 2026-11-11 — Put the team's DevTools screenshots in place
+Tool: Claude Code, Claude Opus 5.5
+Asked for: rename the nine full-size DevTools screenshots the team took and put them in `screenshots/`.
+Kept: the nine files moved to `screenshots/<page>-360/768/1280.png`, matched to widths by image size (720 / 1536 / 2560 px at device pixel ratio 2); `run_checks.py` re-run (66 PASS / 0 FAIL) with the DevTools images restored afterwards, because the script overwrites `screenshots/`; criterion 2 evidence in `SELF_ASSESSMENT_REPORT.md` now names DevTools as the source and the "taken by a script" deduction is removed (score left at 24).
+Changed: none.
+Rejected: the script-made screenshots (Playwright) that were in `screenshots/` before, replaced by these DevTools captures because the rubric describes DevTools.
+By hand: took the nine screenshots in Chrome DevTools (device toolbar, Capture full size screenshot) with JavaScript turned off the whole time.
+
+## 2026-11-11 — Check script no longer overwrites screenshots
+Tool: Claude Code, Claude Opus 5.5
+Asked for: stop `checks/run_checks.py` from overwriting the team's DevTools screenshots, since the rubric asks for DevTools captures and not for a script.
+Kept: `run_checks.py` takes screenshots only with `--screenshots` and says in `checks/results.md` whether it did; `CLAUDE.md` "Check" line updated to match. Default run: 66 PASS / 0 FAIL and `screenshots/` byte-for-byte unchanged; `--screenshots` tested on a scratch copy (9 files written). Commit `2fc3da2`.
+Changed: none.
+Rejected: the script re-taking `screenshots/` on every run, because it overwrote the DevTools captures; I decided it only does so with `--screenshots`.
+By hand: none.
+
+## 2026-11-11 — Accessibility evidence for criterion 3
+Tool: Claude Code, Claude Opus 5.5
+Asked for: step-by-step help taking DevTools Accessibility pane screenshots, then save them and finish the evidence without more manual screenshots.
+Kept: three team screenshots saved as `checks/a11y-admin-tu-van-1.png`, `checks/a11y-admin-tu-van-2.png`, `checks/a11y-index-1.png`; full accessibility trees for all 3 pages written to `checks/a11y-<page>.txt` with Playwright `aria_snapshot()` (JS off, 1280 px), each showing banner/navigation/main/contentinfo, one h1 at level 1, named inputs and the disabled buttons; criterion 3 evidence in `SELF_ASSESSMENT_REPORT.md` updated (score left at 19).
+Changed: the first instructions ("open the tree", "click the h1 row") were too vague to follow; rewritten with the exact row to expand or click and what the right-hand pane must show.
+Rejected: taking the last three DevTools screenshots (Screen 1 chat input, Screen 3 h1 and the deposit button): replaced by the script-made trees in `checks/a11y-<page>.txt` to save time before the deadline.
+By hand: took the three DevTools screenshots with JavaScript turned off.
+
+## 2026-11-11 — W3C re-run on Screen 2 and commits
+Tool: Claude Code, Claude Opus 5.5
+Asked for: save the new W3C result for `admin-tu-van.html` and commit the day's work in several small commits.
+Kept: the checker screenshot saved as `checks/validator-admin-tu-van.png`; a "superseded" line added to `checks/validator-admin-tu-van.txt` (that text result predates the Screen 2 change); `run_checks.py` 66 PASS / 0 FAIL before committing; the work split into separate commits for Screen 2 code, screenshots, check evidence and docs.
+Changed: none.
+Rejected: none.
+By hand: re-ran the W3C Nu checker on `admin-tu-van.html` by file upload with outline and image report on: no errors or warnings, outline shows the new long name.
