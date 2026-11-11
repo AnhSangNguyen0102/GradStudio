@@ -19,7 +19,7 @@ Không dùng ảnh người thật. Toàn bộ hình ảnh là minh họa vector
 | Minh họa mũ tốt nghiệp, máy ảnh, icon dịch vụ | Tự thiết kế vector inline SVG | Tự làm |
 | Cụm polaroid & dải film analog | Tự tạo bằng CSS thuần (scrapbook style) | Tự làm |
 | Nền giấy vintage mép xé (assets/img/paper-bg.webp) | Người dùng cung cấp (texture giấy mộc, không có người) | Tự do sử dụng đồ án |
-| Icon màn 2 (assets/icons/*.svg: lịch, đồng hồ, cảnh báo, dấu kiểm, kẹp giấy, mũi tên…) | Xuất từ file Figma của nhóm (trang "admin-tu-van") | (person to fill in: bộ icon gốc trong Figma và giấy phép của nó) |
+| Icon màn 2 (assets/icons/*.svg: lịch, đồng hồ, cảnh báo, dấu kiểm, kẹp giấy, mũi tên…) | Bộ icon Lucide (https://lucide.dev), xuất từ file Figma của nhóm (trang "admin-tu-van"); tên và nét vẽ trùng bản gốc, ví dụ `clock-3`, `arrow-up-right` | ISC (https://github.com/lucide-icons/lucide/blob/main/LICENSE) |
 
 ## Nút bị vô hiệu hoá (chưa có trang ở PA#2)
 
