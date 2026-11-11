@@ -1,0 +1,743 @@
+/* ==========================================================================
+   GradStudio – Screen 2: admin-tu-van.html (Admin Thảo)
+   Loaded after style.css. Mobile first: 360 px base, then 768 px and 1200 px.
+   Colours and sizes come from the team Figma file (page "admin-tu-van").
+   ========================================================================== */
+
+/* 1. Tokens (scoped to this page so they do not change the other pages) */
+.page-admin {
+  --paper: #F6EFE0;     /* page and card background */
+  --kraft: #EDE0C8;     /* highlighted cards */
+  --washi: #D9C7A3;     /* avatars */
+  --line: #CDBA98;      /* borders */
+  --ink: #1F1A14;       /* main text, 15:1 on paper */
+  --muted: #6B5E4E;     /* secondary text, 5.5:1 on paper, 4.8:1 on kraft */
+  --brand: #8A5A2B;     /* brand brown, 5.1:1 on paper; not used as text on kraft (4.5:1) */
+  --ok: #4F6B3A;        /* "done" green text */
+  --danger: #B3402F;    /* clash borders and bars only, never as text */
+  --off: #D5CFC5;       /* disabled controls */
+
+  /* Spacing scale: every margin, padding and gap below uses one of these */
+  --sp-4: 0.25rem;
+  --sp-8: 0.5rem;
+  --sp-12: 0.75rem;
+  --sp-16: 1rem;
+  --sp-24: 1.5rem;
+  --sp-32: 2rem;
+  --sp-48: 3rem;
+
+  --serif: "Playfair Display", Georgia, "Times New Roman", serif;
+  --sans: "Be Vietnam Pro", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --tap: 2.75rem;       /* 44 px minimum height for buttons and links */
+
+  background-color: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.page-admin h1,
+.page-admin h2,
+.page-admin h3 {
+  font-family: var(--serif);
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--ink);
+  letter-spacing: 0;
+}
+
+.page-admin h1 { font-size: 2rem; }
+.page-admin h2 { font-size: 1.5rem; }
+.page-admin h3 { font-size: 1rem; font-family: var(--sans); }
+
+.page-admin a {
+  color: var(--brand);
+  text-underline-offset: 3px;
+}
+
+.page-admin hr {
+  border: 0;
+  border-top: 1px solid var(--line);
+  width: 100%;
+}
+
+.page-admin img {
+  flex-shrink: 0;
+}
+
+/* Small label line above a title ("STUDIO / HỘI THOẠI") */
+.eyebrow {
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--brand);
+}
+
+.eyebrow--ink { color: var(--ink); }
+
+/* Short note under a disabled control or an action */
+.note {
+  font-size: 1rem;
+  color: var(--ink);
+}
+
+/* 2. Header (not sticky: the brief forbids fixed/sticky elements) */
+.studio-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--sp-16);
+  padding: var(--sp-16);
+  border-bottom: 1px solid var(--line);
+}
+
+.studio-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-8);
+  min-height: var(--tap);
+  text-decoration: none;
+}
+
+.studio-brand__logo {
+  font-family: var(--serif);
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.studio-brand__tag {
+  padding: var(--sp-4) var(--sp-8);
+  background-color: var(--kraft);
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.studio-nav ul {
+  list-style: none;
+  display: flex;
+  gap: var(--sp-24);
+}
+
+.studio-nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 3rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+}
+
+/* The current page is marked by an underline AND aria-current, not by colour only */
+.studio-nav a[aria-current="page"] {
+  border-bottom-color: var(--brand);
+}
+
+.studio-account {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-8);
+  font-size: 0.875rem;
+}
+
+/* Initials instead of photos (no real people on the pages) */
+.avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  flex-shrink: 0;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.avatar--washi { background-color: var(--washi); color: var(--ink); }
+.avatar--brand { background-color: var(--brand); color: var(--paper); }
+
+/* 3. Page frame */
+.workspace {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-32);
+  max-width: 90rem;
+  margin: 0 auto;
+  padding: var(--sp-32) var(--sp-16) var(--sp-48);
+}
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-8);
+}
+
+.intro__lead { color: var(--muted); }
+
+/* All columns stack on a phone; the whole page scrolls as one (no inner scrollbars) */
+.desk,
+.desk__main,
+.desk > section,
+.desk__main > section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-24);
+}
+
+.desk__main > section { gap: var(--sp-16); }
+
+/* Cards */
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-16);
+  padding: var(--sp-16);
+  border: 1px solid var(--line);
+  border-radius: 2px;
+}
+
+.card--kraft { background-color: var(--kraft); }
+.card--paper { background-color: var(--paper); }
+
+/* Status chip: icon + text, so the status never relies on colour */
+.chip {
+  display: inline-flex;
+  align-self: flex-start;
+  align-items: center;
+  gap: var(--sp-8);
+  padding: var(--sp-8) var(--sp-12);
+  background-color: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.25;
+}
+
+.chip--ok { color: var(--ok); }
+.chip--muted { color: var(--muted); }
+.chip--brand { color: var(--brand); }
+
+/* Callout: icon + sentence in a framed box */
+.callout {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-8);
+  padding: var(--sp-16);
+  background-color: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.callout--danger { border-color: var(--danger); }
+
+/* 4. Conversation list */
+.list-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--sp-8);
+  flex-wrap: wrap;
+}
+
+.list-head__count {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-8);
+}
+
+/* Filters need a page or script we do not have yet, so they are disabled */
+.filter {
+  min-height: 3rem;
+  padding: var(--sp-8) var(--sp-12);
+  background-color: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--ink);
+  cursor: not-allowed;
+}
+
+.filter--on {
+  background-color: var(--brand);
+  color: var(--paper);
+}
+
+.convo-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-8);
+}
+
+.convo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-16);
+  height: 100%;
+  padding: var(--sp-16);
+  background-color: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 2px;
+}
+
+/* The open conversation: thicker border + kraft paper (plus aria-current in the HTML) */
+.convo--open {
+  background-color: var(--kraft);
+  border: 2px solid var(--brand);
+}
+
+.convo__last { color: var(--muted); }
+
+.person {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-8);
+}
+
+.person--large { gap: var(--sp-16); }
+.person--large h3 { font-family: var(--serif); font-size: 1.5rem; }
+
+.person__topic {
+  font-size: 0.875rem;
+  color: var(--muted);
+}
+
+/* 5. Chat */
+.chat {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-16);
+}
+
+.msg {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-8);
+  max-width: 27.5rem;
+  padding: var(--sp-16);
+  border: 1px solid var(--line);
+}
+
+/* Customer bubbles sit on the right, studio bubbles on the left (like a phone chat) */
+.msg--customer {
+  align-self: flex-end;
+  background-color: var(--kraft);
+  border-radius: 16px 2px 16px 16px;
+}
+
+.msg--studio {
+  align-self: flex-start;
+  background-color: var(--paper);
+  border-radius: 2px 16px 16px 16px;
+}
+
+.msg__from {
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.msg--studio .msg__from { color: var(--brand); }
+
+.msg__meta {
+  font-size: 0.875rem;
+  color: var(--muted);
+}
+
+.composer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-8);
+}
+
+.composer label { font-weight: 500; }
+
+.composer__box {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-8);
+  min-height: 3.5rem;
+  padding: var(--sp-8);
+  background-color: var(--off);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.composer__box input {
+  flex: 1;
+  /* An input is about 20 characters wide by default, which pushed the page
+     to 395 px at 360 px. width: 100% + min-width: 0 lets it shrink to fit. */
+  width: 100%;
+  min-width: 0;
+  padding: var(--sp-8);
+  background: transparent;
+  border: 0;
+  font: inherit;
+  color: var(--ink);
+}
+
+.composer__box input::placeholder { color: var(--ink); }
+
+.composer__send {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--tap);
+  height: var(--tap);
+  background-color: var(--off);
+  border: 1px solid var(--muted);
+  border-radius: 4px;
+  cursor: not-allowed;
+}
+
+/* 6. Booking form */
+.booking { gap: var(--sp-24); }
+
+.booking__state {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-8);
+}
+
+.field-row {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-16);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-8);
+  min-width: 0;
+}
+
+.field label,
+.booking legend {
+  font-weight: 500;
+}
+
+.field input,
+.field select {
+  width: 100%;
+  min-height: 3rem;
+  padding: var(--sp-12) var(--sp-16);
+  background-color: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  font: inherit;
+  color: var(--ink);
+}
+
+/* Read-only fields come from the agreed chat; a dashed border shows they are locked */
+.field input[readonly] {
+  border-style: dashed;
+  border-color: var(--muted);
+}
+
+.field__hint {
+  font-size: 0.875rem;
+  color: var(--muted);
+  margin-top: calc(var(--sp-8) * -1);   /* pulls the hint up under its field */
+}
+
+.choices,
+.assign {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-16);
+  border: 0;
+  min-width: 0;
+}
+
+.choices legend,
+.assign legend {
+  margin-bottom: var(--sp-16);
+}
+
+.choice {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-8);
+  min-height: var(--tap);
+}
+
+.choice input {
+  width: 1.5rem;
+  height: 1.5rem;
+  flex-shrink: 0;
+  accent-color: var(--brand);
+}
+
+.booking__submit {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-16);
+}
+
+/* The one main action of this page */
+.btn-create {
+  align-self: flex-start;
+  min-height: 3rem;
+  padding: var(--sp-8) var(--sp-24);
+  background-color: var(--brand);
+  border: 2px solid var(--brand);
+  border-radius: 8px;
+  font: inherit;
+  font-weight: 600;
+  color: var(--paper);
+  cursor: pointer;
+}
+
+.btn-create:hover { background-color: var(--ink); border-color: var(--ink); }
+
+.next-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-8);
+  min-height: var(--tap);
+  padding: var(--sp-12) var(--sp-16);
+  background-color: var(--paper);
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+/* 7. Resource calendar – phone: a vertical list by resource and time */
+.calendar { gap: var(--sp-24); }
+
+.calendar__caption {
+  font-size: 0.875rem;
+  color: var(--muted);
+}
+
+/* .page-admin prefix needed: ".page-admin h3" above is more specific than a single class */
+.page-admin .calendar__subtitle {
+  font-family: var(--serif);
+  font-size: 1.5rem;
+}
+
+.resources {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-24);
+}
+
+.res__body,
+.slots {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-8);
+}
+
+.res__name { margin-bottom: var(--sp-8); }
+
+.slots { list-style: none; }
+
+.slot {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-8);
+  padding: var(--sp-16);
+  background-color: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+/* Three kinds of slot, each with its own icon AND its own words in the HTML */
+.slot--busy { border-color: var(--danger); }
+.slot--proposed { border: 1px dashed var(--brand); }
+
+.slot__sub,
+.res__free {
+  font-size: 0.875rem;
+  color: var(--muted);
+}
+
+/* Bars and the hour scale only appear from 768 px; on a phone the cards say it all */
+.hours,
+.track {
+  display: none;
+}
+
+/* Suggested times */
+.suggestions {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-16);
+}
+
+.suggestion {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-8);
+  padding: var(--sp-16);
+  background-color: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.suggestion--chosen {
+  background-color: var(--kraft);
+  border: 2px solid var(--brand);
+}
+
+.suggestion__time { font-weight: 600; }
+
+.suggestion__chosen {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-8);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.suggestion__sub { font-size: 0.875rem; }
+
+/* 8. Footer */
+.studio-footer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-8);
+  max-width: 90rem;
+  margin: 0 auto;
+  padding: var(--sp-24) var(--sp-16) var(--sp-48);
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+}
+
+.studio-footer__brand {
+  font-family: var(--serif);
+  font-size: 1.25rem;
+  color: var(--ink);
+}
+
+/* ==========================================================================
+   Tablet, 768 px and up: header in one row, two-column form rows,
+   conversation cards in two columns, resource bars visible.
+   ========================================================================== */
+@media (min-width: 768px) {
+  .studio-header {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--sp-16) var(--sp-32);
+  }
+
+  .workspace,
+  .studio-footer {
+    padding-left: var(--sp-32);
+    padding-right: var(--sp-32);
+  }
+
+  .page-admin h1 { font-size: 2.5rem; }
+
+  .convo-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /* Two fields per row only when each gets at least 14 rem; otherwise they wrap.
+     A fixed two-column row cut "Tốt nghiệp cá nhân" off inside the select at 1280 px. */
+  .field-row {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .field-row > .field { flex: 1 1 14rem; }
+
+  .assign {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .booking__submit {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .btn-create { flex-shrink: 0; }
+
+  /* Resource rows: name on the left (6 rem), bar + cards on the right */
+  .hours,
+  .res {
+    display: grid;
+    grid-template-columns: 6rem minmax(0, 1fr);
+    column-gap: var(--sp-8);
+  }
+
+  /* Hour labels 08–16: nine equal columns that line up with the bar track */
+  .hours {
+    grid-template-columns: 6rem repeat(9, minmax(0, 1fr));
+    font-size: 0.875rem;
+    color: var(--muted);
+  }
+
+  .hours span:first-child { grid-column: 2; }
+
+  .res__name { margin-bottom: 0; }
+
+  /* The track is 08:00–17:00 = 9 hours; a vertical line every hour */
+  .track {
+    display: block;
+    position: relative;
+    height: 2rem;
+    background-image: repeating-linear-gradient(to right, var(--line) 0 1px, transparent 1px calc(100% / 9));
+    border-right: 1px solid var(--line);
+  }
+
+  .bar {
+    position: absolute;
+    top: var(--sp-12);
+    height: var(--sp-8);
+    /* --from / --to are hours after 08:00, set by the from-xx / to-xx classes */
+    left: calc(var(--from) / 9 * 100%);
+    width: calc((var(--to) - var(--from)) / 9 * 100%);
+  }
+
+  .bar--busy { background-color: var(--danger); }
+  .bar--proposed { background-color: var(--brand); }
+  .bar--booked { background-color: var(--ink); }
+
+  .from-08 { --from: 0; }
+  .from-10 { --from: 2; }
+  .from-13 { --from: 5; }
+  .from-14 { --from: 6; }
+  .to-12 { --to: 4; }
+  .to-14 { --to: 6; }
+  .to-16 { --to: 8; }
+}
+
+/* ==========================================================================
+   Laptop, 1200 px and up: three columns side by side
+   (conversations | chat + booking form | resource calendar)
+   ========================================================================== */
+@media (min-width: 1200px) {
+  .desk {
+    display: grid;
+    grid-template-columns: 18rem minmax(0, 1fr) minmax(0, 1fr);
+    align-items: start;
+  }
+
+  .convo-list {
+    display: flex;
+    flex-direction: column;
+  }
+}
