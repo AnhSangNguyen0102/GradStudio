@@ -274,3 +274,11 @@ Kept: toàn bộ 27 mục log chung trước xung đột, 3 mục từ phía mai
 Changed: gộp nội dung xung đột bằng cách xếp các mục của main trước và mục của feat/admin-tu-van ngay sau; loại bỏ hoàn toàn các ký hiệu đánh dấu xung đột conflict markers; chuẩn hoá tệp sang Unicode NFC; chạy git add AI-LOG.md để đánh dấu giải quyết xung đột thành công.
 Rejected: không xoá hoặc viết lại bất kỳ mục log nào, không sửa câu chữ trong nội dung log của các thành viên.
 By hand: đã kiểm tra lại toàn bộ danh sách mục log trước và sau khi gộp, đối chiếu số lượng mục từ git stage 2 và stage 3, xác nhận 0 mất mát nội dung và chạy git status.
+
+## 2026-11-11 — Fix Nu Html Checker validation issues across all 3 pages
+Tool: Antigravity, Gemini 3.8 Flash
+Asked for: sửa các lỗi Nu Html Checker (validator.w3.org/nu) trên cả 3 file index.html, admin-tu-van.html, lich-chup-cua-toi.html gồm thêm role="group" cho div có aria-label, xoá role="list" trên ul/ol, và xoá aria-disabled="true" thừa trên button disabled.
+Kept: toàn bộ nội dung chữ, class, cấu trúc bố cục, CSS, thuộc tính disabled và aria-describedby trên các nút vô hiệu hoá.
+Changed: thêm role="group" cho <div class="user-profile"> có aria-label trên index.html và lich-chup-cua-toi.html; chuẩn hoá khối profile trên admin-tu-van.html thành div có role="group"; xoá bỏ thuộc tính role="list" trên 4 thẻ <ul> và 1 thẻ <ol> trong index.html; xoá thuộc tính aria-disabled="true" trên 3 nút <button class="btn btn-stamp"> trong index.html.
+Rejected: không đổi nội dung chữ hay CSS, không xoá disabled và aria-describedby của các nút chức năng.
+By hand: (person to fill in)
