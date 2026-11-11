@@ -306,3 +306,11 @@ Kept: Screen 2 at all three widths and every page at 1280 px, unchanged.
 Changed: reading the 360 and 768 px screenshots showed two layout slips: on Screen 3 the deposit note sat flush against the price box and the "Thanh toán cọc 30%" button (now 16 px above and below it under 1024 px), and on Screen 1 the "Chân dung / CV" card text was narrower than the other cards because it still kept 48 px free for the film strip hidden below 1280 px (padding removed there). `run_checks.py` 66 PASS / 0 FAIL, screenshots re-taken; width sweep 320–2000 px clean on all 3 pages.
 Rejected: none.
 By hand: after the re-take I opened the pages in DevTools' device toolbar and stepped the width from 360 to 1280 px with the arrow keys, watching for sideways scroll and cut-off content between the three marked widths; nothing more to fix.
+
+## 2026-11-11 — W3C re-check by file upload after the final pass
+Tool: Claude Code, Claude Opus 5.5
+Asked for: save the team's new W3C Nu checker screenshots of the three pages into `checks/`.
+Kept: the three screenshots as `checks/validator-<page>.png`.
+Changed: the checker's outline (outline option on) showed Screen 3's `h2` as "Chụp ảnhtốt nghiệp": `Chụp ảnh<br>tốt nghiệp` has no space, so the heading's name, read by screen readers and shown in the Accessibility pane, ran the two words together. Added a space before `<br>`; re-validated: 0 errors, `run_checks.py` 0 FAIL.
+Rejected: none.
+By hand: re-ran the W3C Nu checker by file upload on the three pages after the fixes, with outline and image report on: 0 errors, 0 warnings on every page; took the screenshots.
