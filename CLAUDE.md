@@ -8,7 +8,7 @@ Read `brief.md` first. These rules are mandatory. If a request conflicts with a 
 - Styles: `assets/css/style.css`. A CSS framework is optional; if used, download it into `assets/css/` and load it with `<link>`. No CDN and no external URLs for fonts, images or icons.
 - Fonts: system font stack, or self-hosted WOFF2 in `assets/fonts/`. Images and icons: our own SVG or files in `assets/`.
 - View: `python3 -m http.server 8000`, then open http://localhost:8000
-- Check: `python3 checks/run_checks.py` (writes `checks/results.md` and `screenshots/`). The W3C validator is run by hand, on every page, 0 errors.
+- Check: `python3 checks/run_checks.py` (writes `checks/results.md`; it re-takes `screenshots/` only with `--screenshots`, because the submitted screenshots are DevTools captures). The W3C validator is run by hand, on every page, 0 errors.
 - ALWAYS run the check before committing. NEVER say a check passed unless it was actually run; say which checks were not run.
 - Do not add a file, dependency or feature the pages do not need.
 

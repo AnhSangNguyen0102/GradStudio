@@ -1,8 +1,8 @@
 # checks/results.md
 
-Generated 2026-11-11 17:28 by `python3 checks/run_checks.py` (Playwright + Chromium, pages served from localhost).
+Generated 2026-11-11 17:51 by `python3 checks/run_checks.py` (Playwright + Chromium, pages served from localhost).
 
-Screenshots (JS turned off) are in `screenshots/<page>-<width>.png`.
+Screenshots not taken by this run: `screenshots/` holds the team's DevTools captures.
 
 **Not covered here:** the W3C validator (needs network), contrast ratios, keyboard use, reading the page as a person. Do those by hand and record them in `AI-LOG.md` / `checks/`.
 
