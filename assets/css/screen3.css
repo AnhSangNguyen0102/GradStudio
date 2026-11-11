@@ -27,6 +27,7 @@
   --sp-24:  24px;
   --sp-32:  32px;
   --sp-48:  48px;
+  --sp-64:  64px;
 
   /* Typography */
   --font-serif:  Georgia, serif;
@@ -699,10 +700,145 @@ hr {
 }
 
 /* ----------------------------------------------------------
-   13. RESPONSIVE – 1280 px +
+   13. RESPONSIVE – 1024px / 1280px / 1440px (Desktop)
    ---------------------------------------------------------- */
-@media (min-width: 1280px) {
+@media (min-width: 1024px) {
   .page-wrapper {
-    max-width: 960px;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: var(--sp-48) var(--sp-48) var(--sp-64);
+  }
+
+  .page-wrapper > main {
+    display: grid;
+    grid-template-columns: 576px 1fr;
+    grid-template-rows: auto auto max-content max-content auto auto;
+    row-gap: var(--sp-24);
+    column-gap: var(--sp-32);
+    align-items: start;
+    justify-content: center;
+  }
+
+  /* Tiêu đề chính trải dài toàn bộ chiều rộng */
+  .page-wrapper > main > section:first-child {
+    grid-column: 1 / -1;
+    grid-row: 1;
+  }
+
+  /* 4 nút trạng thái: gọn gàng ở cột 1, nằm ngay trên khung ngày tháng */
+  .page-wrapper > main > section[aria-label="Bộ lọc trạng thái"] {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .filter-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--sp-8);
+  }
+
+  .filter-btn {
+    width: auto;
+    min-height: 44px;
+    padding: var(--sp-8) var(--sp-16);
+    font-size: 0.875rem;
+  }
+
+  /* Cột trái (576px): Thẻ lịch trình tuần (row 3), liên kết chat (row 4) */
+  .timeline-card {
+    grid-column: 1;
+    grid-row: 3;
+    width: 576px;
+    box-sizing: border-box;
+    padding: var(--sp-32);
+  }
+
+  .timeline-month {
+    margin-bottom: var(--sp-24);
+  }
+
+  .week-bar {
+    gap: var(--sp-12);
+    margin-bottom: var(--sp-24);
+  }
+
+  .week-day--selected {
+    padding: var(--sp-12) var(--sp-16);
+    border-radius: 8px;
+  }
+
+  .timeline-card hr {
+    margin: var(--sp-24) 0;
+  }
+
+  .day-label {
+    margin-bottom: var(--sp-24);
+  }
+
+  .timeline-list {
+    gap: var(--sp-24);
+  }
+
+  .chat-link {
+    grid-column: 1;
+    grid-row: 4;
+    width: 576px;
+    box-sizing: border-box;
+    min-height: 68px;
+  }
+
+  /* Cột phải: Thẻ đơn GS-1024 (spans 3, 4, 5), Địa chỉ studio (row 6) */
+  .booking-card {
+    grid-column: 2;
+    grid-row: 3 / span 3;
+    width: 100%;
+    max-width: 736px;
+    box-sizing: border-box;
+    padding: var(--sp-24);
+    gap: var(--sp-24);
+    border-radius: 2px;
+  }
+
+  .booking-card__title {
+    font-size: 1.75rem;
+    padding-bottom: var(--sp-24);
+  }
+
+  .booking-details {
+    grid-template-columns: 140px 1fr;
+    gap: var(--sp-16) var(--sp-24);
+  }
+
+  .pricing-box {
+    padding: var(--sp-24);
+    gap: var(--sp-16);
+  }
+
+  .pricing-list {
+    gap: var(--sp-16);
+  }
+
+  .btn-cta {
+    min-height: 52px;
+    padding: var(--sp-16) var(--sp-24);
+  }
+
+  .studio-address {
+    grid-column: 2;
+    grid-row: 6;
+    width: 100%;
+    max-width: 736px;
+    box-sizing: border-box;
+  }
+}
+
+@media (min-width: 1440px) {
+  .page-wrapper > main {
+    grid-template-columns: 576px 736px;
+  }
+
+  .booking-card,
+  .studio-address {
+    width: 736px;
   }
 }

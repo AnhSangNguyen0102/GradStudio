@@ -179,3 +179,42 @@ Changed: added @media (min-width: 768px) block overriding .page-wrapper (max-wid
 Rejected: writing duplicate styles already inherited from mobile, using !important or overflow-x: hidden.
 By hand: visual alignment verification against 768px Figma reference image and running checks for zero horizontal scroll.
 
+## 2026-11-11 — Desktop 1440px 2-column layout implementation (screen3.css)
+Tool: Antigravity, Gemini 3.8 Flash
+Asked for: implement desktop layout for 1200px-1440px viewports with a 2-column grid (left: timeline card, studio address, chat link ~60%; right: GS-1024 booking card ~40%) while keeping header, title, filters, and footer full width, without modifying HTML structure, and append a new entry to AI-LOG.md.
+Kept: exact HTML structure, all design tokens, mobile-first and tablet styling.
+Changed: added desktop media query @media (min-width: 1024px) configuring .page-wrapper (max-width: 1200px, padding: 48px 48px 64px), main (display: grid, grid-template-columns: 1.3fr 1fr, gap: 32px), title/filters spanning 1 / -1, and placing timeline/address/chat in column 1 and booking card in column 2.
+Rejected: using position: sticky or overflow scrollbars (forbidden by project rubric), altering HTML elements or class names.
+By hand: verified zero horizontal scroll across 360px, 768px, 1280px, and 1440px viewports via Playwright.
+
+## 2026-11-11 — Desktop layout refinement: move studio address to right column & fix top container padding (screen3.css)
+Tool: Antigravity, Gemini 3.8 Flash
+Asked for: fix missing top padding on desktop header and move the studio address card ("GradStudio · TP. Hồ Chí Minh · Địa chỉ sẽ gửi khi đã cọc") to the right column directly underneath the booking payment card. Append a new entry to AI-LOG.md.
+Kept: exact HTML structure, semantic tags, all mobile and tablet layouts, zero !important, zero overflow-x: hidden.
+Changed: added missing --sp-64: 64px design token in :root so that padding: var(--sp-48) var(--sp-48) var(--sp-64) on .page-wrapper resolves correctly without falling back to 0px (providing 48px top padding on desktop); updated @media (min-width: 1024px) grid positioning to place .studio-address into column 2, row 4 directly beneath .booking-card, and aligned .chat-link in column 1, row 4. Synchronized both screen3.css and assets/css/screen3.css.
+Rejected: hardcoded pixel values bypassing tokens, rearranging HTML DOM elements, using negative margins.
+By hand: verified against user reference screenshots and confirmed zero horizontal overflow (document.documentElement.scrollWidth <= document.documentElement.clientWidth) across 360px, 768px, 1280px, and 1440px via Playwright automated tests.
+
+## 2026-11-11 — Desktop timeline schedule column sizing refinement (screen3.css)
+Tool: Antigravity, Gemini 3.8 Flash
+Asked for: update timeline schedule frame size ("phần ngày tháng") to match Figma inspect specifications: W 576, H 685 Hug, vertical auto-layout with 24px gap between timeline card and chat link ("Quản lý studio: xem lại cuộc trò chuyện").
+Kept: exact HTML structure, all design tokens, mobile/tablet styling, zero !important, zero overflow-x: hidden.
+Changed: in @media (min-width: 1024px), updated .page-wrapper > main grid to use a dedicated 576px track for column 1 (grid-template-columns: 576px 1fr) with grid-template-rows: auto auto max-content max-content auto auto; set .timeline-card and .chat-link width to 576px with padding: var(--sp-32) and adjusted week-day / list spacing so the column frame hugs to ~685px with an exact 24px gap between the card and chat link; kept .booking-card spanning rows 3-5 and .studio-address in row 6 with 24px gap.
+Rejected: modifying HTML structure, adding wrapper divs, fixed height hardcoding that breaks text scaling.
+By hand: verified against Figma frame specs (576 x 685 Hug, gap 24) and confirmed 0 horizontal scroll across 360px, 768px, 1280px, and 1440px via Playwright automated tests.
+
+## 2026-11-11 — GS-1024 booking card dimensions and auto-layout update (screen3.css)
+Tool: Antigravity, Gemini 3.8 Flash
+Asked for: update GS-1024 booking card frame size according to Figma inspect specifications: W 736 Fill, H 818 Hug, Auto layout vertical, Gap 24px, Padding 24px all sides, Corner radius 2px, Fill kraft (#ECE5D8).
+Kept: exact HTML structure, all design tokens, mobile/tablet styling, zero !important, zero overflow-x: hidden.
+Changed: in @media (min-width: 1024px) and @media (min-width: 1440px), updated container max-width to 1440px so that on 1440px desktop viewports, column 2 resolves exactly to 736px (576px + 32px gap + 736px = 1344px content); configured .booking-card and .studio-address to width: 100% (max-width: 736px) and exactly 736px at 1440px; verified gap: var(--sp-24) (24px) and padding: var(--sp-24) (24px); adjusted desktop title font-size to 1.75rem, spacing in .booking-details and .pricing-box to naturally hug content to ~802-818px height.
+Rejected: fixed height that clips contents or forces scrollbars, modifying HTML tags.
+By hand: verified against Figma inspector values (W 736 Fill, H 818 Hug, Gap 24, Padding 24) and tested horizontal scroll on 360px, 768px, 1024px, 1280px, and 1440px via Playwright with 0 overflow errors.
+
+## 2026-11-11 — Status filter buttons sizing refinement on desktop (screen3.css)
+Tool: Antigravity, Gemini 3.8 Flash
+Asked for: resize the 4 status filter buttons ("Tất cả 1", "Chờ cọc 1", "Đã đặt lịch 0", "Hoàn thành 0") to be compact and fit nicely above the timeline schedule card, matching the design reference.
+Kept: exact HTML structure, all design tokens, mobile/tablet button styling, zero !important, zero overflow-x: hidden.
+Changed: in @media (min-width: 1024px), scoped section[aria-label="Bộ lọc trạng thái"] to grid-column: 1 and grid-row: 2 (sitting directly above .timeline-card in column 1 rather than spanning the full width); switched .filter-grid to display: flex with flex-wrap: wrap and gap: var(--sp-8); set .filter-btn to width: auto with padding: var(--sp-8) var(--sp-16) and min-height: 44px (touch target compliant) so the buttons hug their content neatly within ~437px width above the 576px timeline card.
+Rejected: spanning filter buttons across full desktop width (1 / -1), modifying HTML elements.
+By hand: verified against user reference screenshots (media_1794368992943_a17b6bad.png vs media_1794369002525_cd9d817a.png) and confirmed 0 horizontal scroll across 360px, 768px, 1024px, 1280px, and 1440px via Playwright automated tests.
