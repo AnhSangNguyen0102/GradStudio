@@ -431,3 +431,12 @@ Kept: all files from PA#2 moved to pa2/ via git mv; React/Vite client and minima
 Changed: deleted default test script from server/package.json; added /api proxy to client/vite.config.js; updated .gitignore with !.env.example and dist/.
 Rejected: none.
 By hand: (person to fill in)
+
+## 2026-11-14 — Add GitHub Actions CI workflow
+
+Tool: Antigravity, Gemini 3.8 Flash
+Asked for: thêm CI workflow vào .github/workflows/ci.yml, đối chiếu scripts với package.json, kiểm tra format và commit push
+Kept: ci.yml copied from Downloads without modifying content.
+Changed: none.
+Rejected: none.
+By hand: (person to fill in)
