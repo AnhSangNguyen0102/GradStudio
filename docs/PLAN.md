@@ -4,14 +4,14 @@ Brief không ghi hạn nộp. Điền hạn thật của PA#2–PA#6 từ đề/
 
 ## Mốc chính
 
-| Mốc | Nội dung | Hạn |
-|---|---|---|
+| Mốc               | Nội dung                                                       | Hạn |
+| ----------------- | -------------------------------------------------------------- | --- |
 | Tuần 0 (từ 09/11) | Họp nhóm, tạo repo, chia việc, đọc kỹ brief, hỏi product owner | ... |
-| PA#2 | 3 màn hình tĩnh/React, tuân thủ danh sách "Fix these" | ... |
-| PA#3 | (chờ đề) | ... |
-| PA#4 | (chờ đề) | ... |
-| PA#5 | (chờ đề) | ... |
-| PA#6 | (chờ đề) | ... |
+| PA#2              | 3 màn hình tĩnh/React, tuân thủ danh sách "Fix these"          | ... |
+| PA#3              | (chờ đề)                                                       | ... |
+| PA#4              | (chờ đề)                                                       | ... |
+| PA#5              | (chờ đề)                                                       | ... |
+| PA#6              | (chờ đề)                                                       | ... |
 
 ## Tuần 0: khởi động (làm trong 1–2 ngày)
 
@@ -23,14 +23,14 @@ Brief không ghi hạn nộp. Điền hạn thật của PA#2–PA#6 từ đề/
 
 ## PA#2: chia việc gợi ý (3 màn + chung)
 
-| Việc | Người | Ghi chú |
-|---|---|---|
-| Khung chung: header, nav, CSS biến, responsive 360px | A | Làm trước, các màn dùng lại |
-| Màn 1: dịch vụ + chat khách hàng | B | Chat KHÔNG nổi che nội dung ở 360px |
-| Màn 2: Admin (danh sách hội thoại, chat, form Booking mới, lịch tài nguyên) | C | Phần khó nhất; cuộn cả trang, không cuộn riêng cột |
-| Màn 3: Lịch chụp của tôi + đặt cọc | D | Hiển thị GS-1024 "Chờ cọc 30%" |
-| Hình ảnh/minh hoạ + PROTOTYPE.md | B/D | Không ảnh người thật |
-| Kiểm thử cuối: link, 360px/768px/1280px, trạng thái mở trực tiếp | Cả nhóm | |
+| Việc                                                                        | Người   | Ghi chú                                            |
+| --------------------------------------------------------------------------- | ------- | -------------------------------------------------- |
+| Khung chung: header, nav, CSS biến, responsive 360px                        | A       | Làm trước, các màn dùng lại                        |
+| Màn 1: dịch vụ + chat khách hàng                                            | B       | Chat KHÔNG nổi che nội dung ở 360px                |
+| Màn 2: Admin (danh sách hội thoại, chat, form Booking mới, lịch tài nguyên) | C       | Phần khó nhất; cuộn cả trang, không cuộn riêng cột |
+| Màn 3: Lịch chụp của tôi + đặt cọc                                          | D       | Hiển thị GS-1024 "Chờ cọc 30%"                     |
+| Hình ảnh/minh hoạ + PROTOTYPE.md                                            | B/D     | Không ảnh người thật                               |
+| Kiểm thử cuối: link, 360px/768px/1280px, trạng thái mở trực tiếp            | Cả nhóm |                                                    |
 
 (Nhóm ít/nhiều hơn 4 người thì gộp/chia lại.)
 

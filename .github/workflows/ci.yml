@@ -1,0 +1,46 @@
+# .github/workflows/ci.yml
+# Runs on every pull request into dev or main, and on every push to them.
+# A red check means the PR must not be merged.
+name: CI
+
+on:
+  pull_request:
+    branches: [dev, main]
+  push:
+    branches: [dev, main]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            client/package-lock.json
+            server/package-lock.json
+
+      - name: Install (root, client, server)
+        run: |
+          npm ci
+          npm ci --prefix client
+          npm ci --prefix server
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Formatting
+        run: npm run format:check
+
+      # Skipped until server/package.json has a real "test" script (week 2).
+      # Delete the default "test": "echo \"Error: no test specified\" && exit 1"
+      # that `npm init -y` writes, or this step fails.
+      - name: Server tests
+        run: npm test --prefix server --if-present
+
+      - name: Build client
+        run: npm run build --prefix client
