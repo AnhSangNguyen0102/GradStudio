@@ -370,3 +370,12 @@ Kept: three screenshots saved as `checks/a11y-index-2.png`, `checks/a11y-lich-ch
 Changed: none.
 Rejected: the first Screen 3 h1 screenshot, taken at 1040 px where it showed the squeezed title; re-taken at 1280 px after the fix.
 By hand: took the three DevTools screenshots with JavaScript off; agreed to the Screen 3 CSS change (Screen 3 is Huy's page).
+
+## 2026-11-14 — Replace CLAUDE.md for React + API phase
+Tool: Antigravity, Gemini 3.8 Flash
+Asked for: Thay CLAUDE.md cho giai đoạn React + API
+Kept: copied CLAUDE.md from Downloads to repo root without modifying content.
+Changed: none.
+Rejected: none.
+By hand: (person to fill in)
+
