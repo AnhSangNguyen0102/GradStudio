@@ -5,11 +5,11 @@ Website studio ảnh tốt nghiệp & chân dung: tư vấn qua chat, kiểm tra
 
 ## Thành viên
 
-| Họ tên | MSSV | Vai trò chính |
-|---|---|---|
-| Lê Hoàng Hiếu | 24120048 | Màn 2 – Tư vấn & xử lý trùng lịch (`admin-tu-van.html`) |
-| Lê Nguyễn Gia Huy | 24120061 | Màn 3 – Lịch chụp của tôi (`lich-chup-cua-toi.html`) |
-| Nguyễn Anh Sang | 24120131 | Khung repo, Màn 1 (`index.html`), CSS dùng chung |
+| Họ tên            | MSSV     | Vai trò chính                                           |
+| ----------------- | -------- | ------------------------------------------------------- |
+| Lê Hoàng Hiếu     | 24120048 | Màn 2 – Tư vấn & xử lý trùng lịch (`admin-tu-van.html`) |
+| Lê Nguyễn Gia Huy | 24120061 | Màn 3 – Lịch chụp của tôi (`lich-chup-cua-toi.html`)    |
+| Nguyễn Anh Sang   | 24120131 | Khung repo, Màn 1 (`index.html`), CSS dùng chung        |
 
 ## Cấu trúc thư mục
 

@@ -10,12 +10,12 @@ GradStudio brings services, sample photos, reviews and advice onto one website a
 
 ## 2. Users
 
-| Role | Goals |
-|---|---|
-| Superadmin | Create and manage Admin accounts; system-wide settings (opening hours, when reminders go out). Takes no part in individual bookings. |
-| Customer (Khách hàng) | See packages, sample photos, reviews; ask or send a booking request; agree a shoot time; pay a 30% deposit; get reminders; choose photos to be edited; receive files. For a class yearbook, one representative manages the booking. |
-| Admin / studio manager | Turn a conversation into a booking; pick a time with no staff/room clash; assign and track shoots; change or cancel appointments; track payment status. |
-| Studio staff (Nhân viên) | Know when and where to shoot, do make-up or edit photos; update their work; add preview photos; finish the photos the customer chose. |
+| Role                     | Goals                                                                                                                                                                                                                               |
+| ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Superadmin               | Create and manage Admin accounts; system-wide settings (opening hours, when reminders go out). Takes no part in individual bookings.                                                                                                |
+| Customer (Khách hàng)    | See packages, sample photos, reviews; ask or send a booking request; agree a shoot time; pay a 30% deposit; get reminders; choose photos to be edited; receive files. For a class yearbook, one representative manages the booking. |
+| Admin / studio manager   | Turn a conversation into a booking; pick a time with no staff/room clash; assign and track shoots; change or cancel appointments; track payment status.                                                                             |
+| Studio staff (Nhân viên) | Know when and where to shoot, do make-up or edit photos; update their work; add preview photos; finish the photos the customer chose.                                                                                               |
 
 ## 3. Main flow
 
@@ -40,15 +40,19 @@ Linh wants a graduation shoot with make-up on Saturday 24/10/2026 at 09:00. Make
 The team chooses layout, content, colours and file names (`index.html` is the first page). **Our team builds static HTML and CSS**: relative links, any CSS framework loaded as a local CSS file, and all content visible with JavaScript turned off (this is how static pages are marked).
 
 ### Screen 1 – Services and chat (customer)
+
 Introduces the studio and shows three services: Kỷ yếu lớp (từ 350.000đ/người), Tốt nghiệp (từ 1.800.000đ), Chân dung/CV (từ 690.000đ). The chat shows Linh's question "Gói tốt nghiệp có makeup còn lịch 24/10 lúc 09:00 không?" and the studio's reply that it will check.
 
 ### Screen 2 – Advice and clash handling (Admin Thảo)
+
 Conversation list; chat with the "Booking mới" form below it; resource calendar with suggested times. State shown: **after Linh agrees** – 14:00 chosen, conversation **Đã chốt lịch**, "Tạo booking" enabled, and a note that 09:00 clashed because Mai is busy 08:00–12:00.
 
 ### Screen 3 – Review the appointment and pay the deposit (customer)
+
 GS-1024 waiting for the deposit: week view marking 24/10; timeline striking out 09:00 and showing make-up and the shoot; booking card "Đã thống nhất lịch · Chờ cọc 30%" with package, price, deposit, remainder and the button "Thanh toán cọc 30%".
 
 ### "Fix these" list (no page may show any of these problems)
+
 1. No photos of real people. Use illustrations or initials, or licensed images whose source is named in `PROTOTYPE.md`.
 2. No demo controls: Màn 1 / Màn 2 / Màn 3, Đặt lại demo, Mô phỏng phản hồi của Linh, Mô phỏng thanh toán. Move along the flow with real links and labels a user understands, and say who continues (e.g. "Studio staff: open this conversation").
 3. Actions with no next page (Thanh toán cọc 30%, sending a message, …) are disabled buttons with a short visible note. A link to `#` counts as leading nowhere. One state per page, shown when the page is opened directly.
@@ -61,6 +65,7 @@ GS-1024 waiting for the deposit: week view marking 24/10; timeline striking out 
 10. One story on all pages: names, times, package, prices and booking code follow the example.
 
 ### Technical requirements (from the PA#2 assignment)
+
 - Pages link to each other and work at 360, 768 and 1280 px with no sideways scrolling.
 - Semantic, valid HTML (0 errors in the W3C checker). A CSS framework is allowed.
 - Marks cover: what the pages do in a browser, what we told the assistant, and how we checked what it wrote.
