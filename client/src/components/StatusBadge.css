@@ -1,0 +1,46 @@
+/* ==========================================================================
+   StatusBadge Component Styles
+   Used EXCLUSIVELY for status indication. NEVER uses accent colors.
+   ========================================================================== */
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: 4px var(--space-8);
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  line-height: 1.25;
+  border-radius: var(--radius-full);
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+.status-badge__icon {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Success theme: AGREED, BOOKED, COMPLETED, DONE */
+.status-badge--success {
+  background-color: var(--color-success-bg);
+  color: var(--color-success);
+  border: 1px solid rgba(55, 83, 54, 0.25);
+}
+
+/* Warning theme: CONSULTING, PENDING_DEPOSIT */
+.status-badge--warning {
+  background-color: var(--color-warning-bg);
+  color: var(--color-warning);
+  border: 1px solid rgba(108, 87, 45, 0.25);
+}
+
+/* Danger theme: UNANSWERED, CANCELLED */
+.status-badge--danger {
+  background-color: var(--color-danger-bg);
+  color: var(--color-danger);
+  border: 1px solid rgba(142, 43, 58, 0.25);
+}

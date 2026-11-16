@@ -1,0 +1,89 @@
+/* ==========================================================================
+   Button Component Styles
+   ========================================================================== */
+
+.btn-wrapper {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  vertical-align: middle;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-8);
+  min-height: 44px; /* Tap target ≥ 44px */
+  padding: var(--space-8) var(--space-24);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.25;
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+  transition: all 0.15s ease-in-out;
+  cursor: pointer;
+  white-space: normal;
+  text-align: center;
+}
+
+/* Variant Primary: Nền màu nhấn, chữ kem sáng. Tối đa 1 nút primary mỗi khu vực */
+.btn--primary {
+  background-color: var(--color-accent);
+  color: var(--color-surface);
+  border: 1.5px solid var(--color-accent);
+  box-shadow: var(--shadow-paper);
+}
+
+.btn--primary:hover:not(:disabled) {
+  background-color: var(--color-accent-hover);
+  border-color: var(--color-accent-hover);
+  box-shadow: var(--shadow-hover);
+}
+
+/* Variant Secondary: Viền nâu thương hiệu, nền trong suốt */
+.btn--secondary {
+  background-color: transparent;
+  color: var(--color-brand);
+  border: 1.5px solid var(--color-brand);
+}
+
+.btn--secondary:hover:not(:disabled) {
+  background-color: rgba(139, 90, 43, 0.08);
+  color: var(--color-brand-hover);
+  border-color: var(--color-brand-hover);
+}
+
+/* Variant Ghost: Không viền, nền trong suốt */
+.btn--ghost {
+  background-color: transparent;
+  color: var(--color-brand);
+  border: 1.5px solid transparent;
+}
+
+.btn--ghost:hover:not(:disabled) {
+  background-color: rgba(139, 90, 43, 0.08);
+  color: var(--color-brand-hover);
+}
+
+/* Disabled state */
+.btn:disabled,
+.btn.is-disabled {
+  background-color: var(--color-disabled-bg);
+  color: var(--color-disabled-text);
+  border-color: var(--color-disabled-border);
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+/* Visible note linked via aria-describedby */
+.btn-note {
+  display: block;
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  margin-top: var(--space-4);
+  font-style: italic;
+  max-width: 280px;
+  line-height: 1.35;
+}
