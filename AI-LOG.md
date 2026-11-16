@@ -440,3 +440,12 @@ Kept: ci.yml copied from Downloads without modifying content.
 Changed: none.
 Rejected: none.
 By hand: (person to fill in)
+
+## 2026-11-16 — Design tokens, scrapbook section styles, basic components and styleguide for React client
+
+Tool: Antigravity, Gemini 3.8 Flash (High)
+Asked for: Dựng hệ thống thiết kế cho client React của GradStudio, kèm bảng màu mới có màu nhấn, 3 kiểu khu vực, các component cơ bản, trang /styleguide và tài liệu docs/DESIGN.md.
+Kept: Phong cách scrapbook / film-journal từ PA#2 (giấy kem, polaroid, washi tape); thang khoảng cách 4/8/12/16/24/32/48/64/80; phông chữ Playfair Display tự host từ pa2/assets/fonts/.
+Changed: Thêm màu nhấn terracotta (#A6461F) cho nút chính, badge highlight và số tiền thay thế màu nâu thương hiệu (#8B5A2B) vốn cùng họ màu với chữ; hợp nhất các biến CSS phân mảnh từ style.css và screen3.css thành một bộ design tokens duy nhất trong client/src/styles/tokens.css; bổ sung 3 kiểu khu vực (.section--paper, .section--kraft có mép xé CSS clip-path, .section--dark); tạo các component Button (hỗ trợ note khi disabled), Field (nối aria-describedby), StatusBadge (8 mã trạng thái, chỉ dùng màu trạng thái, kèm icon), Card và Badge ("highlight"); tạo trang /styleguide; viết scripts/check-contrast.js kiểm tra 19 cặp màu WCAG và scripts/check-scroll.js kiểm tra không cuộn ngang ở 360/768/1280px; định dạng lại codebase với prettier để thoả mãn npm run format:check.
+Rejected: Không dùng màu nhấn cho trạng thái; không dùng ảnh có mặt người thật.
+By hand: (person to fill in)
